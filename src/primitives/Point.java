@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class Point {
     final Double3 xyz;
+    protected String toString;
 
     public Point(double x, double y, double z) {
         xyz = new Double3(x, y, z);
@@ -44,6 +45,7 @@ public class Point {
     public Point add(Vector vector) {
         return new Point(xyz.add(vector.xyz));
     }
+
 
     public Vector subtract(Point point) {
         return new Vector(point.xyz.subtract(xyz));
