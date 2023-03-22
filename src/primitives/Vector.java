@@ -31,7 +31,9 @@ public class Vector extends Point{
     }
 
     public Vector add(Vector vector) {
-       return (Vector) super.add(vector);
+       Point p=super.add(vector);
+       Vector v=new Vector(p.xyz);
+       return v;
     }
 
     public Vector scale(Double s){
@@ -39,7 +41,7 @@ public class Vector extends Point{
         return v;
     }
 public Double dotProduct(Vector vector){
-        return (this.xyz.d1*vector.xyz.d1+this.xyz.d2*this.xyz.d2+this.xyz.d3*vector.xyz.d3);
+        return (this.xyz.d1*vector.xyz.d1+this.xyz.d2*vector.xyz.d2+this.xyz.d3*vector.xyz.d3);
 }
 
 public Vector crossProduct(Vector other){
