@@ -54,7 +54,7 @@ public Vector crossProduct(Vector other){
         return Math.sqrt(lengthSquared());
     }
 
-    private double lengthSquared() {
+    public double lengthSquared() {
         double x=  xyz.d1;
         double y = xyz.d2;
         double z = xyz.d3;
