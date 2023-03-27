@@ -1,32 +1,70 @@
-package geometries;
 
-import primitives.Point;
-import primitives.Vector;
 
+
+/**
+ This class represents a Plane in 3D space.
+ */
+        package geometries;
+        import primitives.Point;
+        import primitives.Vector;
 public class Plane implements Geometry {
-    private Point q0;
-    private Vector normal;
-
+    private Point q0; // A point on the plane
+    private Vector normal; // The normal vector to the plane
+    /**
+     * Constructor for creating a plane from three points on the plane
+     * @param q1 The first point
+     * @param q2 The second point
+     * @param q3 The third point
+     */
     public Plane(Point q1,Point q2,Point q3) {
-        q0 = q1;
-        normal=null;
+        q0 = q1; // Set one of the points as a point on the plane
+        normal = null; // Initialize the normal vector to null
     }
 
+
+    /**
+     * Constructor for creating a plane from a point on the plane and the normal vector
+     * @param q0 A point on the plane
+     * @param normal The normal vector to the plane
+     */
     public Plane(Point q0, Vector normal) {
         this.q0 = q0;
-        this.normal = normal.normalize();
+        this.normal = normal.normalize(); // Normalize the normal vector
     }
 
+
+    /**
+     * Getter for the point on the plane
+     * @return The point on the plane
+     */
     public Point getPoint() {
         return q0;
     }
 
+
+    /**
+     * Getter for the normal vector to the plane
+     * @return The normal vector to the plane
+     */
     public Vector getNormal() {
         return normal;
     }
 
+
+    /**
+     * Returns the normal vector to the plane at a given point (which is on the plane)
+     * @param p The point on the plane
+     * @return The normal vector to the plane at the given point
+     */
     @Override
     public Vector getNormal(Point p) {
-        return null;
+        return null; // Will be implemented later
     }
 }
+
+
+
+
+
+
+
