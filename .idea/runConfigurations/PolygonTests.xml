@@ -1,0 +1,18 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="PolygonTests" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+    <module name="ISE5783_3115_5260" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="unittests.geometries.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <option name="PACKAGE_NAME" value="unittests.geometries" />
+    <option name="MAIN_CLASS_NAME" value="unittests.geometries.PolygonTests" />
+    <option name="METHOD_NAME" value="" />
+    <option name="TEST_OBJECT" value="class" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

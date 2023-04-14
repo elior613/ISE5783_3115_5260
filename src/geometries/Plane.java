@@ -7,6 +7,9 @@
         package geometries;
         import primitives.Point;
         import primitives.Vector;
+
+        import static primitives.Util.isZero;
+
 public class Plane implements Geometry {
     private Point q0; // A point on the plane
     private Vector normal; // The normal vector to the plane
@@ -18,7 +21,11 @@ public class Plane implements Geometry {
      */
     public Plane(Point q1,Point q2,Point q3) {
         q0 = q1; // Set one of the points as a point on the plane
-        normal = null; // Initialize the normal vector to null
+        Vector v1=q2.subtract(q1);
+        Vector v2=q3.subtract(q1);
+        if(!isZero(v1.dotProduct(v2)))
+            throw new IllegalArgumentException("the points are in the same line");
+        normal = v1.crossProduct(v2).normalize(); // Initialize the normal vector to null
     }
 
 
