@@ -21,12 +21,11 @@ class PlaneTests {
     public void testGetNormal() {
         // ============ Equivalence Partitions Tests ==============
         // TC01: There is a simple single test here - using a quad
-        Point[] pts =
-                {new Point(0, 0, 1), new Point(1, 0, 0), new Point(0, 1, 0), new Point(-1, 1, 1)};
-        Polygon pol = new Polygon(pts);
-        // ensure there are no exceptions
-        assertThrows(() ->   if(!isZero(v1.dotProduct(v2))), "");
         // ensure |result| = 1
-        assertEquals(1, normal.length(), 0.00000001, "Plane's normal is not normalized");
+        assertEquals(1d, normal.length(), 0.00000001, "Plane's normal is not normalized");
+
+        // =============== Edge cases Tests ==================
+        //Tc10: ensure there are no exceptions
+        assertThrows(() ->   if(!isZero(v1.dotProduct(v2))), "");
     }
 }
