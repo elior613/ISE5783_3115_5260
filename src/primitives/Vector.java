@@ -123,10 +123,10 @@ public class Vector extends Point{
     }
 
     /**
-     @return the normalized Vector
+     * @return the normalized Vector
      */
 
-    public Vector normalize() {
+    public Object normalize() {
         //return new Vector(xyz.reduce(len));
 
         double len=length();

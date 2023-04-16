@@ -4,17 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="109a4c57-e2c2-4f1f-a6fc-99d8db36e3af" name="Changes" comment="final stage 1">
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/PolygonTests.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unitTest/geometries/PlaneTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unitTest/geometries/PolygonTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unitTest/geometries/SphereTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unitTest/primitives/PointTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unitTest/primitives/VectorTests.java" afterDir="false" />
+    <list default="true" id="109a4c57-e2c2-4f1f-a6fc-99d8db36e3af" name="Changes" comment="finish packegs">
+      <change afterPath="$PROJECT_DIR$/unitTest/geometries/TriangleTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISE5783_3115_5260.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ISE5783_3115_5260.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometries/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Plane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Triangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Triangle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/primitives/Vector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Vector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unitTest/geometries/PlaneTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unitTest/geometries/PlaneTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

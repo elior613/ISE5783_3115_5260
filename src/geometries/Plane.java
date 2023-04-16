@@ -23,9 +23,12 @@ public class Plane implements Geometry {
         q0 = q1; // Set one of the points as a point on the plane
         Vector v1=q2.subtract(q1);
         Vector v2=q3.subtract(q1);
+        if (v1.lengthSquared()==0 || v2.lengthSquared()==0)
+            throw new IllegalArgumentException("the points are  the same ");
         if(!isZero(v1.dotProduct(v2)))
             throw new IllegalArgumentException("the points are in the same line");
-        normal = v1.crossProduct(v2).normalize(); // Initialize the normal vector to null
+
+        this.normal = v1.crossProduct(v2).normalize(); // Initialize the normal vector to null
     }
 
 
