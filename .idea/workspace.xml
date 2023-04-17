@@ -182,7 +182,8 @@
     <MESSAGE value="finish tests" />
     <MESSAGE value="final stage 1 commit" />
     <MESSAGE value="final stage 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="final stage 1" />
+    <MESSAGE value="stage 2 getNormal" />
+    <option name="LAST_COMMIT_MESSAGE" value="stage 2 getNormal" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
