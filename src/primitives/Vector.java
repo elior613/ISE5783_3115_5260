@@ -88,11 +88,11 @@ public class Vector extends Point{
     }
 
 
-/**
- * Computes the cross product of this vector and the specified vector.
- * @param other the vector to compute the cross product with
- * @return a new Vector object representing the cross product of this vector and the specified vector
- */
+    /**
+     * Computes the cross product of this vector and the specified vector.
+     * @param other the vector to compute the cross product with
+     * @return a new Vector object representing the cross product of this vector and the specified vector
+     */
 
 
 
@@ -123,10 +123,10 @@ public class Vector extends Point{
     }
 
     /**
-     @return the normalized Vector
+     * @return the normalized Vector
      */
 
-    public Vector normalize() {
+    public Object normalize() {
         //return new Vector(xyz.reduce(len));
 
         double len=length();
@@ -136,4 +136,3 @@ public class Vector extends Point{
         return new Vector(x,y,z);
     }
 }
-

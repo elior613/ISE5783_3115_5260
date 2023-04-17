@@ -4,11 +4,11 @@
 /**
  This class represents a Plane in 3D space.
  */
-        package geometries;
-        import primitives.Point;
-        import primitives.Vector;
+package geometries;
+import primitives.Point;
+import primitives.Vector;
 
-        import static primitives.Util.isZero;
+import static primitives.Util.isZero;
 
 public class Plane implements Geometry {
     private Point q0; // A point on the plane
@@ -23,9 +23,12 @@ public class Plane implements Geometry {
         q0 = q1; // Set one of the points as a point on the plane
         Vector v1=q2.subtract(q1);
         Vector v2=q3.subtract(q1);
+        if (v1.lengthSquared()==0 || v2.lengthSquared()==0)
+            throw new IllegalArgumentException("the points are  the same ");
         if(!isZero(v1.dotProduct(v2)))
             throw new IllegalArgumentException("the points are in the same line");
-        normal = v1.crossProduct(v2).normalize(); // Initialize the normal vector to null
+
+        this.normal = (Vector) v1.crossProduct(v2).normalize(); // Initialize the normal vector to null
     }
 
 
@@ -36,7 +39,7 @@ public class Plane implements Geometry {
      */
     public Plane(Point q0, Vector normal) {
         this.q0 = q0;
-        this.normal = normal.normalize(); // Normalize the normal vector
+        this.normal = (Vector) normal.normalize(); // Normalize the normal vector
     }
 
 
@@ -65,10 +68,9 @@ public class Plane implements Geometry {
      */
     @Override
     public Vector getNormal(Point p) {
-        return null; // Will be implemented later
+        return normal; // Will be implemented later
     }
 }
-
 
 
 

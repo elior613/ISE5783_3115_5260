@@ -15,7 +15,7 @@ public class Ray {
 
     public Ray(Point po, Vector dir) {
         this.po = po;
-        this.dir = dir.normalize();
+        this.dir = (Vector) dir.normalize();
     }
 
     /**
@@ -41,6 +41,14 @@ public class Ray {
     }
 
 
+    public Point getPo() {
+        return po;
+    }
+
+    public Vector getDir() {
+        return dir;
+    }
+
     /**
      * Returns a string representation of this Ray object.
      * @return a string representation of this Ray object
@@ -53,7 +61,6 @@ public class Ray {
                 '}';
     }
 }
-
 
 
 
