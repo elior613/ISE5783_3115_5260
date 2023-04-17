@@ -45,7 +45,7 @@ class PlaneTests {
         Point p3=new Point(6, 3, 5);
         Plane plane=new Plane(p1,p2,p3);
         Vector normal=plane.getNormal();
-
+        assertEquals(1d, normal.length(), 0.00000001, "Plane's normal is not normalized");
 
     }
 

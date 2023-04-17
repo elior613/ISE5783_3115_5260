@@ -25,8 +25,9 @@ public class Plane implements Geometry {
         Vector v2=q3.subtract(q1);
         if (v1.lengthSquared()==0 || v2.lengthSquared()==0)
             throw new IllegalArgumentException("the points are  the same ");
-        if(!isZero(v1.dotProduct(v2)))
-            throw new IllegalArgumentException("the points are in the same line");
+        // check whether the vertices are on the same ray
+        if(v1 == v2 || v1 == v2.scale(-1d))
+            throw new IllegalArgumentException("the points in the same line");
 
         this.normal = (Vector) v1.crossProduct(v2).normalize(); // Initialize the normal vector to null
     }
