@@ -8,16 +8,15 @@ import static org.junit.jupiter.api.Assertions.*;
 class TriangleTest {
     public void testGetNormal() {
         // ============ Equivalence Partitions Tests ==============
-        // TC01: There is a simple single test here - using a quad
+        // TC01: There is a simple single test here -
         // ensure |result| = 1
 
-        Point p1=new Point(2, 3, 4);
-        Point p2=new Point(9, 8, 0);
-        Point p3=new Point(6, 3, 5);
-        Triangle t=new Triangle(p1,p2,p3);
-        Vector normal=t.getNormal();
-
-        assertEquals(1d, normal.length(), 0.00000001, "Plane's normal is not normalized");
-
-
+        Triangle pl = new Triangle(new Point(0, 0, 1), new Point(1, 0, 0), new Point(0, 1, 0));
+        double sqrt3 = Math.sqrt(1d / 3);
+        Vector normal = pl.getNormal(new Point(0, 1, 0));
+        assertEquals(new Vector(sqrt3, sqrt3, sqrt3), normal, "Bad normal to triangle");
+        assertEquals(1d, normal.length(), 0.00000001, "Triangle's normal is not normalized");
     }
+
+
+}

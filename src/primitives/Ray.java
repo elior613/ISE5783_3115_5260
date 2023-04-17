@@ -41,6 +41,14 @@ public class Ray {
     }
 
 
+    public Point getPo() {
+        return po;
+    }
+
+    public Vector getDir() {
+        return dir;
+    }
+
     /**
      * Returns a string representation of this Ray object.
      * @return a string representation of this Ray object

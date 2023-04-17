@@ -68,7 +68,7 @@ public class Plane implements Geometry {
      */
     @Override
     public Vector getNormal(Point p) {
-        return null; // Will be implemented later
+        return normal; // Will be implemented later
     }
 }
 

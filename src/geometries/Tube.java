@@ -40,7 +40,22 @@ public class Tube extends RadialGeometry {
      */
     @Override
     public Vector getNormal(Point p) {
-        return null;
+        public Vector getNormal(Point point) {
+            Point p0 = axisRay.getPo();
+            Vector v = axisRay.getDir();
+            Vector p0_p = p.subtract(p0);
+            double t = alignZero(v.dotProduct(p0_p));
+            double tmp= v.dotProduct(p0_p);
+            if (isZero(t)){
+                return p0_p.normalize();
+            }
+            Point o = p0.add(v.scale(t));
+            if(point.equals(o)){
+                throw new IllegalArgumentException("point cannot be on the tube axis");
+            }
+            Vector n = point.subtract(o).normalize();
+            return n;
+        }
     }
 }
 
