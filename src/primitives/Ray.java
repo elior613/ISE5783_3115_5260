@@ -10,11 +10,11 @@ import java.util.Objects;
  *  dir the direction vector of the ray
  */
 public class Ray {
-    Point po;
+    Point p0;
     Vector dir;
 
     public Ray(Point po, Vector dir) {
-        this.po = po;
+        this.p0 = po;
         this.dir = (Vector) dir.normalize();
     }
 
@@ -27,7 +27,7 @@ public class Ray {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Ray ray)) return false;
-        return po.equals(ray.po) && dir.equals(ray.dir);
+        return p0.equals(ray.p0) && dir.equals(ray.dir);
     }
 
 
@@ -37,12 +37,12 @@ public class Ray {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(po, dir);
+        return Objects.hash(p0, dir);
     }
 
 
-    public Point getPo() {
-        return po;
+    public Point getP0() {
+        return p0;
     }
 
     public Vector getDir() {
@@ -56,7 +56,7 @@ public class Ray {
     @Override
     public String toString() {
         return "Ray{" +
-                "po=" + po +
+                "po=" + p0 +
                 ", dir=" + dir +
                 '}';
     }

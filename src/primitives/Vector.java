@@ -4,7 +4,7 @@
  It is a subclass of the Point class, since vectors and points are closely related in 3D graphics.
  */
 package primitives;
-public class Vector extends Point{
+public class  Vector extends Point{
 
 
     /**
@@ -126,7 +126,7 @@ public class Vector extends Point{
      * @return the normalized Vector
      */
 
-    public Object normalize() {
+    public Vector normalize() {
         //return new Vector(xyz.reduce(len));
 
         double len=length();

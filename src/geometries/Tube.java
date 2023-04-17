@@ -34,27 +34,23 @@ public class Tube extends RadialGeometry {
     }
 
     /**
-     * Calculates and returns the normal vector to the tube at the specified point p.
-     * @param p The point on the surface of the tube.
-     * @return The normal vector to the tube at the specified point p.
+     * return a normal vector to the tube in the point p, if there
+     * @param p
+     * @return
      */
     @Override
     public Vector getNormal(Point p) {
-        public Vector getNormal(Point point) {
-            Point p0 = axisRay.getPo();
-            Vector v = axisRay.getDir();
-            Vector p0_p = p.subtract(p0);
-            double t = alignZero(v.dotProduct(p0_p));
-            double tmp= v.dotProduct(p0_p);
-            if (isZero(t)){
-                return p0_p.normalize();
-            }
+        Vector v = axisRay.getDir();
+        Point p0 = axisRay.getP0();
+        double t = v.dotProduct(p.subtract(p0));
+        Vector normal;
+        if(t != 0)
+        {
             Point o = p0.add(v.scale(t));
-            if(point.equals(o)){
-                throw new IllegalArgumentException("point cannot be on the tube axis");
-            }
-            Vector n = point.subtract(o).normalize();
-            return n;
+            normal = (Vector) p.subtract(o).normalize();
         }
+        else
+            normal = (Vector) p.subtract(p0).normalize();
+        return normal;
     }
 }
