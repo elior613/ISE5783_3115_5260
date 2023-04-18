@@ -5,6 +5,8 @@ import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
 
+import static primitives.Util.alignZero;
+
 /**
  * Represents a tube in 3D space, which is defined by a radius and an axis ray.
  */
@@ -42,18 +44,28 @@ public class Tube extends RadialGeometry {
     public Vector getNormal(Point p) {
         Vector v = axisRay.getDir();
         Point p0 = axisRay.getP0();
-        double t = v.dotProduct(p.subtract(p0));
-        Vector normal;
+
+        if(p0.equals(p)){
+            throw new IllegalArgumentException("Point p cannot equal to tube reference point");
+        }
+
+        Vector P0_P = p.subtract(p0);
+        try{
+            v.crossProduct(P0_P);
+        }
+        catch (IllegalArgumentException e){
+            throw new IllegalArgumentException("Point p cannot be on the axis ");
+        }
+
+        // hesber yavo lekan
+        double t = alignZero(v.dotProduct(P0_P));
 
         //the point not on the base
-        if(t != 0)
-        {
+        if(t != 0){
             Point o = p0.add(v.scale(t));
-            normal = p.subtract(o).normalize();
+            return p.subtract(o).normalize();
         }
         //the point on the base
-        else
-            normal = p.subtract(p0).normalize();
-        return normal;
+           return P0_P.normalize();
     }
 }

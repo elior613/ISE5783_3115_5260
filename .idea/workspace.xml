@@ -4,16 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="109a4c57-e2c2-4f1f-a6fc-99d8db36e3af" name="Changes" comment="finish Stage2">
-      <change afterPath="$PROJECT_DIR$/unitTest/geometries/CylinderTests.java" afterDir="false" />
+    <list default="true" id="109a4c57-e2c2-4f1f-a6fc-99d8db36e3af" name="Changes" comment="stage2 final commit with cylinder">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Cylinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Cylinder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometries/Tube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Tube.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Ray.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unitTest/geometries/PlaneTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unitTest/geometries/PlaneTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unitTest/geometries/SphereTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unitTest/geometries/SphereTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unitTest/geometries/TriangleTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unitTest/geometries/TriangleTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unitTest/geometries/TubeTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unitTest/geometries/TubeTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +84,15 @@
       <recent name="primitives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CylinderTests">
+  <component name="RunManager" selected="JUnit.All in ISE5783_3115_5260">
+    <configuration name="All in ISE5783_3115_5260" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ISE5783_3115_5260" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CylinderTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_3115_5260" />
       <extension name="coverage">
@@ -169,28 +170,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TubeTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ISE5783_3115_5260" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="geometries.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="geometries" />
-      <option name="MAIN_CLASS_NAME" value="geometries.TubeTests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in ISE5783_3115_5260" />
         <item itemvalue="JUnit.CylinderTests" />
         <item itemvalue="JUnit.CylinderTests.testGetNormal" />
         <item itemvalue="JUnit.PlaneTests" />
         <item itemvalue="JUnit.TriangleTests" />
-        <item itemvalue="JUnit.TubeTests" />
       </list>
     </recent_temporary>
   </component>
@@ -287,7 +273,21 @@
       <option name="project" value="LOCAL‎" />
       <updated>1681799377633</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL‎-00013" summary="stage 2 final commit">
+      <created>1681833110792</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL‎-00013" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1681833110792</updated>
+    </task>
+    <task id="LOCAL‎-00014" summary="stage2 final commit with cylinder">
+      <created>1681833339170</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL‎-00014" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1681833339170</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -314,7 +314,9 @@
     <MESSAGE value="almost finish without cylinder" />
     <MESSAGE value="finish stage 2" />
     <MESSAGE value="finish Stage2" />
-    <option name="LAST_COMMIT_MESSAGE" value="finish Stage2" />
+    <MESSAGE value="stage 2 final commit" />
+    <MESSAGE value="stage2 final commit with cylinder" />
+    <option name="LAST_COMMIT_MESSAGE" value="stage2 final commit with cylinder" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

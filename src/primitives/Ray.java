@@ -6,12 +6,17 @@ import java.util.Objects;
 
 /**
  * Constructs a new Ray object with the specified starting point and direction vector.
- *  po the starting point of the ray
- *  dir the direction vector of the ray
  */
 public class Ray {
+    /**
+     * po the starting point of the ray
+     *
+     */
     Point p0;
-    Vector dir;
+   /**
+    * dir the direction vector of the ray
+    */
+   Vector dir;
 
     public Ray(Point po, Vector dir) {
         this.p0 = po;
