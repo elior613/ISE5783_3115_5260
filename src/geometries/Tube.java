@@ -44,11 +44,13 @@ public class Tube extends RadialGeometry {
         Point p0 = axisRay.getP0();
         double t = v.dotProduct(p.subtract(p0));
         Vector normal;
+
         if(t != 0)
         {
             Point o = p0.add(v.scale(t));
             normal = p.subtract(o).normalize();
         }
+        //orthogonal to the base
         else
             normal = p.subtract(p0).normalize();
         return normal;

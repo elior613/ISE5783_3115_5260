@@ -40,11 +40,18 @@ public class Ray {
         return Objects.hash(p0, dir);
     }
 
-
+    /**
+     * Returns a point of p0.
+     * @return Point
+     */
     public Point getP0() {
         return p0;
     }
 
+    /**
+     * Returns a vector of the ray.
+     * @return Vector
+     */
     public Vector getDir() {
         return dir;
     }
