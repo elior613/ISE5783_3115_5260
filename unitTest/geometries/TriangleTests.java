@@ -22,6 +22,7 @@ class TriangleTests {
         Vector checkNegative=new Vector(-sqrt3, -sqrt3, -sqrt3);
         boolean flag=normal.equals(checkPositive)||normal.equals(checkNegative);
 
+
         assertTrue(flag, "Bad normal to triangle");
         assertEquals(1d, normal.length(), 0.00000001, "Triangle's normal is not normalized");
     }

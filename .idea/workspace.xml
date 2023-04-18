@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="109a4c57-e2c2-4f1f-a6fc-99d8db36e3af" name="Changes" comment="almost finish without cylinder">
+    <list default="true" id="109a4c57-e2c2-4f1f-a6fc-99d8db36e3af" name="Changes" comment="finish stage 2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Plane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Tube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Tube.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unitTest/geometries/PlaneTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unitTest/geometries/PlaneTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -267,7 +264,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1681743466017</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL‎-00011" summary="finish stage 2">
+      <created>1681797297316</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL‎-00011" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1681797297316</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -292,7 +296,8 @@
     <MESSAGE value="continue normal" />
     <MESSAGE value="add get normal of tube" />
     <MESSAGE value="almost finish without cylinder" />
-    <option name="LAST_COMMIT_MESSAGE" value="almost finish without cylinder" />
+    <MESSAGE value="finish stage 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish stage 2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
