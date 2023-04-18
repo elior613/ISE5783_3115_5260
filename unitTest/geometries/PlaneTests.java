@@ -58,7 +58,7 @@ class PlaneTests {
         Plane p1=new Plane(new Point(0,0,0), new Point(1,0,0),new Point(0,1,0));
         Vector checkPositive=new Vector(0, 0, 1);
         Vector checkNegative=new Vector(0, 0, -1);
-        Vector normal= (Vector) p1.getNormal().normalize();
+        Vector normal= p1.getNormal().normalize();
         boolean flag=normal.equals(checkPositive)||normal.equals(checkNegative);
         assertTrue(flag, "Bad normal to plane");
     }

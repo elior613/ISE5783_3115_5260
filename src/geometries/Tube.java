@@ -47,10 +47,10 @@ public class Tube extends RadialGeometry {
         if(t != 0)
         {
             Point o = p0.add(v.scale(t));
-            normal = (Vector) p.subtract(o).normalize();
+            normal = p.subtract(o).normalize();
         }
         else
-            normal = (Vector) p.subtract(p0).normalize();
+            normal = p.subtract(p0).normalize();
         return normal;
     }
 }

@@ -29,7 +29,7 @@ public class Plane implements Geometry {
         if(v1 == v2 || v1 == v2.scale(-1d))
             throw new IllegalArgumentException("the points in the same line");
 
-        this.normal = (Vector) v1.crossProduct(v2).normalize(); // Initialize the normal vector to null
+        this.normal = v1.crossProduct(v2).normalize(); // Initialize the normal vector to null
     }
 
 
@@ -40,7 +40,7 @@ public class Plane implements Geometry {
      */
     public Plane(Point q0, Vector normal) {
         this.q0 = q0;
-        this.normal = (Vector) normal.normalize(); // Normalize the normal vector
+        this.normal = normal.normalize(); // Normalize the normal vector
     }
 
 
