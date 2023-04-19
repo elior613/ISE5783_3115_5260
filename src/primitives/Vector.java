@@ -10,7 +10,6 @@ package primitives;
  */
 public class  Vector extends Point{
 
-
     /**
      * Constructs a new Vector object with the specified x, y, and z components.
      * @param x the x component of the vector
