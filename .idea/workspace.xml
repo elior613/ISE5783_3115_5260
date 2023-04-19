@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="109a4c57-e2c2-4f1f-a6fc-99d8db36e3af" name="Changes" comment="PR02 commit" />
+    <list default="true" id="109a4c57-e2c2-4f1f-a6fc-99d8db36e3af" name="Changes" comment="pr02 commit" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -312,7 +312,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1681913304099</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL‎-00019" summary="pr02 commit">
+      <created>1681913636665</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL‎-00019" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1681913636665</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -344,7 +351,8 @@
     <MESSAGE value="stage2" />
     <MESSAGE value="Stage2" />
     <MESSAGE value="PR02 commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="PR02 commit" />
+    <MESSAGE value="pr02 commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="pr02 commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
