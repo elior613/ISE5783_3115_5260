@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="109a4c57-e2c2-4f1f-a6fc-99d8db36e3af" name="Changes" comment="Stage2">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="109a4c57-e2c2-4f1f-a6fc-99d8db36e3af" name="Changes" comment="PR02 commit" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -307,7 +305,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1681904953941</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL‎-00018" summary="PR02 commit">
+      <created>1681913304099</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL‎-00018" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1681913304099</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -338,7 +343,8 @@
     <MESSAGE value="stage2 final commit with cylinder" />
     <MESSAGE value="stage2" />
     <MESSAGE value="Stage2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Stage2" />
+    <MESSAGE value="PR02 commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="PR02 commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
