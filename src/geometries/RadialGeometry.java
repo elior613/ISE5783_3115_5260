@@ -10,6 +10,9 @@ public abstract class RadialGeometry implements Geometry {
      * The radius of the radial geometry.
      */
     protected double radius;
+
+
+
     /**
      * Constructs a new radial geometry with the specified radius.
      * @param radius the radius of the geometry

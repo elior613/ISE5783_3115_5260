@@ -9,10 +9,18 @@ import primitives.Point;
 import primitives.Vector;
 
 import static primitives.Util.isZero;
-
+/**
+ * Plane is an object witch includes a point on the plane and the vector normal on the plane
+ */
 public class Plane implements Geometry {
-    private Point q0; // A point on the plane
-    private Vector normal; // The normal vector to the plane
+    /**
+     * A point on the plane
+     */
+    private Point q0;
+    /**
+     * The normal vector to the plane
+     */
+    private Vector normal;
     /**
      * Constructor for creating a plane from three points on the plane
      * @param q1 The first point

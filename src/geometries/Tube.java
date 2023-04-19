@@ -38,30 +38,35 @@ public class Tube extends RadialGeometry {
     /**
      * return a normal vector to the tube in the point p, if there
      * @param p
-     * @return
+     * @return Vector (normal vector)
      */
     @Override
     public Vector getNormal(Point p) {
-        Vector v = axisRay.getDir();
+        Vector v = axisRay.getDirection();
         Point p0 = axisRay.getP0();
 
         if(p0.equals(p)){
             throw new IllegalArgumentException("Point p cannot equal to tube reference point");
         }
 
+        //calculating the vector between the point of the ray and the point that we get in the function
         Vector P0_P = p.subtract(p0);
+        //if P0P parallel to v
         try{
             v.crossProduct(P0_P);
         }
+        //the point is on the ray. we can't calculate a normal
         catch (IllegalArgumentException e){
             throw new IllegalArgumentException("Point p cannot be on the axis ");
         }
 
-        // hesber yavo lekan
+        // calculating the value of the scalar of the direction vector
+        //v.dotProduct(P0_P) is the projection
         double t = alignZero(v.dotProduct(P0_P));
 
         //the point not on the base
         if(t != 0){
+            // from the point o we calculate the normal
             Point o = p0.add(v.scale(t));
             return p.subtract(o).normalize();
         }

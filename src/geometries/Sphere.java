@@ -7,7 +7,14 @@
 package geometries;
 import primitives.Point;
 import primitives.Vector;
+
+/**
+ * Sphere class represents implementation of RadialGeometry and includes the point center and double of the radius
+ */
 public class Sphere extends RadialGeometry {
+    /**
+     * the point center is the center of the sphere
+     */
 
     private Point center;
 

@@ -4,6 +4,10 @@
  It is a subclass of the Point class, since vectors and points are closely related in 3D graphics.
  */
 package primitives;
+
+/**
+ The Vector class represents a point in three-dimensional that represent a vector.
+ */
 public class  Vector extends Point{
 
 

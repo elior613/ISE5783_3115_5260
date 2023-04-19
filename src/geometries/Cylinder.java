@@ -7,7 +7,13 @@ package geometries;
         import static primitives.Util.alignZero;
         import static primitives.Util.isZero;
 
+/**
+ * Cylinder is an object with the specified radius, axis and height
+ */
 public class Cylinder extends Tube{
+    /**
+     * h The height of the cylinder.
+     */
     private double height;
 
     /**
@@ -29,8 +35,9 @@ public class Cylinder extends Tube{
     @Override
     public Vector getNormal(Point point) {
         Point p0 = axisRay.getP0();
-        Vector v = axisRay.getDir();
+        Vector v = axisRay.getDirection();
 
+        //if the point and p0 are the same
         if (point.equals(p0))
             return v;
 
@@ -47,6 +54,7 @@ public class Cylinder extends Tube{
         //the other point on the axis facing the given point
         Point o = p0.add(v.scale(t));
 
+        //create the normal vector
         return point.subtract(o).normalize();
     }
 }
