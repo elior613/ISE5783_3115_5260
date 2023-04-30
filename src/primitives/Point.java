@@ -105,6 +105,15 @@ public class Point {
         return new Vector(xyz.subtract(point.xyz));
     }
 
+    public Double getX() {
+        return xyz.d1;
+    }
+    public Double getY() {
+        return xyz.d2;
+    }
+    public Double getZ() {
+        return xyz.d3;
+    }
 }
 
 

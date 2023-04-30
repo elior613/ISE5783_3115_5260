@@ -6,7 +6,10 @@
  */
 package geometries;
 import primitives.Point;
+import primitives.Ray;
 import primitives.Vector;
+
+import java.util.List;
 
 /**
  * Sphere class represents implementation of RadialGeometry and includes the point center and double of the radius
@@ -47,5 +50,9 @@ public class Sphere extends RadialGeometry {
     public Vector getNormal(Point p) {
         // The normal vector to a point on a sphere is the direction vector from the center of the sphere to that point.
         return (Vector) p.subtract(center).normalize();
+    }
+
+    public List<Point> findIntersections(Ray ray){
+        return null;
     }
 }

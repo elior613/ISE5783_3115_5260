@@ -6,8 +6,12 @@
  */
 package geometries;
         import primitives.Point;
+        import primitives.Ray;
         import primitives.Vector;
-public interface Geometry {
+
+        import java.util.List;
+
+public interface Geometry extends Intersectable {
     /**
      * Returns a normal vector to the geometry shape at the specified point.
      *
@@ -15,4 +19,8 @@ public interface Geometry {
      * @return the normal vector to the geometry shape at the specified point
      */
     public Vector getNormal(Point p);
+
+
+
+
 }

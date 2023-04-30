@@ -31,4 +31,7 @@ class TriangleTests {
         // ensure |result| = 1
         assertEquals(1d, normal.length(), 0.00000001, "Triangle's normal is not normalized");
     }
+    @Test
+    void testFindIntsersections() {
+    }
 }
