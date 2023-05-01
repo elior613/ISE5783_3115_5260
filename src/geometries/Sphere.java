@@ -9,7 +9,11 @@ import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
 
+import java.util.LinkedList;
 import java.util.List;
+
+import static primitives.Util.alignZero;
+import static primitives.Util.isZero;
 
 /**
  * Sphere class represents implementation of RadialGeometry and includes the point center and double of the radius
@@ -52,7 +56,39 @@ public class Sphere extends RadialGeometry {
         return (Vector) p.subtract(center).normalize();
     }
 
-    public List<Point> findIntersections(Ray ray){
+    public List<Point> findIntersections(Ray ray) {
+        Vector v = ray.getDirection();
+        Point p0 = ray.getP0();
+        if (center.equals(p0)) { // p0 is the center
+            return List.of(center.add(v.scale(radius)));
+        }
+        Vector u = center.subtract(p0);
+        double tm = alignZero(v.dotProduct(u));
+        double dSquared = isZero(tm) ? u.lengthSquared() : u.lengthSquared() - tm * tm;
+        double thSquared = alignZero(radius * radius - dSquared);
+        if (thSquared <= 0)
+            return null;
+        double th = alignZero(Math.sqrt(thSquared));
+        double t1 = alignZero(tm - th);
+        double t2 = alignZero(tm + th);
+
+        //there is 2 intersection points
+        if (t1 > 0 && t2 > 0) {
+            Point p1=p0.add(v.scale(t1));
+            Point p2=p0.add(v.scale(t2));
+            return List.of(p1,p2);
+        }
+        //only t1 intersects the sphere
+        if(t1 > 0){
+           Point p1=p0.add(v.scale(t1));
+           return List.of(p1);
+        }
+        //only t2 intersects the sphere
+        if(t2 > 0){
+            Point p2=p0.add(v.scale(t2));
+            return List.of(p2);
+        }
         return null;
+
     }
 }

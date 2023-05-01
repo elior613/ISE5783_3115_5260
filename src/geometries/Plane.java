@@ -11,6 +11,7 @@ import primitives.Vector;
 
 import java.util.List;
 
+import static primitives.Util.alignZero;
 import static primitives.Util.isZero;
 /**
  * Plane is an object witch includes a point on the plane and the vector normal on the plane
@@ -84,7 +85,39 @@ public class Plane implements Geometry {
     }
 
     public List<Point> findIntersections(Ray ray){
-        return null;
+        Vector v = ray.getDirection();
+        Point p0 = ray.getP0();
+
+        Vector n=normal;
+
+        //if the ray starts on the q0 point of the plane
+        if(q0.equals(p0))
+            return null;
+        Vector P0_Q0=q0.subtract(p0);
+
+        //numerator
+        double nP0Q0=alignZero(n.dotProduct(P0_Q0));
+
+        if(isZero(nP0Q0))//the point p0 is on the plane
+            return null;
+
+        //denominator
+        double nv=alignZero(n.dotProduct(v));
+
+        if(isZero(nv))//the ray is lying in the plane axis. Or the ray in the plane or parallel to the plane- 0 points intersection
+            return null;
+
+        //find the factor of the vector of the ray
+        double t=alignZero(nP0Q0/nv);
+
+        //if the ray is on the plane (t=0) or the ray in the opposite side (t<0). 0 points intersection
+        if(t<=0)
+            return null;
+
+        //calculate the intersection point
+        Point intersection=p0.add(v.scale(t));
+
+        return List.of(intersection);
     }
 }
 
