@@ -1,7 +1,10 @@
 package geometries;
 
+import static primitives.Util.alignZero;
 import static primitives.Util.isZero;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import primitives.Point;
@@ -50,7 +53,7 @@ public class Polygon implements Geometry {
       plane         = new Plane(vertices[0], vertices[1], vertices[2]);
       if (size == 3) return; // no need for more tests for a Triangle
 
-      Vector  n        = plane.getNormal();
+      Vector  n= plane.getNormal();
       // Subtracting any subsequent points will throw an IllegalArgumentException
       // because of Zero Vector if they are in the same point
       Vector  edge1    = vertices[vertices.length - 1].subtract(vertices[vertices.length - 2]);
@@ -78,9 +81,68 @@ public class Polygon implements Geometry {
       }
    }
 
+   /**
+    * Returns the normal vector to the polygon at a given point (which is on the plane)
+    * @param point The point on the polygon
+    * @return The normal vector to the polygon at the given point
+    */
    @Override
    public Vector getNormal(Point point) { return plane.getNormal(); }
-   public List<Point> findIntersections(Ray ray){
+
+
+   /**
+    * Finds the intersections between the current polygon and a given ray.
+    *
+    * @param ray The ray to find intersections with.
+    * @return A list of points representing the intersection points between the polygon and the ray, or null if there are no intersections.
+    */
+   public List<Point> findIntersections(Ray ray) {
+      List<Point> intersection = this.plane.findIntersections(ray);
+
+      // If there are no intersections with the plane of the triangle, return null (0 points intersection).
+      if (intersection == null) {
+         return null;
+      }
+
+      // Get the direction vector of the given ray and its starting point.
+      Vector v = ray.getDirection();
+      Point p0 = ray.getP0();
+
+      // Calculate the n-1 edge vectors of the triangle.
+      List<Vector> p0Vectors = new LinkedList<Vector>();
+      for (Point p : vertices) {
+         p0Vectors.add(p.subtract(ray.getP0()));
+      }
+
+      // Calculate the normalized cross products of the edge vectors.
+      List<Vector> crossVectors = new ArrayList<Vector>();
+      int count = 0;
+      int max = p0Vectors.size() - 1;
+      for (Vector vect : p0Vectors) {
+         if (count != max) {
+            crossVectors.add(vect.crossProduct(p0Vectors.get(count + 1)).normalize());
+         }
+         count++;
+      }
+      //add the  Vn v1 cross product to the crossVectors list and normalized it
+      crossVectors.add(p0Vectors.get(max).crossProduct(p0Vectors.get(0)).normalize());
+
+
+      // sum the number of positive or negative values of the dot product
+      count = 0;
+      for (Vector cross : crossVectors) {
+         double t = alignZero(v.dotProduct(cross));
+         if (t > 0)
+            count++;//count that the dot is positive
+         if (t < 0)
+            count--;//count that the dot is negative
+      }
+
+
+      // If the signs of the dot products are all positive or all negative, the ray intersects the triangle.
+      if (count == vertices.size() || count == -vertices.size()) {
+         return intersection; // The ray intersects the triangle.
+      }
       return null;
    }
 }

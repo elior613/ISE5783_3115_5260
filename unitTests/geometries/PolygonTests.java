@@ -1,17 +1,17 @@
 package geometries;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static primitives.Util.isZero;
 
 import org.junit.jupiter.api.Test;
 
 import geometries.Polygon;
 import primitives.Point;
+import primitives.Ray;
 import primitives.Vector;
+
+import java.util.List;
 
 /**
  * Testing Polygons
@@ -91,4 +91,39 @@ public class PolygonTests {
             assertTrue(isZero(result.dotProduct(pts[i].subtract(pts[i == 0 ? 3 : i - 1]))),
                     "Polygon's normal is not orthogonal to one of the edges");
     }
+
+    /**
+     * Test method for {@link geometries.Polygon#findIntersections(Ray)}.
+     */
+    @Test
+    public void findIntersections()
+    {
+        Polygon polygon = new Polygon(new Point(1, 0, 0), new Point(1, 1, 0), new Point(2, 1, 0), new Point(2, 0, 0));
+        // ============ Equivalence Partitions Tests ==============
+        // TC01: Ray Inside triangle (1 point)
+        List<Point> result = polygon.findIntersections(new Ray(new Point(1, 0, -1), new Vector(1, 1, 2)));
+        assertEquals(1, result.size(), "Wrong number of points");
+        assertEquals(new Point(1.5, 0.5, 0), result.get(0), "Ray crosses sphere");
+
+        // TC02: Ray outside against edge (0 points)
+        assertNull(polygon.findIntersections(new Ray(new Point(1, 0, -1), new Vector(1, -1, 2))),
+                "Ray's line out of triangle");
+
+        // TC03: Ray Outside against vertex (0 points)
+        assertNull(polygon.findIntersections(new Ray(new Point(2, 1, -1), new Vector(0.5, 0.5, 1))),
+                "Ray's line out of triangle");
+
+        // =============== Boundary Values Tests ==================
+        // **** Group: the ray begins "before" the plane
+        // TC11: Ray on the  edge (0 points)
+        assertNull(polygon.findIntersections(new Ray(new Point(1, 0, -1), new Vector(0, 1, 2))),
+                "Ray's line out of triangle");
+        // TC12: Ray in the vertex (0 points)
+        assertNull(polygon.findIntersections(new Ray(new Point(1, 0, -1), new Vector(0, 1, 1))),
+                "Ray's line out of triangle");
+        // TC13: Ray on edge's continuation(0 points)
+        assertNull(polygon.findIntersections(new Ray(new Point(1, 0, -1), new Vector(0, 2, 1))),
+                "Ray's line out of triangle");
+    }
+
 }
