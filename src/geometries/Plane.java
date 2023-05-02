@@ -84,38 +84,56 @@ public class Plane implements Geometry {
         return normal;
     }
 
+
+    /**
+
+     Finds the intersections of the given ray with the plane. Returns a list of points representing the intersections.
+
+     If there are no intersections, the method returns null.
+
+     @param ray The ray to intersect with the plane.
+
+     @return A list of points representing the intersections, or null if there are no intersections.
+     */
     public List<Point> findIntersections(Ray ray){
+        //get the direction and starting point of the ray
         Vector v = ray.getDirection();
         Point p0 = ray.getP0();
 
+        //get the normal to the plane
         Vector n=normal;
 
-        //if the ray starts on the q0 point of the plane
+        //if the ray starts on the q0 point of the plane, there is no intersection
         if(q0.equals(p0))
             return null;
+
+        //calculate the vector between the starting point of the ray and q0
         Vector P0_Q0=q0.subtract(p0);
 
-        //numerator
+        //calculate the numerator of the formula for calculating the intersection point
         double nP0Q0=alignZero(n.dotProduct(P0_Q0));
 
-        if(isZero(nP0Q0))//the point p0 is on the plane
+        //if the numerator is zero, the point p0 is on the plane and there is no intersection
+        if(isZero(nP0Q0))
             return null;
 
-        //denominator
+        //calculate the denominator of the formula for calculating the intersection point
         double nv=alignZero(n.dotProduct(v));
 
-        if(isZero(nv))//the ray is lying in the plane axis. Or the ray in the plane or parallel to the plane- 0 points intersection
+        //if the denominator is zero, the ray is lying in the plane axis,
+        // or the ray is in the plane or parallel to the plane - 0 points intersection
+        if(isZero(nv))
             return null;
 
         //find the factor of the vector of the ray
         double t=alignZero(nP0Q0/nv);
 
-        //if the ray is on the plane (t=0) or the ray in the opposite side (t<0). 0 points intersection
+        //if the factor is zero or negative, the ray is on the plane (t=0) or the ray is in the opposite side (t<0) - 0 points intersection
         if(t<=0)
             return null;
 
-        //calculate the intersection point
-        Point intersection=p0.add(v.scale(t));
+        //calculate the intersection point using the formula: P = P0 + tV
+        Point intersection=ray.getPoint(t);
 
         return List.of(intersection);
     }

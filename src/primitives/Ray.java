@@ -13,15 +13,15 @@ public class Ray {
    /**
     * dir the direction vector of the ray
     */
-   Vector dir;
+   Vector direction;
 
 
     /**
      * Constructs a new Ray object with the specified starting point and direction vector.
      */
-    public Ray(Point po, Vector dir) {
+    public Ray(Point po, Vector direction) {
         this.p0 = po;
-        this.dir = dir.normalize();
+        this.direction = direction.normalize();
     }
 
     /**
@@ -33,7 +33,7 @@ public class Ray {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Ray ray)) return false;
-        return p0.equals(ray.p0) && dir.equals(ray.dir);
+        return p0.equals(ray.p0) && direction.equals(ray.direction);
     }
 
 
@@ -43,7 +43,7 @@ public class Ray {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(p0, dir);
+        return Objects.hash(p0, direction);
     }
 
     /**
@@ -59,7 +59,7 @@ public class Ray {
      * @return Vector
      */
     public Vector getDirection() {
-        return dir;
+        return direction;
     }
 
     /**
@@ -70,8 +70,16 @@ public class Ray {
     public String toString() {
         return "Ray{" +
                 "po=" + p0 +
-                ", dir=" + dir +
+                ", dir=" + direction +
                 '}';
+    }
+
+    /**
+     * Returns a point on the ray with the value of vector multiplication by t starting from p0
+     * @return Point
+     */
+    public Point getPoint(double t){
+        return p0.add(direction.scale(t));
     }
 }
 

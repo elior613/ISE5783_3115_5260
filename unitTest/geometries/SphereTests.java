@@ -28,6 +28,9 @@ class SphereTests {
 
     }
 
+    /**
+     * Test method for {@link geometries.Sphere#findIntersections(primitives.Ray)}.
+     */
     void testFindIntsersections() {
         Sphere sphere = new Sphere(1d, new Point (1, 0, 0));
 

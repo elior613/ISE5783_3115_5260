@@ -67,4 +67,19 @@ class TriangleTests {
         assertNull(triangle.findIntersections(new Ray(new Point(12, -1, -1), new Vector(0, 1, 1))),
                 "Ray's line out of triangle");
     }
+
+
+    /**
+     * Test method for {@link geometries.Polygon#findIntersections(Ray)}.
+     */
+    @Test
+    public void findIntersections()
+    {
+        // ============ Equivalence Partitions Tests ==============
+        // TC01: simple case
+        /*
+        Polygon pl = new Polygon(new Point(0, 0, 0), new Point(1, 0, 0), new Point(1, 1, 0), new Point(0, 1, 0));
+        Ray r = new Ray(new Point(0.5, 0.5, -1), new Vector(0,0,1));
+        assertEquals(new Point(0.5, 0.5, 0), pl.findIntersections(r), "TC01: simple case. wrong return vale");*/
+    }
 }
