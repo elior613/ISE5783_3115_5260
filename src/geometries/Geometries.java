@@ -21,7 +21,6 @@ public class Geometries implements Intersectable{
             geometryList.add(element);
         }
     }
-
     /**
 
      Finds the intersections of the given ray with the geometries that we have in the list.
