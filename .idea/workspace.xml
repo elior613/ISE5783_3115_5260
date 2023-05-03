@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="109a4c57-e2c2-4f1f-a6fc-99d8db36e3af" name="Changes" comment="Stage 3">
+    <list default="true" id="109a4c57-e2c2-4f1f-a6fc-99d8db36e3af" name="Changes" comment="Stage 3 with polygon">
+      <change afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unitTests/renderer/CameraTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -92,6 +94,7 @@
       <recent name="geometries" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="renderer" />
       <recent name="geometries" />
       <recent name="primitives" />
     </key>
@@ -396,7 +399,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1683043587934</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL‎-00029" summary="Stage 3 with polygon">
+      <created>1683091778360</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL‎-00029" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1683091778360</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -417,7 +427,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="continue stage 1" />
     <MESSAGE value="finish packegs" />
     <MESSAGE value="finish tests" />
     <MESSAGE value="final stage 1 commit" />
@@ -442,7 +451,8 @@
     <MESSAGE value="stage3" />
     <MESSAGE value="Stage3" />
     <MESSAGE value="Stage 3" />
-    <option name="LAST_COMMIT_MESSAGE" value="Stage 3" />
+    <MESSAGE value="Stage 3 with polygon" />
+    <option name="LAST_COMMIT_MESSAGE" value="Stage 3 with polygon" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
