@@ -1,5 +1,4 @@
 package primitives;
-
 import java.util.Objects;
 /**
  The Ray class represents a ray in three-dimensional space, defined by a starting point and a direction vector.
