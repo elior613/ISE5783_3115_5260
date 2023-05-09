@@ -74,8 +74,8 @@ public class Sphere extends RadialGeometry {
         double tm = alignZero(v.dotProduct(u));
         double dSquared = isZero(tm) ? u.lengthSquared() : u.lengthSquared() - tm * tm;
         double thSquared = alignZero(radius * radius - dSquared);
-        if (thSquared <= 0)
-            return null;
+       // if (thSquared <= 0)
+        //    return null;
         double th = alignZero(Math.sqrt(thSquared));
         double t1 = alignZero(tm - th);
         double t2 = alignZero(tm + th);
@@ -99,4 +99,5 @@ public class Sphere extends RadialGeometry {
         return null;
 
     }
+
 }

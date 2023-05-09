@@ -111,4 +111,7 @@ public class Camera
         return new Ray(p0, Vij);
 
     }
+
+
+
 }
