@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="109a4c57-e2c2-4f1f-a6fc-99d8db36e3af" name="Changes" comment="problem with constructor of camera">
+    <list default="true" id="109a4c57-e2c2-4f1f-a6fc-99d8db36e3af" name="Changes" comment="stage4">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Sphere.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unitTests/integretionTests/CameraIntegretionTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unitTests/integretionTests/CameraIntegretionTests.java" afterDir="false" />
     </list>
@@ -101,7 +100,7 @@
       <recent name="primitives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CameraIntegretionTests">
+  <component name="RunManager" selected="JUnit.CameraTest">
     <configuration name="All in ISE5783_3115_5260" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_3115_5260" />
       <option name="PACKAGE_NAME" value="" />
@@ -187,8 +186,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CameraIntegretionTests" />
         <item itemvalue="JUnit.CameraTest" />
+        <item itemvalue="JUnit.CameraIntegretionTests" />
         <item itemvalue="JUnit.integretionTests in ISE5783_3115_5260" />
         <item itemvalue="JUnit.All in ISE5783_3115_5260" />
         <item itemvalue="JUnit.PolygonTests (1)" />
@@ -421,7 +420,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1683571821078</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL‎-00032" summary="stage4">
+      <created>1683614638039</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL‎-00032" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1683614638039</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -442,7 +448,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="final stage 1 commit" />
     <MESSAGE value="final stage 1" />
     <MESSAGE value="stage 2 getNormal" />
     <MESSAGE value="continue normal" />
@@ -467,7 +472,8 @@
     <MESSAGE value="Stage 3 with polygon" />
     <MESSAGE value="start stage4" />
     <MESSAGE value="problem with constructor of camera" />
-    <option name="LAST_COMMIT_MESSAGE" value="problem with constructor of camera" />
+    <MESSAGE value="stage4" />
+    <option name="LAST_COMMIT_MESSAGE" value="stage4" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -494,19 +500,15 @@
           </properties>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/geometries/Sphere.java</url>
-          <line>66</line>
-          <properties class="geometries.Sphere" method="findIntersections">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/unitTests/primitives/VectorTests.java</url>
           <line>22</line>
           <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/unitTests/integretionTests/CameraIntegretionTests.java</url>
+          <line>63</line>
+          <option name="timeStamp" value="22" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

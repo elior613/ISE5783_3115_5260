@@ -16,7 +16,7 @@ public class Camera
     private double height;
     private double distance;
 
-    public Camera(Point p,Vector up,Vector to){
+    public Camera(Point p,Vector to,Vector up){
         if(!isZero(up.dotProduct(to)))
             throw new IllegalArgumentException("the vectors are not orthogonal");
         Vup=up;
@@ -91,7 +91,7 @@ public class Camera
         double Rx = width / nX;
 
         //delta values for moving on the view plane
-        double Xj = (j - (nX - 1) / 2d) * Rx;
+        double Xj = -(j - (nX - 1) / 2d) * Rx;
         double Yi = -(i - (nY - 1) / 2d) * Ry;
 
 

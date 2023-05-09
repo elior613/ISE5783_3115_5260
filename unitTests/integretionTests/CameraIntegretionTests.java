@@ -58,7 +58,7 @@ class CameraIntegretionTests {
      */
     @Test
     public void testCameraRayIntegretionPlane() {
-        Camera camera = new Camera(new Point(0, 0, 0), new Vector(0, 0, -1), new Vector(0, -1, 0));
+        Camera camera = new Camera(new Point(0, 0, 1), new Vector(0, 0, -1), new Vector(0, -1, 0));
 
         // TC01: Plane against camera 9 points
         assertEquals(countIntersections(camera, new Plane(new Point(0, 0, -3), new Vector(0, 0, 1))), 9);
