@@ -1,4 +1,5 @@
 package primitives;
+import java.util.List;
 import java.util.Objects;
 /**
  The Ray class represents a ray in three-dimensional space, defined by a starting point and a direction vector.
@@ -79,6 +80,25 @@ public class Ray {
      */
     public Point getPoint(double t){
         return p0.add(direction.scale(t));
+    }
+
+    public Point findClosestPoint(List<Point> listPoints)
+    {
+        if (listPoints.isEmpty())
+            return null;
+
+        //initialize the closet point to the head point of the list
+        //we use distanceSquared to save running time
+        double closetDistnceSquared=p0.distanceSquared(listPoints.get(0));
+        Point closetPoint=listPoints.get(0);
+
+        for (Point p:listPoints) {
+            if (p0.distanceSquared(p)<closetDistnceSquared) {//if this point is closer than out closet point we update the value to the current point
+                closetDistnceSquared = p0.distanceSquared(p);
+                closetPoint = p;
+            }
+        }
+        return  closetPoint;
     }
 }
 
