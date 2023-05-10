@@ -1,5 +1,8 @@
-package renderer;
+/**
 
+ The Camera class represents a camera in 3D space.
+ */
+package renderer;
 import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
@@ -8,22 +11,31 @@ import static primitives.Util.isZero;
 
 public class Camera
 {
-    private Point p0;
-    private Vector Vto;
-    private Vector Vup;
-    private Vector Vright;
-    private double  width;
-    private double height;
-    private double distance;
+    private Point p0; // The position of the camera's center
+    private Vector Vto; // The direction vector towards which the camera is pointing
+    private Vector Vup; // The up vector
+    private Vector Vright; // The right vector
+    private double width; // The width of the view plane
+    private double height; // The height of the view plane
+    private double distance; // The distance between the camera and the view plane
 
-    public Camera(Point p,Vector to,Vector up){
+    /**
+     * Constructs a new Camera object.
+     *
+     * @param p  The position of the camera's center
+     * @param to The direction vector towards which the camera is pointing
+     * @param up The up vector
+     */
+    public Camera(Point p, Vector to, Vector up){
+        //checks if the 2 vectors are orthogonal
         if(!isZero(up.dotProduct(to)))
             throw new IllegalArgumentException("the vectors are not orthogonal");
-        Vup=up;
+
+        Vup = up;
         Vup.normalize();
-        Vto=to;
-        Vright=Vup.crossProduct(Vto);
-        p0=p;
+        Vto = to;
+        Vright = Vup.crossProduct(Vto);
+        p0 = p;
     }
 
     public Point getP0() {
@@ -54,31 +66,46 @@ public class Camera
         return distance;
     }
 
-    public Camera setVPSize (double width, double height)
+    /**
+     * Sets the size of the view plane.
+     *
+     * @param width  The width of the view plane
+     * @param height The height of the view plane
+     * @return The Camera object, for chaining method calls
+     */
+    public Camera setVPSize(double width, double height)
     {
-        if(width<0||height<0)
+        if (width < 0 || height < 0)
             throw new IllegalArgumentException("ERROR value parameter of view plane");
-        this.width=width;
-        this.height=height;
+        this.width = width;
+        this.height = height;
         return this;
     }
-    public Camera setVPDistance (double distance)
+
+    /**
+     * Sets the distance between the camera and the view plane.
+     *
+     * @param distance The distance between the camera and the view plane
+     * @return The Camera object, for chaining method calls
+     */
+    public Camera setVPDistance(double distance)
     {
-        if(distance<0)
+        if (distance < 0)
             throw new IllegalArgumentException("ERROR value parameter of the distance");
-        this.distance=distance;
+        this.distance = distance;
         return this;
     }
+
     // ***************** Operations ******************** //
 
     /**
-     * this function gets the view plane size and a selected pixel,
-     * and return the ray from the camera which intersects this pixel
+     * the function gets the view plane size and a specific pixel,
+     * return the ray from the camera which intersects this pixel
      *
-     * @param nX - amount of rows in view plane (number of pixels)
-     * @param nY - amount of columns in view plane (number of pixels)
-     * @param j  - X's index
-     * @param i  - Y's index
+     * @param nX - row amount in the view plane
+     * @param nY - column amount in the view plane
+     * @param j  - The index of X
+     * @param i  - The index of Y
      * @return - the ray which goes through the pixel
      */
     public Ray constructRay(int nX, int nY, int j, int i) {
@@ -111,7 +138,4 @@ public class Camera
         return new Ray(p0, Vij);
 
     }
-
-
-
 }
