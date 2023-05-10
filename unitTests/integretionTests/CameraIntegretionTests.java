@@ -11,6 +11,12 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * Testing Camera Class
+ *
+ * @author Elior & Omer
+ *
+ */
 class CameraIntegretionTests {
 
     int countIntersections(Camera camera, Intersectable geometry) {
@@ -40,16 +46,16 @@ class CameraIntegretionTests {
         // TC01: Small Sphere 2 points
        // assertEquals(countIntersections(camera1, new Sphere(1, new Point(0, 0, -3))), 2);
 
-        // TC02: Big Sphere 18 points
+        // TC02: Sphere- 18 intersection points (Large sphere)
         assertEquals(countIntersections(camera2, new Sphere(2.5, new Point(0, 0, -2.5))), 18);
 
-        // TC03: Medium Sphere 10 points
+        // TC03: Sphere -10 intersection points (Medium sphere)
         assertEquals(countIntersections(camera2, new Sphere(2, new Point(0, 0, -2))), 10);
 
-        // TC04: Inside Sphere 9 points
+        // TC04: Sphere : 9 intersection points (the camera inside the sphere)
         assertEquals(countIntersections(camera2, new Sphere(4, new Point(0, 0, -1))), 9);
 
-        // TC05: Beyond Sphere 0 points
+        // TC05: sphere: 0 intrsection points
         assertEquals(countIntersections(camera1, new Sphere(0.5, new Point(0, 0, 1))), 0);
     }
 
@@ -60,13 +66,13 @@ class CameraIntegretionTests {
     public void testCameraRayIntegretionPlane() {
         Camera camera = new Camera(new Point(0, 0, 1), new Vector(0, 0, -1), new Vector(0, -1, 0));
 
-        // TC01: Plane against camera 9 points
+        // TC01: Plane 9  intersecion points- the camera is front of the plane
         assertEquals(countIntersections(camera, new Plane(new Point(0, 0, -3), new Vector(0, 0, 1))), 9);
 
-        // TC02: Plane with small angle 9 points
+        // TC02:  plane 9  intersection points, low angle against the camera
         assertEquals(countIntersections(camera, new Plane(new Point(0, 0, -10), new Vector(0, 1, 3))), 9);
 
-        // TC03: Plane parallel to lower rays 6 points
+        // TC03: Plane 6 intersecion points high angle against the camera
         assertEquals(countIntersections(camera, new Plane(new Point(0, 0, -10), new Vector(0, 2, 1))), 6);
 
         // TC04: Beyond Plane 0 points
@@ -80,9 +86,9 @@ class CameraIntegretionTests {
     public void testCameraRayIntegretionTriangle() {
         Camera camera = new Camera(new Point(0, 0, 0), new Vector(0, 0, -1), new Vector(0, -1, 0));
 
-        // TC01: Small triangle 1 point
+        // TC01: Triangle: 1 intersection point
         assertEquals(countIntersections(camera, new Triangle(new Point(0, 1, -2), new Point(1, -1, -2), new Point(-1, -1, -2))), 1);
-        // TC02: Medium triangle 2 points
+        // TC02: Triangle:  2 interssection points
         assertEquals(countIntersections(camera, new Triangle(new Point(-1, -1, -2), new Point(1, -1, -2), new Point(0, 20, -2))), 2);
 
     }
