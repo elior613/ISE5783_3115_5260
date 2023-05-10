@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="109a4c57-e2c2-4f1f-a6fc-99d8db36e3af" name="Changes" comment="stage4">
+      <change afterPath="$PROJECT_DIR$/src/primitives/Color.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/ImageWriter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unitTests/renderer/ImageWriterTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unitTests/integretionTests/CameraIntegretionTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unitTests/integretionTests/CameraIntegretionTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,6 +85,8 @@
       <recent name="C:\Users\elior\IdeaProjects\ISE5783_3115_5260\src\geometries" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\עומר\IdeaProjects\ISE5783_3115_5260\src\renderer" />
+      <recent name="C:\Users\עומר\IdeaProjects\ISE5783_3115_5260\src\primitives" />
       <recent name="C:\Users\elior\IdeaProjects\ISE5783_3115_5260\unitTest" />
       <recent name="C:\Users\elior\IdeaProjects\ISE5783_3115_5260\src\primitives" />
     </key>
@@ -94,13 +97,13 @@
       <recent name="geometries" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="integretionTests" />
       <recent name="renderer" />
+      <recent name="integretionTests" />
       <recent name="geometries" />
       <recent name="primitives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in ISE5783_3115_5260">
+  <component name="RunManager" selected="JUnit.ImageWriterTest">
     <configuration name="All in ISE5783_3115_5260" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_3115_5260" />
       <option name="PACKAGE_NAME" value="" />
@@ -139,16 +142,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PolygonTests (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ImageWriterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_3115_5260" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="geometries.*" />
+          <option name="PATTERN" value="renderer.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="geometries" />
-      <option name="MAIN_CLASS_NAME" value="geometries.PolygonTests" />
+      <option name="PACKAGE_NAME" value="renderer" />
+      <option name="MAIN_CLASS_NAME" value="renderer.ImageWriterTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -186,11 +189,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ImageWriterTest" />
         <item itemvalue="JUnit.All in ISE5783_3115_5260" />
         <item itemvalue="JUnit.CameraTest" />
         <item itemvalue="JUnit.integretionTests in ISE5783_3115_5260" />
         <item itemvalue="JUnit.CameraIntegretionTests" />
-        <item itemvalue="JUnit.PolygonTests (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -427,7 +430,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1683614638039</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL‎-00033" summary="stage4">
+      <created>1683725467537</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL‎-00033" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1683725467538</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
