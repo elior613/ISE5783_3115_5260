@@ -2,6 +2,7 @@ package primitives;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -17,7 +18,7 @@ class RayTest {
         // ============ Equivalence Partitions Tests ==============
         // TC01: Simple test
 
-        pointList=(new Point(10,10,10), new Point(10,2,10),new Point(0,0,2),new Point(5,5,5),new Point(8,8,0));
+        pointList=(Arrays.asList(new Point(10,10,10), new Point(10,2,10),new Point(0,0,2),new Point(5,5,5),new Point(8,8,0)));
         assertEquals(new Point(0, 0,2), ray.findClosestPoint(pointList), "Wrong closest point");
 
         // =============== Boundary Values Tests ==================
@@ -27,12 +28,12 @@ class RayTest {
 
         // =============== Boundary Values Tests ==================
         // TC12: first point in the list is the closet point to the ray
-        pointList=(new Point(0,0,2),new Point(10,10,10), new Point(10,2,10),new Point(5,5,5),new Point(8,8,0));
+        pointList=(Arrays.asList(new Point(0,0,2),new Point(10,10,10), new Point(10,2,10),new Point(5,5,5),new Point(8,8,0)));
         assertEquals(new Point(0, 0,2), ray.findClosestPoint(pointList), "Wrong closest point");
 
         // =============== Boundary Values Tests ==================
         // TC13: last point in the list is the closet point to the ray
-        pointList=(new Point(10,10,10), new Point((10,2,10),new Point(5,5,5),new Point(8,8,0),new Point(0,0,2));
+        pointList=(Arrays.asList(new Point(10,10,10), new Point(10,2,10),new Point(5,5,5),new Point(8,8,0),new Point(0,0,2)));
         assertEquals(new Point(0, 0,2), ray.findClosestPoint(pointList), "Wrong closest point");
 
     }
