@@ -4,15 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="109a4c57-e2c2-4f1f-a6fc-99d8db36e3af" name="Changes" comment="stage5 starting" />
-    <change afterPath="$PROJECT_DIR$/src/lighting/AmbientLight.java" afterDir="false" />
-    <change afterPath="$PROJECT_DIR$/src/scene/Scene.java" afterDir="false" />
-    <change afterPath="$PROJECT_DIR$/unitTests/primitives/RayTest.java" afterDir="false" />
-    <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-    <list default="true" id="109a4c57-e2c2-4f1f-a6fc-99d8db36e3af" name="Changes" comment="start stage5">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="109a4c57-e2c2-4f1f-a6fc-99d8db36e3af" name="Changes" comment="finish ray test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Ray.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +38,7 @@
         </map>
       </branch-storage>
     </excluded-from-favorite>
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="PUSH_TAGS">
       <GitPushTagMode>
         <option name="argument" value="--tags" />
@@ -52,6 +46,7 @@
       </GitPushTagMode>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="MIXED" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -452,7 +447,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1683738514492</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL‎-00035" summary="finish ray test">
+      <created>1684080132561</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL‎-00035" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1684080132561</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -473,8 +475,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="stage 2 getNormal" />
-    <MESSAGE value="continue normal" />
     <MESSAGE value="add get normal of tube" />
     <MESSAGE value="almost finish without cylinder" />
     <MESSAGE value="finish stage 2" />
@@ -498,9 +498,9 @@
     <MESSAGE value="problem with constructor of camera" />
     <MESSAGE value="stage4" />
     <MESSAGE value="stage5 starting" />
-    <option name="LAST_COMMIT_MESSAGE" value="stage5 starting" />
     <MESSAGE value="start stage5" />
-    <option name="LAST_COMMIT_MESSAGE" value="start stage5" />
+    <MESSAGE value="finish ray test" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish ray test" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
