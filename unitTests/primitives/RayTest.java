@@ -23,8 +23,8 @@ class RayTest {
 
         // =============== Boundary Values Tests ==================
         // TC11: Empty List
-       // pointList=new LinkedList<Point>() {};
-        //assertNull( ray.findClosestPoint(pointList), "null list");
+        pointList=new LinkedList<Point>() {};
+        assertNull( ray.findClosestPoint(pointList), "null list");
 
         // =============== Boundary Values Tests ==================
         // TC12: first point in the list is the closet point to the ray

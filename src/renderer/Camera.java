@@ -7,6 +7,8 @@ import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
 
+import java.util.MissingResourceException;
+
 import static primitives.Util.isZero;
 
 public class Camera
@@ -18,6 +20,8 @@ public class Camera
     private double width; // The width of the view plane
     private double height; // The height of the view plane
     private double distance; // The distance between the camera and the view plane
+    private ImageWriter imageWriter;//write the image on the view plane
+    private RayTracerBase rayTracerBase;//include the scene
 
     /**
      * Constructs a new Camera object.
@@ -96,6 +100,16 @@ public class Camera
         return this;
     }
 
+    public Camera setImageWriter(ImageWriter imageWriter) {
+        this.imageWriter = imageWriter;
+        return this;
+    }
+
+    public Camera setRayTracerBase(RayTracerBase rayTracerBase) {
+        this.rayTracerBase = rayTracerBase;
+        return this;
+    }
+
     // ***************** Operations ******************** //
 
     /**
@@ -137,5 +151,26 @@ public class Camera
 
         return new Ray(p0, Vij);
 
+    }
+
+    public void renderImage(){
+        if(p0==null)
+            throw new MissingResourceException("missing resource", Point.class.getName(), "");
+        if(Vto==null)
+            throw new MissingResourceException("missing resource", Vector.class.getName(), "");
+        if(Vup==null)
+            throw new MissingResourceException("missing resource", Vector.class.getName(), "");
+        if(Vright==null)
+            throw new MissingResourceException("missing resource", Vector.class.getName(), "");
+        if(width==0)
+            throw new MissingResourceException("missing resource", Double.class.getName(), "");
+        if(height==0)
+            throw new MissingResourceException("missing resource", Double.class.getName(), "");
+        if(distance==0)
+            throw new MissingResourceException("missing resource", Double.class.getName(), "");
+        if(imageWriter==null)
+            throw new MissingResourceException("missing resource", ImageWriter.class.getName(), "");
+        if(rayTracerBase==null)
+            throw new MissingResourceException("missing resource", RayTracerBase.class.getName(), "");
     }
 }
