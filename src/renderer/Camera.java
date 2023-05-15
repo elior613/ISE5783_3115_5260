@@ -3,6 +3,7 @@
  The Camera class represents a camera in 3D space.
  */
 package renderer;
+import primitives.Color;
 import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
@@ -172,5 +173,37 @@ public class Camera
             throw new MissingResourceException("missing resource", ImageWriter.class.getName(), "");
         if(rayTracerBase==null)
             throw new MissingResourceException("missing resource", RayTracerBase.class.getName(), "");
+        int nX = imageWriter.getNx();
+        int nY = imageWriter.getNy();
+        for (int i = 0; i < nY; i++) {
+            for (int j = 0; j < nX; j++) {
+                imageWriter.writePixel(i,j,castRay(nX, nY, i, j));
+            }
+        }
+    }
+    public void printGrid(int interval, Color color){
+        double Nx=imageWriter.getNx();
+        double Ny=imageWriter.getNy();
+
+        if(imageWriter==null)
+            throw new MissingResourceException("missing resource", ImageWriter.class.getName(), "");
+        for (int i=0;i<Nx;i++)//scan the width
+        {
+            for(int j=0;j<Ny;j++)
+            {
+                if (j % interval==0 || i % interval==0)
+                {
+                    imageWriter.writePixel(i,j,color);
+                }
+            }
+        }
+        imageWriter.writeToImage();
+    }
+
+    public Camera writeToImage(){
+        if(imageWriter==null)
+            throw new MissingResourceException("missing resource", ImageWriter.class.getName(), "");
+        imageWriter.writeToImage();
+        return this;
     }
 }

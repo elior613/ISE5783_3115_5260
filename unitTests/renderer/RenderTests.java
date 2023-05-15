@@ -87,7 +87,7 @@ public class RenderTests {
       // ...
       // NB: unit tests is not the correct place to put XML parsing code
 
-      Camera camera = new Camera(Point.ZERO, new Vector(0, 0, -1), new Vector(0, 1, 0))     //
+      Camera camera = new Camera(new Point(0,0,0), new Vector(0, 0, -1), new Vector(0, 1, 0))     //
          .setVPDistance(100)                                                                //
          .setVPSize(500, 500).setImageWriter(new ImageWriter("xml render test", 1000, 1000))
          .setRayTracer(new RayTracerBasic(scene));
@@ -95,4 +95,6 @@ public class RenderTests {
       camera.printGrid(100, new Color(YELLOW));
       camera.writeToImage();
    }
+
+
 }

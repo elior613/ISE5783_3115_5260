@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="109a4c57-e2c2-4f1f-a6fc-99d8db36e3af" name="Changes" comment="after merge">
-      <change afterPath="$PROJECT_DIR$/src/renderer/RayTracerBase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/RayTracerBasic.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unitTests/renderer/RenderTests.java" afterDir="false" />
+    <list default="true" id="109a4c57-e2c2-4f1f-a6fc-99d8db36e3af" name="Changes" comment="render image (part 4)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unitTests/primitives/RayTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unitTests/primitives/RayTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/RayTracerBasic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/RayTracerBasic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unitTests/renderer/RenderTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unitTests/renderer/RenderTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -458,7 +456,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1684093616732</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL‎-00036" summary="render image (part 4)">
+      <created>1684131774105</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL‎-00036" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1684131774105</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -479,8 +484,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add get normal of tube" />
-    <MESSAGE value="almost finish without cylinder" />
     <MESSAGE value="finish stage 2" />
     <MESSAGE value="finish Stage2" />
     <MESSAGE value="stage 2 final commit" />
@@ -505,7 +508,8 @@
     <MESSAGE value="stage5 starting" />
     <MESSAGE value="start stage5" />
     <MESSAGE value="after merge" />
-    <option name="LAST_COMMIT_MESSAGE" value="after merge" />
+    <MESSAGE value="render image (part 4)" />
+    <option name="LAST_COMMIT_MESSAGE" value="render image (part 4)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -516,7 +520,7 @@
         </breakpoint>
         <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/renderer/Camera.java</url>
-          <line>151</line>
+          <line>152</line>
           <properties class="renderer.Camera">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
