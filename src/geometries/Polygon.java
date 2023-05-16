@@ -14,7 +14,7 @@ import primitives.Vector;
 /** Polygon class represents two-dimensional polygon in 3D Cartesian coordinate
  * system
  * @author Dan */
-public class Polygon implements Geometry {
+public class Polygon extends Geometry {
    /** List of polygon's vertices */
    protected final List<Point> vertices;
    /** Associated plane in which the polygon lays */
@@ -96,8 +96,9 @@ public class Polygon implements Geometry {
     * @param ray The ray to find intersections with.
     * @return A list of points representing the intersection points between the polygon and the ray, or null if there are no intersections.
     */
-   public List<Point> findIntersections(Ray ray) {
-      List<Point> intersection = this.plane.findIntersections(ray);
+   @Override
+   List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
+      List<GeoPoint> intersection = this.plane.findGeoIntersections(ray);
 
       // If there are no intersections with the plane of the triangle, return null (0 points intersection).
       if (intersection == null) {
@@ -141,7 +142,8 @@ public class Polygon implements Geometry {
 
       // If the signs of the dot products are all positive or all negative, the ray intersects the triangle.
       if (count == vertices.size() || count == -vertices.size()) {
-         return intersection; // The ray intersects the triangle.
+         // The ray intersects the polygon.
+         return  List.of(new GeoPoint(this,intersection.get(0).point));
       }
       return null;
    }

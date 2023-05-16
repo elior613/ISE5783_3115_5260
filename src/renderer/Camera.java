@@ -80,8 +80,10 @@ public class Camera {
     public Camera setVPSize(double width, double height) {
         if (width < 0 || height < 0)
             throw new IllegalArgumentException("ERROR value parameter of view plane");
+
         this.width = width;
         this.height = height;
+
         return this;
     }
 
@@ -94,11 +96,14 @@ public class Camera {
     public Camera setVPDistance(double distance) {
         if (distance < 0)
             throw new IllegalArgumentException("ERROR value parameter of the distance");
+
         this.distance = distance;
+
         return this;
     }
 
     /**
+     * chaining set method for the imageWriter
      * Sets the image writer for the camera.
      *
      * @param imageWriter the image writer to be set

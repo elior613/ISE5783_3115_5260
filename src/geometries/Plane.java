@@ -16,7 +16,7 @@ import static primitives.Util.isZero;
 /**
  * Plane is an object witch includes a point on the plane and the vector normal on the plane
  */
-public class Plane implements Geometry {
+public class Plane extends Geometry {
     /**
      * A point on the plane
      */
@@ -95,7 +95,9 @@ public class Plane implements Geometry {
 
      @return A list of points representing the intersections, or null if there are no intersections.
      */
-    public List<Point> findIntersections(Ray ray){
+
+    @Override
+    List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
         //get the direction and starting point of the ray
         Vector v = ray.getDirection();
         Point p0 = ray.getP0();
@@ -135,7 +137,7 @@ public class Plane implements Geometry {
         //calculate the intersection point using the formula: P = P0 + tV
         Point intersection=ray.getPoint(t);
 
-        return List.of(intersection);
+        return List.of(new GeoPoint(this,intersection));
     }
 }
 

@@ -75,7 +75,8 @@ public class Tube extends RadialGeometry {
         //the point on the base
            return P0_P.normalize();
     }
-    public List<Point> findIntersections(Ray ray){
+   @Override
+   public List<GeoPoint> findGeoIntersectionsHelper(Ray ray){
         return null;
     }
 }

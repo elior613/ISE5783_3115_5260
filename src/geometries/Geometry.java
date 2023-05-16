@@ -11,14 +11,14 @@ package geometries;
 
         import java.util.List;
 
-public interface Geometry extends Intersectable {
+public abstract class Geometry extends Intersectable {
     /**
      * Returns a normal vector to the geometry shape at the specified point.
      *
      * @param p the point on the shape to get the normal vector at
      * @return the normal vector to the geometry shape at the specified point
      */
-    public Vector getNormal(Point p);
+    public abstract Vector getNormal(Point p);
 
 
 

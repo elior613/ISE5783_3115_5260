@@ -5,7 +5,7 @@ package geometries;
  * The abstract class representing radial geometries in three-dimensional space.
  * A radial geometry is a geometry that has a fixed radius.
  */
-public abstract class RadialGeometry implements Geometry {
+public abstract class RadialGeometry extends Geometry {
     /**
      * The radius of the radial geometry.
      */

@@ -30,8 +30,9 @@ public class Triangle extends Polygon {
      * @param ray The ray to find intersections with.
      * @return A list of points representing the intersection points between the triangle and the ray, or null if there are no intersections.
      */
-    public List<Point> findIntersections(Ray ray) {
-        List<Point> intersection = this.plane.findIntersections(ray);
+    @Override
+    List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
+        List<GeoPoint> intersection = this.plane.findGeoIntersections(ray);
 
         // If there are no intersections with the plane of the triangle, return null (0 points intersection).
         if (intersection != null) {
@@ -62,7 +63,7 @@ public class Triangle extends Polygon {
 
             // If the signs of the dot products are all positive or all negative, the ray intersects the triangle.
             if (vN1 > 0 && vN2 > 0 && vN3 > 0 || vN1 < 0 && vN2 < 0 && vN3 < 0) {
-                return intersection; // The ray intersects the triangle.
+                return  List.of(new GeoPoint(this,intersection.get(0).point));
             }
         }
 

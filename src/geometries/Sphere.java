@@ -1,10 +1,11 @@
 
 /**
- The Sphere class represents a 3D sphere in Cartesian coordinates.
- A sphere is defined by its center point and its radius.
- The sphere can return a normalized vector normal to a given point on its surface.
+ * The Sphere class represents a 3D sphere in Cartesian coordinates.
+ * A sphere is defined by its center point and its radius.
+ * The sphere can return a normalized vector normal to a given point on its surface.
  */
 package geometries;
+
 import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
@@ -64,17 +65,18 @@ public class Sphere extends RadialGeometry {
 
      @return List of intersection points if the ray intersects the sphere, null otherwise.
      */
-    public List<Point> findIntersections(Ray ray) {
+    @Override
+    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
         Vector v = ray.getDirection();
         Point p0 = ray.getP0();
         if (center.equals(p0)) { // p0 is the center
-            return List.of(ray.getPoint(radius));
+            return List.of(new GeoPoint(this, ray.getPoint(radius)));
         }
         Vector u = center.subtract(p0);
         double tm = alignZero(v.dotProduct(u));
         double dSquared = isZero(tm) ? u.lengthSquared() : u.lengthSquared() - tm * tm;
         double thSquared = alignZero(radius * radius - dSquared);
-       // if (thSquared <= 0)
+        // if (thSquared <= 0)
         //    return null;
         double th = alignZero(Math.sqrt(thSquared));
         double t1 = alignZero(tm - th);
@@ -82,18 +84,18 @@ public class Sphere extends RadialGeometry {
 
         //there is 2 intersection points
         if (t1 > 0 && t2 > 0) {
-            Point p1=ray.getPoint(t1);
-            Point p2=ray.getPoint(t2);
-            return List.of(p1,p2);
+            GeoPoint p1 = new GeoPoint(this, ray.getPoint(t1));
+            GeoPoint p2 = new GeoPoint(this, ray.getPoint(t2));
+            return List.of(p1, p2);
         }
         //only t1 intersects the sphere
-        if(t1 > 0){
-           Point p1=ray.getPoint(t1);
-           return List.of(p1);
+        if (t1 > 0) {
+            GeoPoint p1 = new GeoPoint(this, ray.getPoint(t1));
+            return List.of(p1);
         }
         //only t2 intersects the sphere
-        if(t2 > 0){
-            Point p2=ray.getPoint(t2);
+        if (t2 > 0) {
+            GeoPoint p2 = new GeoPoint(this, ray.getPoint(t2));
             return List.of(p2);
         }
         return null;
