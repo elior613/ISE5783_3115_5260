@@ -10,15 +10,13 @@ public class Geometries implements Intersectable{
 
     private List<Intersectable> geometryList;
     public Geometries(){
-        List<Intersectable> list=new LinkedList<Intersectable>();
+        geometryList =new LinkedList<Intersectable>();
     }
     public Geometries(Intersectable...geometries){
         this.geometryList = List.of(geometries);
 
     }
     public void add(Intersectable...geometries) {
-        if (geometries==null)
-            return;
         for (Intersectable element : geometries) {
             this.geometryList.add(element);
         }

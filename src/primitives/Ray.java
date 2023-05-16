@@ -82,24 +82,31 @@ public class Ray {
         return p0.add(direction.scale(t));
     }
 
-    public Point findClosestPoint(List<Point> listPoints)
-    {
+    /**
+     * Finds the closest point from a list of points to the reference point p0.
+     *
+     * @param listPoints the list of points from which to find the closest point
+     * @return the closest point to p0, or null if the list is empty
+     */
+    public Point findClosestPoint(List<Point> listPoints) {
         if (listPoints.isEmpty())
             return null;
 
-        //initialize the closet point to the head point of the list
-        //we use distanceSquared to save running time
-        double closetDistnceSquared=p0.distanceSquared(listPoints.get(0));
-        Point closetPoint=listPoints.get(0);
+        // Initialize the closest point to the head point of the list
+        // We use distanceSquared to save running time
+        double closestDistanceSquared = p0.distanceSquared(listPoints.get(0));
+        Point closestPoint = listPoints.get(0);
 
-        for (Point p:listPoints) {
-            if (p0.distanceSquared(p)<closetDistnceSquared) {//if this point is closer than out closet point we update the value to the current point
-                closetDistnceSquared = p0.distanceSquared(p);
-                closetPoint = p;
+        for (Point p : listPoints) {
+            if (p0.distanceSquared(p) < closestDistanceSquared) {
+                // If this point is closer than our closest point, we update the value to the current point
+                closestDistanceSquared = p0.distanceSquared(p);
+                closestPoint = p;
             }
         }
-        return  closetPoint;
+        return closestPoint;
     }
+
 }
 
 

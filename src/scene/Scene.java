@@ -9,7 +9,7 @@ public class Scene {
     public Color background =Color.BLACK;
     public AmbientLight ambientLight=AmbientLight.NONE;
 
-    public Geometries geometries;
+    public Geometries geometries=new Geometries();
 
 
     public Scene(String name) {
