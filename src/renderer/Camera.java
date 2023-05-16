@@ -22,7 +22,7 @@ public class Camera
     private double height; // The height of the view plane
     private double distance; // The distance between the camera and the view plane
     private ImageWriter imageWriter;//write the image on the view plane
-    private RayTracerBase rayTracerBase;//include the scene
+    private RayTracerBase rayTracer;//include the scene
 
     /**
      * Constructs a new Camera object.
@@ -106,8 +106,8 @@ public class Camera
         return this;
     }
 
-    public Camera setRayTracerBase(RayTracerBase rayTracerBase) {
-        this.rayTracerBase = rayTracerBase;
+    public Camera setRayTracer(RayTracerBase rayTracerBase) {
+        this.rayTracer = rayTracerBase;
         return this;
     }
 
@@ -171,15 +171,20 @@ public class Camera
             throw new MissingResourceException("missing resource", Double.class.getName(), "");
         if(imageWriter==null)
             throw new MissingResourceException("missing resource", ImageWriter.class.getName(), "");
-        if(rayTracerBase==null)
+        if(rayTracer==null)
             throw new MissingResourceException("missing resource", RayTracerBase.class.getName(), "");
         int nX = imageWriter.getNx();
         int nY = imageWriter.getNy();
         for (int i = 0; i < nY; i++) {
             for (int j = 0; j < nX; j++) {
-                imageWriter.writePixel(i,j,castRay(nX, nY, i, j));
+                castRay(nX, nY, i, j);
             }
         }
+    }
+    private void castRay(int nX, int nY, int i, int j) {
+        Ray ray = constructRay(nX, nY, j,i );
+        Color pixelColor = rayTracer.traceRay(ray);
+        imageWriter.writePixel(j,i, pixelColor);
     }
     public void printGrid(int interval, Color color){
         double Nx=imageWriter.getNx();

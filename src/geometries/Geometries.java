@@ -17,8 +17,10 @@ public class Geometries implements Intersectable{
 
     }
     public void add(Intersectable...geometries) {
+        if (geometries==null)
+            return;
         for (Intersectable element : geometries) {
-            geometryList.add(element);
+            this.geometryList.add(element);
         }
     }
     /**
