@@ -5,6 +5,7 @@
 package primitives;
 import java.util.Objects;
 public class Point {
+    public static final Point ZERO = new Point(Double3.ZERO);
     /**
      * The coordinates of the point in three-dimensional space.
      */

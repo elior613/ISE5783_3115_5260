@@ -35,7 +35,7 @@ public class Geometries extends Intersectable {
      */
 
     @Override
-    List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
+    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
         //if the list has no geometries
         if (geometryList == null)
             return null;
