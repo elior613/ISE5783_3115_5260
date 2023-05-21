@@ -93,24 +93,11 @@ public class Ray {
      * @param listPoints the list of points from which to find the closest point
      * @return the closest point to p0, or null if the list is empty
      */
-    public Point findClosestPoint(List<Point> listPoints) {
-        if (listPoints.isEmpty())
-            return null;
-
-        // Initialize the closest point to the head point of the list
-        // We use distanceSquared to save running time
-        double closestDistanceSquared = p0.distanceSquared(listPoints.get(0));
-        Point closestPoint = listPoints.get(0);
-
-        for (Point p : listPoints) {
-            if (p0.distanceSquared(p) < closestDistanceSquared) {
-                // If this point is closer than our closest point, we update the value to the current point
-                closestDistanceSquared = p0.distanceSquared(p);
-                closestPoint = p;
-            }
-        }
-        return closestPoint;
+    public Point findClosestPoint(List<Point> points) {
+        return points == null || points.isEmpty() ? null
+                : findClosestGeoPoint(points.stream().map(p -> new GeoPoint(null, p)).toList()).point;
     }
+
 
     /**
      * Finds the closest Geopoint from a list of Geopoints to the reference point p0.
