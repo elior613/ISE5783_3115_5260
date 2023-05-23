@@ -4,19 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="109a4c57-e2c2-4f1f-a6fc-99d8db36e3af" name="Changes" comment="Light classes">
+    <list default="true" id="109a4c57-e2c2-4f1f-a6fc-99d8db36e3af" name="Changes" comment="update comments">
+      <change afterPath="$PROJECT_DIR$/src/primitives/Material.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Geometries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Geometries.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lighting/AmbientLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/AmbientLight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Geometry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Geometry.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lighting/DirectionalLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/DirectionalLight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lighting/Light.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/Light.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lighting/LightSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/LightSource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lighting/PointLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/PointLight.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lighting/SpotLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/SpotLight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Ray.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/RayTracerBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/RayTracerBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/RayTracerBasic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/RayTracerBasic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scene/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Scene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unitTests/renderer/LightsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unitTests/lighting/LightsTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,11 +95,11 @@
       <recent name="C:\Users\elior\IdeaProjects\ISE5783_3115_5260\src\geometries" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\elior\IdeaProjects\ISE5783_3115_5260\unitTests\lighting" />
       <recent name="C:\Users\elior\IdeaProjects\ISE5783_3115_5260\unitTests\renderer" />
       <recent name="C:\Users\עומר\IdeaProjects\ISE5783_3115_5260\src\renderer" />
       <recent name="C:\Users\עומר\IdeaProjects\ISE5783_3115_5260\src\primitives" />
       <recent name="C:\Users\elior\IdeaProjects\ISE5783_3115_5260\unitTest" />
-      <recent name="C:\Users\elior\IdeaProjects\ISE5783_3115_5260\src\primitives" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -116,7 +114,7 @@
       <recent name="geometries" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.RenderTests">
+  <component name="RunManager" selected="JUnit.All in ISE5783_3115_5260">
     <configuration name="All in ISE5783_3115_5260" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_3115_5260" />
       <option name="PACKAGE_NAME" value="" />
@@ -203,8 +201,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.RenderTests" />
         <item itemvalue="JUnit.All in ISE5783_3115_5260" />
+        <item itemvalue="JUnit.RenderTests" />
         <item itemvalue="JUnit.GeometriesTests" />
         <item itemvalue="JUnit.RayTest" />
         <item itemvalue="JUnit.PointTest" />
@@ -521,7 +519,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1684690001936</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL‎-00044" summary="update comments">
+      <created>1684844298249</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL‎-00044" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1684844298249</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -542,7 +547,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="pr02 commit" />
     <MESSAGE value="pr02  commit" />
     <MESSAGE value="PR02  commit" />
     <MESSAGE value="PR02   commit" />
@@ -567,7 +571,8 @@
     <MESSAGE value="start stage6" />
     <MESSAGE value="multy color" />
     <MESSAGE value="Light classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Light classes" />
+    <MESSAGE value="update comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="update comments" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

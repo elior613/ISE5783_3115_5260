@@ -183,7 +183,7 @@ public class Camera {
      *
      * @throws MissingResourceException if any required resource is missing
      */
-    public void renderImage() {
+    public Camera renderImage() {
         // Check if all required resources are available
         if (p0 == null)
             throw new MissingResourceException("missing resource", Point.class.getName(), "");
@@ -212,6 +212,7 @@ public class Camera {
                 castRay(nX, nY, i, j);
             }
         }
+        return this;
     }
 
     /**
