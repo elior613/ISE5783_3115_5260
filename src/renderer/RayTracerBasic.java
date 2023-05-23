@@ -61,26 +61,23 @@ public class RayTracerBasic extends RayTracerBase {
             double nl = alignZero(n.dotProduct(l));
             if (nl * nv > 0) { // sign(nl) == sing(nv)
                 Color iL = lightSource.getIntensity(gp.point);
-                color = color.add((calcDiffusive(material.kD, nl,iL)),
-                        calcSpecular(material.kS, n, l, nl, v,material.nShininess,iL));
+                color = color.add(iL.scale(calcDiffusive(material,nl)),iL.scale(calcSpecular(material,n,l,nl,v)));
             }
         }
         return color;
     }
 
-    private Color calcSpecular(Double3 kS, Vector n, Vector l, double nl,Vector v,int shininess,Color intensity) {
-        Vector r = l.add(n.scale(-2 * nl)); // nl must not be zero!
-        double minusVR = -alignZero(r.dotProduct(v));
-        if (minusVR <= 0)
-            return Color.BLACK; // view from direction opposite to r vector
-        Double3 amount =kS.scale(Math.pow(minusVR, shininess));
-        return intensity.scale(amount);
+    private Double3 calcSpecular(Material material,Vector n,Vector l, double nl,Vector v) {
+    Vector r=l.subtract(n.scale(2*nl));
+    double max=-r.dotProduct(v);
+    if(alignZero(max)>0)
+        return material.kS.scale(Math.pow(max,material.nShininess));
+    return Double3.ZERO;
     }
 
-    private Color calcDiffusive(Double3 kD, double nl,  Color intensity) {
-        double abs_nl = Math.abs(nl);
-        Double3 amount =kD.scale(abs_nl);
-        return intensity.scale(amount);
+    private Double3 calcDiffusive(Material material,double nl) {
+        return material.kD.scale(nl<0?-nl:nl);
     }
+
 
 }
