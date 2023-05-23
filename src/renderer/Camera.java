@@ -13,15 +13,24 @@ import java.util.MissingResourceException;
 import static primitives.Util.isZero;
 
 public class Camera {
-    private Point p0; // The position of the camera's center
-    private Vector Vto; // The direction vector towards which the camera is pointing
-    private Vector Vup; // The up vector
-    private Vector Vright; // The right vector
-    private double width; // The width of the view plane
-    private double height; // The height of the view plane
-    private double distance; // The distance between the camera and the view plane
-    private ImageWriter imageWriter;//write the image on the view plane
-    private RayTracerBase rayTracer;//include the scene
+    // The position of the camera's center
+    private Point p0;
+    // The direction vector towards which the camera is pointing
+    private Vector Vto;
+    // The up vector
+    private Vector Vup;
+    // The right vector
+    private Vector Vright;
+    // The width of the view plane
+    private double width;
+    // The height of the view plane
+    private double height;
+    // The distance between the camera and the view plane
+    private double distance;
+    //write the image on the view plane
+    private ImageWriter imageWriter;
+    //include the scene
+    private RayTracerBase rayTracer;
 
     /**
      * Constructs a new Camera object.

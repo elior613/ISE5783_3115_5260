@@ -6,19 +6,43 @@ import primitives.Ray;
 import java.util.LinkedList;
 import java.util.List;
 
+
+/**
+
+ The Geometries class represents a collection of intersectable geometric objects.
+ It extends the Intersectable class and provides methods for finding intersections with the objects in the collection.
+ */
+
 public class Geometries extends Intersectable {
 
+    /**
+
+     The geometryList represents the list of intersectable objects in the Geometries collection.
+     It stores the geometries that can be intersected with rays.
+     */
     private List<Intersectable> geometryList;
 
+    /**
+     * Constructs an empty Geometries object.
+     */
     public Geometries() {
-        geometryList = new LinkedList<Intersectable>();
+        geometryList = new LinkedList<>();
     }
 
+    /**
+     * Constructs a Geometries object with the specified intersectable objects.
+     *
+     * @param geometries the intersectable objects to add to the collection
+     */
     public Geometries(Intersectable... geometries) {
         this.geometryList = List.of(geometries);
-
     }
 
+    /**
+     * Adds the specified intersectable objects to the collection.
+     *
+     * @param geometries the intersectable objects to add
+     */
     public void add(Intersectable... geometries) {
         for (Intersectable element : geometries) {
             this.geometryList.add(element);
@@ -26,36 +50,34 @@ public class Geometries extends Intersectable {
     }
 
     /**
-     * Finds the intersections of the given ray with the geometries that we have in the list.
-     * Returns a list of points representing the intersections.
-     * If there are no intersections, the method returns null.
+     * Finds the geometric intersections between the given ray and the objects in the collection.
      *
-     * @param ray The ray to intersect with the plane.
-     * @return A list of points representing the intersections, or null if there are no intersections.
+     * @param ray the ray to intersect with the objects
+     * @return a list of geometric intersection points, or null if there are no intersections
      */
-
     @Override
     public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
-        //if the list has no geometries
+        // If the list has no geometries
         if (geometryList == null)
             return null;
 
         List<GeoPoint> totalIntersections = new LinkedList<>();
 
-        //iterate over all the geometries in the list
+        // Iterate over all the geometries in the list
         for (Intersectable geometry : geometryList) {
-            //find the intersection points
+            // Find the intersection points
             List<GeoPoint> intersections = geometry.findGeoIntersections(ray);
-            //if there are intersections
+            // If there are intersections
             if (intersections != null)
-                //add the intersection points to the total list
+                // Add the intersection points to the total list
                 totalIntersections.addAll(intersections);
         }
-        //if there are no intersection points
+        // If there are no intersection points
         if (totalIntersections.size() == 0)
-            //return the list of intersection points
+            // Return null
             return null;
         return totalIntersections;
     }
+
 
 }

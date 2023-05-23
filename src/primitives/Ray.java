@@ -90,7 +90,7 @@ public class Ray {
     /**
      * Finds the closest point from a list of points to the reference point p0.
      *
-     * @param listPoints the list of points from which to find the closest point
+     * @param points the list of points from which to find the closest point
      * @return the closest point to p0, or null if the list is empty
      */
     public Point findClosestPoint(List<Point> points) {
