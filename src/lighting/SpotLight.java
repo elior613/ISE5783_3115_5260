@@ -42,6 +42,7 @@ public class SpotLight extends PointLight{
         // If the direction of the right position is greater than zero
         if (dirL > 0) {
             return getIntensity().scale(dirL).reduce(getDenominatorLight(p));
+            // return super.getIntensity().scale(dirL);
         } else {
             return Color.BLACK;
         }
