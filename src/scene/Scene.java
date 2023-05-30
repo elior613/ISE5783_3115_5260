@@ -9,35 +9,38 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
-
- The Scene class represents a scene containing geometries, lights, and ambient light.
- It provides methods for accessing and setting scene properties.
+ * The Scene class represents a scene containing geometries, lights, and ambient light.
+ * It provides methods for accessing and setting scene properties.
  */
-
 public class Scene {
 
     /**
-
-     The name of the scene.
+     * The name of the scene.
      */
     public final String name;
-    /**
 
-     The background color of the scene.
+    /**
+     * The background color of the scene.
      */
     public final Color background;
-    /**
 
-     The geometries in the scene.
+    /**
+     * The geometries in the scene.
      */
     public final Geometries geometries;
-    /**
 
-     The ambient light in the scene.
+    /**
+     * The ambient light in the scene.
+     */
+    /**
+     * The ambient light in the scene.
      */
     public AmbientLight ambientLight;
-    public List<LightSource> lights=new LinkedList<>();
 
+    /**
+     * The list of light sources in the scene.
+     */
+    public List<LightSource> lights = new LinkedList<>();
 
     /**
      * Constructs a Scene object with the specified name, background color, geometries, and ambient light.
@@ -98,11 +101,16 @@ public class Scene {
         return this;
     }
 
+    /**
+     * Sets the lights in the scene.
+     *
+     * @param lights the lights to set
+     * @return the scene with the updated lights
+     */
     public Scene setLights(List<LightSource> lights) {
         this.lights = lights;
         return this;
     }
-
     /**
      * The SceneBuilder class is a builder pattern class for constructing Scene objects.
      */
@@ -163,5 +171,6 @@ public class Scene {
             return new Scene(this);
         }
     }
+
 
 }

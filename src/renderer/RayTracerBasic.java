@@ -37,7 +37,7 @@ public class RayTracerBasic extends RayTracerBase {
         if (intersections == null)
             return scene.getBackground();
         GeoPoint closest = ray.findClosestGeoPoint(intersections);
-        return calcColor(closest,ray);
+        return calcColor(closest, ray);
     }
 
     /**
@@ -47,37 +47,67 @@ public class RayTracerBasic extends RayTracerBase {
      * @return the color at the given point
      */
     private Color calcColor(GeoPoint gp, Ray ray) {
-       return scene.getAmbientLight().getIntensity().add(calcLocalEffects(gp, ray));
+        return scene.getAmbientLight().getIntensity().add(calcLocalEffects(gp, ray));
     }
+
+    /**
+     * Calculates the local effects (diffuse and specular reflections) for a given intersection point and ray.
+     *
+     * @param gp  the intersection point and associated geometry
+     * @param ray the ray that intersects with the geometry
+     * @return the color resulting from the local effects
+     */
     private Color calcLocalEffects(GeoPoint gp, Ray ray) {
-        Color color = gp.geometry.getEmission();
-        Vector v = ray.getDirection ();
+        Vector v = ray.getDirection();
         Vector n = gp.geometry.getNormal(gp.point);
+        Color color = gp.geometry.getEmission();
         double nv = alignZero(n.dotProduct(v));
-        if (nv == 0) return color;
+        //there is no effect on the color
+        if (nv == 0)
+            return color;
         Material material = gp.geometry.getMaterial();
         for (LightSource lightSource : scene.lights) {
             Vector l = lightSource.getL(gp.point);
             double nl = alignZero(n.dotProduct(l));
-            if (nl * nv > 0) { // sign(nl) == sing(nv)
+            // check if sign(nl) == sign(nv)
+            if (nl * nv > 0) {
+                //if yes, there is effect on the color
                 Color iL = lightSource.getIntensity(gp.point);
-                color = color.add(iL.scale(calcDiffusive(material,nl)),iL.scale(calcSpecular(material,n,l,nl,v)));
+                color = color.add(iL.scale(calcDiffuse(material, nl)), iL.scale(calcSpecular(material, n, l, nl, v)));
             }
         }
         return color;
     }
 
-    private Double3 calcSpecular(Material material,Vector n,Vector l, double nl,Vector v) {
-    Vector r=l.subtract(n.scale(2*nl));
-    double max=-r.dotProduct(v);
-    if(alignZero(max)>0)
-        return material.kS.scale(Math.pow(max,material.nShininess));
-    return Double3.ZERO;
+    /**
+     * Calculates the specular reflection for a given material, normal, light direction, and view direction.
+     *
+     * @param material the material properties
+     * @param n        the surface normal
+     * @param l        the light direction
+     * @param nl       the dot product of the normal and light direction
+     * @param v        the view direction
+     * @return the specular reflection color
+     */
+    private Double3 calcSpecular(Material material, Vector n, Vector l, double nl, Vector v) {
+        Vector r = l.subtract(n.scale(2 * nl));
+        double max = -r.dotProduct(v);
+        if (alignZero(max) > 0)
+            return material.kS.scale(Math.pow(max, material.nShininess));
+        return Double3.ZERO;
     }
 
-    private Double3 calcDiffusive(Material material,double nl) {
-        return material.kD.scale(nl<0?-nl:nl);
+    /**
+     * Calculates the diffuse reflection for a given material and dot product of the normal and light direction.
+     *
+     * @param material the material properties
+     * @param nl       the dot product of the normal and light direction
+     * @return the diffuse reflection color
+     */
+    private Double3 calcDiffuse(Material material, double nl) {
+        //return the positive nl value
+        if(nl<0)
+            return material.kD.scale(-nl);
+        return material.kD.scale(nl);
     }
-
-
 }
