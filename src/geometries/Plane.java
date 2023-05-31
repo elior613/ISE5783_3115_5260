@@ -97,7 +97,7 @@ public class Plane extends Geometry {
      */
 
     @Override
-    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
+    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray,double maxDistance) {
         //get the direction and starting point of the ray
         Vector v = ray.getDirection();
         Point p0 = ray.getP0();
@@ -131,8 +131,10 @@ public class Plane extends Geometry {
         double t=alignZero(nP0Q0/nv);
 
         //if the factor is zero or negative, the ray is on the plane (t=0) or the ray is in the opposite side (t<0) - 0 points intersection
-        if(t<=0)
+        //also if the distance between the point and the ray is bigger the max distance return null
+        if (t <= 0 ||  alignZero(t - maxDistance) > 0) {
             return null;
+        }
 
         //calculate the intersection point using the formula: P = P0 + tV
         Point intersection=ray.getPoint(t);

@@ -67,5 +67,15 @@ class TriangleTests {
         assertNull(triangle.findIntersections(new Ray(new Point(12, -1, -1), new Vector(0, 1, 1))),
                 "Ray's line out of triangle");
     }
+    /**
+     * Test method for {@link geometries.Triangle#findGeoIntersections(primitives.Ray,double)}.
+     */
+    @Test
+    // TC01: checking the maxDistance parameter
+    public void testFindGeoIntersections() {
+        Triangle triangle = new Triangle(new Point(0,0,1), new Point(0,4,1), new Point(4,0,1));
+        List<Intersectable.GeoPoint> result = triangle.findGeoIntersections(new Ray(new Point(1,1,0), new Vector(0,0,1)),0.5);
+        assertNull(result, "Wrong number of points");
 
+    }
 }

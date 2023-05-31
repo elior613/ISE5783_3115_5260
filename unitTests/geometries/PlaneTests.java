@@ -133,4 +133,17 @@ class PlaneTests {
         assertNull(plane.findIntersections(new Ray(new Point(0, 1, 0), new Vector(1, 1, 1))),
                 "Ray not at the plane -point of the normal");
     }
+
+
+    /**
+     * Test method for {@link geometries.Plane#findGeoIntersections(primitives.Ray)}.
+     */
+    @Test
+    // TC01: checking the maxDistance parameter
+    public void testFindGeoIntersections() {
+        Plane plane = new Plane(new Point(0, 1, 0), new Point(1, 1, 0), new Point(0, 2, 0));
+        List<Intersectable.GeoPoint> result = plane.findGeoIntersections(new Ray(new Point(1,0,0) , new Vector(2,1,1)),2.5);
+        assertNull(result, "Wrong number of points");
+
+    }
 }

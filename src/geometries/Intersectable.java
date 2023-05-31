@@ -86,18 +86,31 @@ public abstract class Intersectable {
      * @param ray the ray to intersect with the object
      * @return a list of geometric intersection points, or null if there are no intersections
      */
-     public final List<GeoPoint> findGeoIntersections(Ray ray) {
-        return findGeoIntersectionsHelper(ray);
+    public final List<GeoPoint> findGeoIntersections(Ray ray) {
+        return findGeoIntersections(ray, Double.POSITIVE_INFINITY);
     }
+    /**
+     * Finds the geometric intersections between a ray and the geometry object.
+     *
+     * @param ray the ray to intersect with the object
+     * @param maxDistance the maximum distance between the ray and the point
+     * @return a list of geometric intersection points, or null if there are no intersections
+     */
+    public final List<GeoPoint> findGeoIntersections(Ray ray, double maxDistance) {
+        return findGeoIntersectionsHelper(ray, maxDistance);
+    }
+
+
 
     /**
      * Helper method for finding the geometric intersections between a ray and the geometry object.
      * Subclasses must implement this method.
      *
      * @param ray the ray to intersect with the object
+     * @param maxDistance the maximum distance between the ray and the point
      * @return a list of geometric intersection points, or null if there are no intersections
      */
-     protected abstract List<GeoPoint> findGeoIntersectionsHelper(Ray ray);
 
+    protected abstract List<GeoPoint> findGeoIntersectionsHelper(Ray ray, double maxDistance);
 
 }

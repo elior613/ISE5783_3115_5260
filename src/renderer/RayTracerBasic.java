@@ -15,6 +15,11 @@ import static primitives.Util.alignZero;
  * It traces rays and calculates the color of the closest intersection point on objects in the scene.
  */
 public class RayTracerBasic extends RayTracerBase {
+    /**
+     * add a constant for the size of moving the beginning of rays for shading rays
+     */
+    private static final double DELTA = 0.1;
+
 
     /**
      * Constructs a RayTracerBasic object with the specified scene.
@@ -72,8 +77,10 @@ public class RayTracerBasic extends RayTracerBase {
             // check if sign(nl) == sign(nv)
             if (nl * nv > 0) {
                 //if yes, there is effect on the color
-                Color iL = lightSource.getIntensity(gp.point);
-                color = color.add(iL.scale(calcDiffuse(material, nl)), iL.scale(calcSpecular(material, n, l, nl, v)));
+               if(unshaded(gp,lightSource,l,n,nl)) {
+                    Color iL = lightSource.getIntensity(gp.point);
+                    color = color.add(iL.scale(calcDiffuse(material, nl)), iL.scale(calcSpecular(material, n, l, nl, v)));
+                }
             }
         }
         return color;
@@ -109,5 +116,20 @@ public class RayTracerBasic extends RayTracerBase {
         if(nl<0)
             return material.kD.scale(-nl);
         return material.kD.scale(nl);
+    }
+
+    private static final double EPS = 0.1;
+
+    private boolean unshaded(GeoPoint gp, LightSource lightSource, Vector l, Vector n, double nl)
+    {
+        Vector lightDirection = l.scale(-1d); // from point to light source
+        Vector epsVector = n.scale(nl < 0 ? EPS : -EPS);
+        Point point = gp.point.add(epsVector);
+        Ray lightRay = new Ray(point, lightDirection);
+        double maxdistance = lightSource.getDistance(gp.point);
+        List<GeoPoint> intersections = scene.geometries.findGeoIntersections(lightRay,maxdistance);
+        if(intersections == null)
+            return true;
+        return false;
     }
 }

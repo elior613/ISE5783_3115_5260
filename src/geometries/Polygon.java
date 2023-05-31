@@ -97,8 +97,8 @@ public class Polygon extends Geometry {
     * @return A list of points representing the intersection points between the polygon and the ray, or null if there are no intersections.
     */
    @Override
-   public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
-      List<GeoPoint> intersection = this.plane.findGeoIntersections(ray);
+   public List<GeoPoint> findGeoIntersectionsHelper(Ray ray,double maxDistance) {
+      List<GeoPoint> intersection = this.plane.findGeoIntersections(ray,maxDistance);
 
       // If there are no intersections with the plane of the triangle, return null (0 points intersection).
       if (intersection == null) {

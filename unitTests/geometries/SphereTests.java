@@ -122,4 +122,16 @@ class SphereTests {
                 "Ray's line out of sphere");
 
     }
+
+    /**
+     * Test method for {@link geometries.Sphere#findGeoIntersections(primitives.Ray,double)}.
+     */
+    @Test
+    // TC01: checking the maxDistance parameter
+    public void testFindGeoIntersections() {
+        Sphere sphere = new Sphere(2d, new Point (1, 0, 0));
+        List<Intersectable.GeoPoint> result = sphere.findGeoIntersections(new Ray(new Point(0.5, 0.5, -1), new Vector(0,0,1)),0.5);
+        assertNull(result, "Wrong number of points");
+
+    }
 }

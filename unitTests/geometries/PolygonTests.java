@@ -126,4 +126,16 @@ public class PolygonTests {
                 "Ray's line out of triangle");
     }
 
+    /**
+     * Test method for {@link geometries.Polygon#findGeoIntersections(primitives.Ray,double)}.
+     */
+    @Test
+    // TC01: checking the maxDistance parameter
+    public void testFindGeoIntersections() {
+        Polygon polygon = new Polygon(new Point(0, 0, 0), new Point(1, 0, 0), new Point(1, 1, 0), new Point(0, 1, 0));
+        List<Intersectable.GeoPoint> result = polygon.findGeoIntersections(new Ray(new Point(0.5, 0.5, -1), new Vector(0,0,1)),0.5);
+        assertNull(result, "Wrong number of points");
+
+    }
+
 }
