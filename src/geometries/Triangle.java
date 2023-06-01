@@ -28,6 +28,7 @@ public class Triangle extends Polygon {
      * Finds the intersections between the current triangle and a given ray.
      *
      * @param ray The ray to find intersections with.
+     * @param maxDistance the maximum distance between the ray and the point
      * @return A list of points representing the intersection points between the triangle and the ray, or null if there are no intersections.
      */
     @Override

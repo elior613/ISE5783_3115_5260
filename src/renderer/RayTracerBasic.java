@@ -118,18 +118,29 @@ public class RayTracerBasic extends RayTracerBase {
         return material.kD.scale(nl);
     }
 
+    /**
+     * A small value used for shadow ray calculations to prevent self-shadowing artifacts.
+     */
     private static final double EPS = 0.1;
 
-    private boolean unshaded(GeoPoint gp, LightSource lightSource, Vector l, Vector n, double nl)
-    {
+    /**
+     * Checks if a given point on a geometry surface is unshaded by a specific light source.
+     *
+     * @param gp           the intersection point and associated geometry
+     * @param lightSource  the light source being checked
+     * @param l            the direction from the intersection point to the light source
+     * @param n            the surface normal at the intersection point
+     * @param nl           the dot product of the surface normal and the light direction
+     * @return true if the point is unshaded by the light source, false otherwise
+     */
+    private boolean unshaded(GeoPoint gp, LightSource lightSource, Vector l, Vector n, double nl) {
         Vector lightDirection = l.scale(-1d); // from point to light source
         Vector epsVector = n.scale(nl < 0 ? EPS : -EPS);
         Point point = gp.point.add(epsVector);
         Ray lightRay = new Ray(point, lightDirection);
-        double maxdistance = lightSource.getDistance(gp.point);
-        List<GeoPoint> intersections = scene.geometries.findGeoIntersections(lightRay,maxdistance);
-        if(intersections == null)
-            return true;
-        return false;
+        double maxDistance = lightSource.getDistance(gp.point);
+        List<GeoPoint> intersections = scene.geometries.findGeoIntersections(lightRay, maxDistance);
+        return intersections == null;
     }
+
 }

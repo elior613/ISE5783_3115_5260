@@ -94,6 +94,7 @@ public class Polygon extends Geometry {
     * Finds the intersections between the current polygon and a given ray.
     *
     * @param ray The ray to find intersections with.
+    * @param maxDistance the maximum distance between the ray and the point
     * @return A list of points representing the intersection points between the polygon and the ray, or null if there are no intersections.
     */
    @Override

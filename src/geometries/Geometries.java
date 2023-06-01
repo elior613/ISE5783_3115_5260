@@ -53,6 +53,7 @@ public class Geometries extends Intersectable {
      * Finds the geometric intersections between the given ray and the objects in the collection.
      *
      * @param ray the ray to intersect with the objects
+     * @param maxDistance the maximum distance between the ray and the point
      * @return a list of geometric intersection points, or null if there are no intersections
      */
     @Override
@@ -65,7 +66,7 @@ public class Geometries extends Intersectable {
 
         // Iterate over all the geometries in the list
         for (Intersectable geometry : geometryList) {
-            // Find the intersection points
+            // Find the relevant intersection Geopoints with the maxDistance condition
             List<GeoPoint> intersections = geometry.findGeoIntersectionsHelper(ray,maxDistance);
             // If there are intersections
             if (intersections != null)

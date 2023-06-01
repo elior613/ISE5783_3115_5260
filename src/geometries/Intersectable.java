@@ -87,6 +87,7 @@ public abstract class Intersectable {
      * @return a list of geometric intersection points, or null if there are no intersections
      */
     public final List<GeoPoint> findGeoIntersections(Ray ray) {
+        //initialize the max distance as a positive infinity
         return findGeoIntersections(ray, Double.POSITIVE_INFINITY);
     }
     /**

@@ -62,7 +62,7 @@ public class Sphere extends RadialGeometry {
      Finds the intersection points of a given ray with a sphere.
 
      @param ray - the given ray to intersect with the sphere
-
+     @param maxDistance the maximum distance between the ray and the point
      @return List of intersection points if the ray intersects the sphere, null otherwise.
      */
     @Override
@@ -70,6 +70,7 @@ public class Sphere extends RadialGeometry {
         Vector v = ray.getDirection();
         Point p0 = ray.getP0();
         if (center.equals(p0)) { // p0 is the center
+            //if the radius is bigger than maxDistance, there are no relevant points
             if(alignZero(radius - maxDistance) > 0){
                 return null;
             }
@@ -85,18 +86,18 @@ public class Sphere extends RadialGeometry {
         double t1 = alignZero(tm - th);
         double t2 = alignZero(tm + th);
 
-        //there is 2 intersection points
+        //there is 2 intersection points, and they are closer than the maxDistance
         if (t1 > 0 && t2 > 0 && alignZero(t1 - maxDistance) <= 0 && alignZero(t2 - maxDistance) <= 0) {
             GeoPoint p1 = new GeoPoint(this, ray.getPoint(t1));
             GeoPoint p2 = new GeoPoint(this, ray.getPoint(t2));
             return List.of(p1, p2);
         }
-        //only t1 intersects the sphere
+        //only t1 intersects the sphere, and it is closer than the maxDistance
         if (t1 > 0 && alignZero(t1 - maxDistance) <= 0) {
             GeoPoint p1 = new GeoPoint(this, ray.getPoint(t1));
             return List.of(p1);
         }
-        //only t2 intersects the sphere
+        //only t2 intersects the sphere, and it is closer than the maxDistance
         if (t2 > 0 && alignZero(t2 - maxDistance) <= 0) {
             GeoPoint p2 = new GeoPoint(this, ray.getPoint(t2));
             return List.of(p2);

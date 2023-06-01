@@ -92,7 +92,7 @@ public class Plane extends Geometry {
      If there are no intersections, the method returns null.
 
      @param ray The ray to intersect with the plane.
-
+     @param maxDistance the maximum distance between the ray and the point
      @return A list of points representing the intersections, or null if there are no intersections.
      */
 

@@ -75,6 +75,13 @@ public class Tube extends RadialGeometry {
         //the point on the base
            return P0_P.normalize();
     }
+    /**
+     * Finds the intersections between the current tube and a given ray.
+     *
+     * @param ray The ray to find intersections with.
+     * @param maxDistance the maximum distance between the ray and the point
+     * @return null
+     */
    @Override
    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray, double maxDistance){
         return null;

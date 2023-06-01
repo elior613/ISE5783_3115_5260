@@ -67,16 +67,16 @@ public class ShadowTests {
    public void sphereTriangleSpot1() {
       sphereTriangleHelper("shadowSphereTriangleSpot1", //
                            new Triangle(new Point(-70, -40, 0), new Point(-40, -70, 0), new Point(-68, -68, -4)), //
-                           new Point(-98,-98,180));
+                           new Point(-82,-82,94.5));
    }
-//
-//   /** Sphere-Triangle shading - move spot even more close */
-//   @Test
-//   public void sphereTriangleSpot2() {
-//      sphereTriangleHelper("shadowSphereTriangleSpot2", //
-//                           new Triangle(new Point(-70, -40, 0), new Point(-40, -70, 0), new Point(-68, -68, -4)), //
-//                           new Point(???, ???, ???));
-//   }
+
+   /** Sphere-Triangle shading - move spot even more close */
+   @Test
+   public void sphereTriangleSpot2() {
+      sphereTriangleHelper("shadowSphereTriangleSpot2", //
+                           new Triangle(new Point(-70, -40, 0), new Point(-40, -70, 0), new Point(-68, -68, -4)), //
+                            new Point(-75,-75,67));
+   }
 
    /** Produce a picture of a two triangles lighted by a spot light with a Sphere
     * producing a shading */
