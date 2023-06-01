@@ -4,9 +4,16 @@ package primitives;
  * The Material class represents the material properties of a geometry object.
  */
 public class Material {
-    public Double3 kD = Double3.ZERO; // Diffuse reflection coefficient
-    public Double3 kS = Double3.ZERO; // Specular reflection coefficient
-    public int nShininess = 0; // Shininess factor
+    /**Diffuse reflection coefficient*/
+    public Double3 kD = Double3.ZERO;
+    /** Specular reflection coefficient*/
+    public Double3 kS = Double3.ZERO;
+    /**Transparency coefficient*/
+    public Double3 kT=Double3.ZERO;
+    /** Reflection coefficient*/
+    public Double3 kR=Double3.ZERO;
+    /** Shininess factor*/
+    public int nShininess = 0;
 
     /**
      * Sets the diffuse reflection coefficient of the material.
@@ -29,6 +36,28 @@ public class Material {
         this.kS = kS;
         return this;
     }
+    /**
+     * Sets the transparency coefficient of the material.
+     *
+     * @param kT the transparency coefficient to set
+     * @return the Material object with the updated transparency coefficient
+     */
+    public Material setkT(Double3 kT) {
+        this.kT = kT;
+        return this;
+    }
+
+    /**
+     * Sets the reflection coefficient of the material.
+     *
+     * @param kR the reflection coefficient to set
+     * @return the Material object with the updated reflection coefficient
+     */
+    public Material setkR(Double3 kR) {
+        this.kR = kR;
+        return this;
+    }
+
 
     /**
      * Sets the shininess factor of the material.
@@ -62,4 +91,27 @@ public class Material {
         this.kS = new Double3(kS);
         return this;
     }
+    /**
+     * Sets the transparency coefficient of the material.
+     *
+     * @param kT the transparency coefficient to set
+     * @return the Material object with the updated transparency coefficient
+     */
+    public Material setkT(double kT) {
+        this.kT= new Double3(kT);
+        return this;
+    }
+
+    /**
+     * Sets the reflection coefficient of the material.
+     *
+     * @param kR the reflection coefficient to set
+     * @return the Material object with the updated reflection coefficient
+     */
+    public Material setkR(double kR) {
+        this.kR = new Double3(kR);
+        return this;
+    }
+
+
 }
