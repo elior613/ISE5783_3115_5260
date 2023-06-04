@@ -15,10 +15,15 @@ import static primitives.Util.alignZero;
  * It traces rays and calculates the color of the closest intersection point on objects in the scene.
  */
 public class RayTracerBasic extends RayTracerBase {
+
     /**
-     * add a constant for the size of moving the beginning of rays for shading rays
+     * A small value used for shadow ray calculations to prevent self-shadowing artifacts.
      */
     private static final double DELTA = 0.1;
+    private static final int MAX_CALC_COLOR_LEVEL = 10;
+    private static final double MIN_CALC_COLOR_K = 0.001;
+    private static final Double3 INITIAL_K = Double3.ONE;
+
 
 
     /**
@@ -38,11 +43,8 @@ public class RayTracerBasic extends RayTracerBase {
      */
     @Override
     public Color traceRay(Ray ray) {
-        List<GeoPoint> intersections = scene.getGeometries().findGeoIntersections(ray);
-        if (intersections == null)
-            return scene.getBackground();
-        GeoPoint closest = ray.findClosestGeoPoint(intersections);
-        return calcColor(closest, ray);
+        GeoPoint closestPoint = findClosestIntersection(ray);return closestPoint == null ? scene.background
+                : calcColor(closestPoint, ray);
     }
 
     /**
@@ -51,8 +53,11 @@ public class RayTracerBasic extends RayTracerBase {
      * @param gp the Geopoint at which to calculate the color
      * @return the color at the given point
      */
-    private Color calcColor(GeoPoint gp, Ray ray) {
-        return scene.getAmbientLight().getIntensity().add(calcLocalEffects(gp, ray));
+    private Color calcColor(GeoPoint intersection, Ray ray,int level, Double3 k) {Color color = calcLocalEffects(intersection, ray);
+        return 1 == level ? color : color.add(calcGlobalEffects(intersection, ray, level, k));}
+
+    private Color calcColor(GeoPoint geopoint, Ray ray) {
+        return calcColor(findClosestIntersection(ray), ray, MAX_CALC_COLOR_LEVEL, INITIAL_K).add(scene.ambientLight.getIntensity());
     }
 
     /**
@@ -118,10 +123,19 @@ public class RayTracerBasic extends RayTracerBase {
         return material.kD.scale(nl);
     }
 
-    /**
-     * A small value used for shadow ray calculations to prevent self-shadowing artifacts.
-     */
-    private static final double EPS = 0.1;
+    private Color calcGlobalEffects(GeoPoint gp, Ray ray, int level, Double3 k) {
+        Color color = Color.BLACK;
+        Vector v = ray.getDirection();
+        Vector n = gp.geometry.getNormal(gp.point);
+        Material material = gp.geometry.getMaterial();
+        return calcColorGLobalEffect(constructReflectedRay(gp, v, n),level, k, material.kr).add(calcColorGLobalEffect(constructRefractedRay(gp, v, n),level, k, material.kt));}
+    private Color calcGlobalEffect(Ray ray, int level, Double3 k, Double3 kx) {
+        Double3 kkx = k.product(kx);
+        if (kkx.lowerThan(MIN_CALC_COLOR_K)) return Color.BLACK;
+        GeoPoint gp = findClosestIntersection(ray);
+        if (gp == null) return scene.background.scale(kx);
+        return isZero(gp.geometry.getNormal(gp.point).dotProduct(ray.getDir()))? Color.BLACK : calcColor(gp, ray, level – 1, kkx).scale(kx);}
+
 
     /**
      * Checks if a given point on a geometry surface is unshaded by a specific light source.
@@ -135,12 +149,20 @@ public class RayTracerBasic extends RayTracerBase {
      */
     private boolean unshaded(GeoPoint gp, LightSource lightSource, Vector l, Vector n, double nl) {
         Vector lightDirection = l.scale(-1d); // from point to light source
-        Vector epsVector = n.scale(nl < 0 ? EPS : -EPS);
+        Vector epsVector = n.scale(nl < 0 ? DELTA : -DELTA);
         Point point = gp.point.add(epsVector);
         Ray lightRay = new Ray(point, lightDirection);
         double maxDistance = lightSource.getDistance(gp.point);
         List<GeoPoint> intersections = scene.geometries.findGeoIntersections(lightRay, maxDistance);
         return intersections == null;
+    }
+    private GeoPoint findClosestIntersection(Ray ray){
+        List<GeoPoint> geoPointIntersections = scene.getGeometries().findGeoIntersections(ray);
+        //there is no intersections
+        if (geoPointIntersections == null) {
+            return null;
+        }
+        return ray.findClosestGeoPoint(geoPointIntersections);
     }
 
 }
