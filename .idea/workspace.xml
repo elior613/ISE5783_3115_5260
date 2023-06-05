@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="109a4c57-e2c2-4f1f-a6fc-99d8db36e3af" name="Changes" comment=" in the middle of part2.2">
+    <list default="true" id="109a4c57-e2c2-4f1f-a6fc-99d8db36e3af" name="Changes" comment=" in the middle part2.2">
+      <change afterPath="$PROJECT_DIR$/unitTests/renderer/ReflectionRefractionTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/primitives/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Ray.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/RayTracerBasic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/RayTracerBasic.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -106,7 +108,7 @@
       <recent name="geometries" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in ISE5783_3115_5260">
+  <component name="RunManager" selected="JUnit.ReflectionRefractionTests">
     <configuration name="All in ISE5783_3115_5260" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_3115_5260" />
       <option name="PACKAGE_NAME" value="" />
@@ -130,21 +132,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PlaneTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ISE5783_3115_5260" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="geometries.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="geometries" />
-      <option name="MAIN_CLASS_NAME" value="geometries.PlaneTests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="PolygonTests" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
       <module name="ISE5783_3115_5260" />
       <extension name="coverage">
@@ -161,7 +148,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RenderTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ReflectionRefractionTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_3115_5260" />
       <extension name="coverage">
         <pattern>
@@ -170,7 +157,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="renderer" />
-      <option name="MAIN_CLASS_NAME" value="renderer.RenderTests" />
+      <option name="MAIN_CLASS_NAME" value="renderer.ReflectionRefractionTests" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -191,13 +178,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="lighting in ISE5783_3115_5260" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ISE5783_3115_5260" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="lighting.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="lighting" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ReflectionRefractionTests" />
+        <item itemvalue="JUnit.LightsTests" />
+        <item itemvalue="JUnit.lighting in ISE5783_3115_5260" />
         <item itemvalue="JUnit.All in ISE5783_3115_5260" />
         <item itemvalue="JUnit.ShadowTests" />
-        <item itemvalue="JUnit.RenderTests" />
-        <item itemvalue="JUnit.PlaneTests" />
-        <item itemvalue="JUnit.LightsTests" />
       </list>
     </recent_temporary>
   </component>
@@ -209,13 +210,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1677598048773</updated>
-    </task>
-    <task id="LOCAL‎-00005" summary="final stage 1 commit">
-      <created>1679923399390</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL‎-00005" />
-      <option name="project" value="LOCAL‎" />
-      <updated>1679923399390</updated>
     </task>
     <task id="LOCAL‎-00006" summary="final stage 1">
       <created>1679924768507</created>
@@ -553,7 +547,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1685876194832</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL‎-00054" summary=" in the middle part2.2">
+      <created>1685945315668</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL‎-00054" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1685945315668</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -574,7 +575,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="start stage4" />
     <MESSAGE value="problem with constructor of camera" />
     <MESSAGE value="stage4" />
     <MESSAGE value="stage5 starting" />
@@ -599,7 +599,8 @@
     <MESSAGE value="stage7 part 1" />
     <MESSAGE value="finish part2.1" />
     <MESSAGE value=" in the middle of part2.2" />
-    <option name="LAST_COMMIT_MESSAGE" value=" in the middle of part2.2" />
+    <MESSAGE value=" in the middle part2.2" />
+    <option name="LAST_COMMIT_MESSAGE" value=" in the middle part2.2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -625,6 +626,21 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/renderer/Camera.java</url>
+          <line>214</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/renderer/RayTracerBasic.java</url>
+          <line>194</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/unitTests/lighting/LightsTests.java</url>
+          <line>174</line>
+          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

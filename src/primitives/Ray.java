@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Objects;
 import geometries.Intersectable.GeoPoint;
 
+import static primitives.Util.alignZero;
+import static primitives.Util.isZero;
+
 /**
  The Ray class represents a ray in three-dimensional space, defined by a starting point and a direction vector.
  */
@@ -19,6 +22,11 @@ public class Ray {
     */
    Vector direction;
 
+    /**
+     * DELTA value to change the location of point
+     */
+    private static final double DELTA = 0.1;
+
 
 
     /**
@@ -28,6 +36,27 @@ public class Ray {
         this.p0 = po;
         this.direction = direction.normalize();
     }
+    /**
+     * Constructor for ray deflected by DELTA
+     *
+     * @param p origin
+     * @param n   normal vector
+     * @param dir direction
+     */
+    public Ray(Point p, Vector n, Vector dir) {
+        this.direction = dir.normalize();
+        double nv = n.dotProduct(this.direction);
+        Vector delta  =n.scale(DELTA);
+        if (nv < 0)
+            delta = delta.scale(-1d);
+        this.p0 = p.add(delta);
+    }
+//    public Ray(Point p, Vector n, Vector dir) {
+//        this.direction = dir.normalize();
+//        double nv = alignZero(n.dotProduct(this.direction));
+//        this.p0 =isZero(nv)?p:p.add(n.scale(nv<0?-DELTA:DELTA));
+//        this.direction=direction.normalize();
+//    }
 
     /**
      * Determines whether the specified object is equal to this Ray object.
