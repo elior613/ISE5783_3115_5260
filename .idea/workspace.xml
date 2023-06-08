@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="109a4c57-e2c2-4f1f-a6fc-99d8db36e3af" name="Changes" comment="stage7">
+      <change afterPath="$PROJECT_DIR$/src/geometries/Squared3D.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unitTests/renderer/Squared3DTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unitTests/renderer/ReflectionRefractionTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unitTests/renderer/ReflectionRefractionTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,9 +17,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit5 Test Class" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -100,13 +101,13 @@
       <recent name="geometries" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="primitives" />
       <recent name="renderer" />
+      <recent name="primitives" />
       <recent name="integretionTests" />
       <recent name="geometries" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ReflectionRefractionTests">
+  <component name="RunManager" selected="JUnit.Squared3DTest">
     <configuration name="All in ISE5783_3115_5260" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_3115_5260" />
       <option name="PACKAGE_NAME" value="" />
@@ -161,7 +162,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ShadowTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Squared3DTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_3115_5260" />
       <extension name="coverage">
         <pattern>
@@ -170,7 +171,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="renderer" />
-      <option name="MAIN_CLASS_NAME" value="renderer.ShadowTests" />
+      <option name="MAIN_CLASS_NAME" value="renderer.Squared3DTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -192,11 +193,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.Squared3DTest" />
         <item itemvalue="JUnit.ReflectionRefractionTests" />
         <item itemvalue="JUnit.All in ISE5783_3115_5260" />
         <item itemvalue="JUnit.LightsTests" />
         <item itemvalue="JUnit.lighting in ISE5783_3115_5260" />
-        <item itemvalue="JUnit.ShadowTests" />
       </list>
     </recent_temporary>
   </component>
