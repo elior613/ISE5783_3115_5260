@@ -16,7 +16,7 @@ import static java.awt.Color.BLUE;
 import static java.awt.Color.RED;
 import static org.junit.jupiter.api.Assertions.*;
 
-class Squared3DTest {
+class  Squared3DTest {
 
     private Scene scene = new Scene.SceneBuilder("Test scene").build();
 
