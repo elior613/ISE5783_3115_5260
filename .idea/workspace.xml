@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="109a4c57-e2c2-4f1f-a6fc-99d8db36e3af" name="Changes" comment="squared3D">
+    <list default="true" id="109a4c57-e2c2-4f1f-a6fc-99d8db36e3af" name="Changes" comment="fix the images">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/refractionTwoSpheres.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/refractionTwoSpheres.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/squared3DtEST1.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/squared3DtEST1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unitTests/renderer/ReflectionRefractionTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unitTests/renderer/ReflectionRefractionTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unitTests/renderer/Squared3DTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unitTests/renderer/Squared3DTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -222,13 +223,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1677598048773</updated>
-    </task>
-    <task id="LOCAL‎-00009" summary="add get normal of tube">
-      <created>1681740627061</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL‎-00009" />
-      <option name="project" value="LOCAL‎" />
-      <updated>1681740627061</updated>
     </task>
     <task id="LOCAL‎-00010" summary="almost finish without cylinder">
       <created>1681743466017</created>
@@ -566,7 +560,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1686220644981</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL‎-00058" summary="fix the images">
+      <created>1686486591449</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL‎-00058" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1686486591450</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -587,7 +588,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="stage5 starting" />
     <MESSAGE value="start stage5" />
     <MESSAGE value="after merge" />
     <MESSAGE value="render image (part 4)" />
@@ -612,7 +612,8 @@
     <MESSAGE value="reflection tests" />
     <MESSAGE value="stage7" />
     <MESSAGE value="squared3D" />
-    <option name="LAST_COMMIT_MESSAGE" value="squared3D" />
+    <MESSAGE value="fix the images" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix the images" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -653,11 +654,6 @@
           <url>file://$PROJECT_DIR$/unitTests/lighting/LightsTests.java</url>
           <line>174</line>
           <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/unitTests/renderer/Squared3DTest.java</url>
-          <line>39</line>
-          <option name="timeStamp" value="33" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

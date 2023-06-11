@@ -133,16 +133,6 @@ public class ReflectionRefractionTests {
 
               new Triangle(new Point(-30, 40, -20), new Point(-30, -40, -20), new Point(-45, 0, 30)).
                       setMaterial(new Material().setkR(0.5).setKd(0.5).setKs(0.3)),
-              new Tube(3, new Ray(new Point(-30, 25, -20), new Vector(1, 1, 0)))
-                      .setEmission(new Color(102, 255, 102)).setMaterial(new Material().setkT(0.5).setKd(0.2).setKs(0.6)),
-              new Tube(3, new Ray(new Point(-30, -25, -20), new Vector(1, 1, 0)))
-                      .setEmission(new Color(255, 255, 0)).setMaterial(new Material().setkT(0.5).setKd(0.2).setKs(0.6)),
-              new Tube(3, new Ray(new Point(-45, 0, 30), new Vector(1, 1, 0)))
-                      .setEmission(new Color(204, 0, 204)).setMaterial(new Material().setkT(0.5).setKd(0.2).setKs(0.6)),
-              new Tube(3, new Ray(new Point(-50, -15, -10), new Vector(1, 1, 0)))
-                      .setEmission(new Color(255, 108, 255)).setMaterial(new Material().setkT(0.5).setKd(0.2).setKs(0.6)),
-              new Tube(3, new Ray(new Point(-5, 10, 30), new Vector(1, 1, 0)))
-                      .setEmission(new Color(255, 0, 0)).setMaterial(new Material().setkT(0.5).setKd(0.2).setKs(0.6)),
               new Sphere(10, new Point(20, -50, 1)).setEmission(new Color(0, 0, 255)).setMaterial(new Material().setkT(0.1).setKd(0.2).setKs(0.6)));
 
 
