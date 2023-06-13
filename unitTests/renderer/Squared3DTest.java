@@ -3,6 +3,7 @@ package renderer;
 import geometries.*;
 import lighting.AmbientLight;
 import lighting.DirectionalLight;
+import lighting.PointLight;
 import lighting.SpotLight;
 import org.junit.jupiter.api.Test;
 import primitives.*;
@@ -40,7 +41,7 @@ class  Squared3DTest {
             for (var edge: sq.getGeometryList()) {
                 scene.geometries.add(edge.setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(30)));
 //        }
-        }
+            }
 //
 //        for (var edge: s.getGeometryList()) {
 //            scene.geometries.add(edge.setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(30)));
@@ -56,31 +57,35 @@ class  Squared3DTest {
 //        }
 
             scene.geometries.add(new Plane(new Point(0,0,0), new Point(1,0,0), new Point(0,1,0))
-                    .setEmission(new Color(255,51,51)).setMaterial(new Material().setKd(0.6).setShininess(10)));
-        scene.geometries.add(new Plane(new Point(80,0,0), new Point(80,80,0), new Point(80,80,80))
-                    .setEmission(new Color(0,204,0)).setMaterial(new Material().setKd(0.6).setShininess(10)));
+                    .setEmission(new Color(102,51,0)).setMaterial(new Material().setKd(0.6).setShininess(10)));
+            scene.geometries.add(new Plane(new Point(80,0,0), new Point(80,80,0), new Point(80,80,80))
+                    .setEmission(new Color(192,192,192)).setMaterial(new Material().setKd(0.6).setShininess(10)));
 
             scene.geometries.add(new Plane(new Point(40,40,0), new Point(0,40,0), new Point(40,40,40))
-                    .setEmission(new Color(0,204,0)).setMaterial(new Material().setKd(0.6).setShininess(10)));
-            scene.geometries.add(new Polygon(new Point(10, 39, 0), new Point(40, 39, 0),new Point(40, 39, 80), new Point(10, 39, 80)).
+                    .setEmission(new Color(192,192,192)).setMaterial(new Material().setKd(0.6).setShininess(10)));
+            scene.geometries.add(new Polygon(new Point(-10, 39, 10), new Point(50, 39, 10),new Point(50, 39, 110), new Point(-10, 39, 70)).
                     setMaterial(new Material().setkR(0.5).setKd(0.5).setKs(0.3)));
-            scene.geometries.add(new Sphere(10, new Point(30, -50, 7)).setEmission(new Color(0, 0, 255)).setMaterial(new Material().setkT(0.1).setKd(0.2).setKs(0.6)));
+            scene.geometries.add(new Polygon(new Point(79.5, 20, 60), new Point(79.5,-60 , 60),new Point(79.5, -60, 140), new Point(79.5, 20, 140)).setEmission(new Color(0,0,255))
+                    .setMaterial(new Material().setkT(0.78).setKd(0.22)));
+//            Plane sky = (Plane) new Plane(new Point(-5000, -500, 190), new Vector(0, 0, -1))
+//                    .setEmission(new Color(201, 226, 255)).setMaterial(new Material().setnShininess(10).setkS(0.2));
+            scene.geometries.add(new Sphere(5, new Point(10, 0, 25)).setEmission(new Color(0, 0, 255)).setMaterial(new Material().setkT(0.1).setKd(0.2).setKs(0.6)));
 
 
 
-            scene.lights.add( //
-//                new SpotLight(new Color(1000, 600, 0), new Point(-100, -100, 500), new Vector(-1, -1, -2)) //
-//                        .setKl(0.0004).setKq(0.0000006));
-                new SpotLight(new Color(950,550,0), new Point(-80,0,50), new Vector(82,-18,-25)).setKl(0.1).setKq(0.0001));
+            scene.lights.add(
+                    new SpotLight(new Color(950,550,0), new Point(-95,0,50), new Vector(82,-18,-25)).setKl(0.1).setKq(0.0001));
+            // new PointLight(new Color(RED), new Point(79,20,20)).setKl(0.1).setKq(0.0001);
+
 
 
 
 
 
             camera.setImageWriter(new ImageWriter("squared3DtEST1", 500, 500)) //
-                .setRayTracer(new RayTracerBasic(scene)) //
-                .renderImage() //
-                .writeToImage();
-    }
+                    .setRayTracer(new RayTracerBasic(scene)) //
+                    .renderImage() //
+                    .writeToImage();
+        }
 
-}}
+    }}

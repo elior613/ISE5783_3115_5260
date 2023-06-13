@@ -31,6 +31,7 @@ public class Camera {
     private ImageWriter imageWriter;
     //include the scene
     private RayTracerBase rayTracer;
+    private int amountRays;
 
     /**
      * Constructs a new Camera object.
@@ -209,7 +210,7 @@ public class Camera {
         int nY = imageWriter.getNy();
         for (int i = 0; i < nY; i++) {
             for (int j = 0; j < nX; j++) {
-                castRay(nX, nY, i, j);
+                imageWriter.writePixel(j,i,this.castRay(nX, nY, i, j));
             }
         }
         return this;
@@ -223,10 +224,11 @@ public class Camera {
      * @param i  the y-coordinate of the pixel
      * @param j  the x-coordinate of the pixel
      */
-    private void castRay(int nX, int nY, int i, int j) {
+    private Color castRay(int nX, int nY, int i, int j) {
         Ray ray = constructRay(nX, nY, j, i);
         Color pixelColor = rayTracer.traceRay(ray);
-        imageWriter.writePixel(j, i, pixelColor);
+        return pixelColor;
+        //imageWriter.writePixel(j, i, pixelColor);
     }
 
     /**
@@ -263,4 +265,81 @@ public class Camera {
         imageWriter.writeToImage();
         return this;
     }
+    private Point getCenterPixel(int nX, int nY, int j, int i){
+        Point pIJCenter = p0.add(Vto.scale(distance)); // = Pc
+        double rY = this.height / nY; //rY is the size of the vertical rib of the pixel (without the horizontal rib)
+        double rX = this.width / nX; //rX is the size of the horizontal rib of the pixel (without teh vertical rib)
+        double xJ = (j - (double)(nX - 1)/2) * rX; //xJ is the horizontal distance of our pixel from the central pixel (in pixels)
+        double yI = -(i - (double)(nY - 1)/2) * rY; //yI is the vertical distance of our pixel from the central pixel (in pixels)
+        if (xJ != 0) pIJCenter = pIJCenter.add(Vright.scale(xJ));
+        if (yI != 0) pIJCenter = pIJCenter.add(Vup.scale(yI));
+        return pIJCenter;
+    }
+
+    private Color antiAliasing(int nX, int nY, int j, int i) {
+        Color sumColors = new Color(0,0,0);
+        Vector vectorToThePixel;
+        Ray rayThroughPixel;
+        //get the center of the pixel
+        Point pIJCenter = getCenterPixel( nX,  nY,  j,  i);
+
+        // make the top-left corner of the pixel
+        Point pIJ;
+        double rX = this.width / nX; //rX is the size of the horizontal rib of the pixel (without teh vertical rib)
+        double interval = rX/amountRays;
+
+        for (double z = 0; z < amountRays; z++)
+        {
+            // move pIJ each iteration to the left of the current row
+            // (the pixel is divided to grid of rows and columns
+            // [interval times rows and interval times columns])
+            if(!isZero(rX/2 - (interval)*z))
+                pIJ = pIJCenter.add(Vup.scale(rX/2 - (interval)*z));
+            else pIJ = pIJCenter;
+            pIJ = pIJ.add(Vright.scale(-rX/2));
+            for (int q = 0; q < amountRays; q++){
+                pIJ = pIJ.add(Vright.scale(interval*rX));
+                vectorToThePixel = pIJ.subtract(this.p0);
+                rayThroughPixel = new Ray(this.p0, vectorToThePixel);
+                sumColors = sumColors.add(rayTracer.traceRay(rayThroughPixel));
+            }
+        }
+        // calculate the average color (there are eyeRaysAmount^2 sample rays);
+        Color avarageColor = sumColors.scale((double) 1/(amountRays*amountRays));
+        return avarageColor;
+    }
+
+    private Color antiAliasingRandom(int nX, int nY, int j, int i) {
+        Color sumColors = new Color(0,0,0);
+        Vector vectorToThePixel;
+        Ray rayThroughPixel;
+        //get the center of the pixel
+        Point pIJCenter = getCenterPixel( nX,  nY,  j,  i);
+
+        // make the top-left corner of the pixel
+        Point pIJ;
+        double rX = this.width / nX; //rX is the size of the horizontal rib of the pixel (without teh vertical rib)
+        double interval = rX/amountRays;
+
+        for (double z = 0; z < amountRays; z++)
+        {
+            // move pIJ each iteration to the left of the current row
+            // (the pixel is divided to grid of rows and columns
+            // [interval times rows and interval times columns])
+            if(!isZero(rX/2 - (interval)*z))
+                pIJ = pIJCenter.add(Vup.scale(rX/2 - (interval)*z));
+            else pIJ = pIJCenter;
+            pIJ = pIJ.add(Vright.scale(-rX/2));
+            for (int q = 0; q < amountRays; q++){
+                pIJ = pIJ.add(Vright.scale(interval*rX));
+                vectorToThePixel = pIJ.subtract(this.p0);
+                rayThroughPixel = new Ray(this.p0, vectorToThePixel);
+                sumColors = sumColors.add(rayTracer.traceRay(rayThroughPixel));
+            }
+        }
+        // calculate the average color (there are eyeRaysAmount^2 sample rays);
+        Color avarageColor = sumColors.scale((double) 1/(amountRays*amountRays));
+        return avarageColor;
+    }
+
 }
