@@ -8,7 +8,10 @@ import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.MissingResourceException;
+import java.util.Random;
 
 import static primitives.Util.isZero;
 
@@ -31,7 +34,8 @@ public class Camera {
     private ImageWriter imageWriter;
     //include the scene
     private RayTracerBase rayTracer;
-    private int amountRays;
+    private int amountRays=1;
+
 
     /**
      * Constructs a new Camera object.
@@ -134,6 +138,10 @@ public class Camera {
         this.rayTracer = rayTracerBase;
         return this;
     }
+    public Camera setAmountRays(int amountRays) {
+        this.amountRays = amountRays;
+        return this;
+    }
 
 
     // ***************** Operations ******************** //
@@ -210,7 +218,8 @@ public class Camera {
         int nY = imageWriter.getNy();
         for (int i = 0; i < nY; i++) {
             for (int j = 0; j < nX; j++) {
-                imageWriter.writePixel(j,i,this.castRay(nX, nY, i, j));
+            //    imageWriter.writePixel(j,i,this.castRay(nX, nY, i, j));
+                castRayBeamRandom(nX, nY, i, j, amountRays);
             }
         }
         return this;
@@ -340,6 +349,93 @@ public class Camera {
         // calculate the average color (there are eyeRaysAmount^2 sample rays);
         Color avarageColor = sumColors.scale((double) 1/(amountRays*amountRays));
         return avarageColor;
+    }
+
+
+    /**
+     * cast a beam of n*m random beams within a grid of a pixel (i,j)
+     *
+     * @param Nx number of rows in view plane
+     * @param Ny number of columns in view plane
+     * @param j  column index of pixel
+     * @param i  row index of pixel
+     * @param amountRays  the parameter to set number of random rays to cast
+     */
+    private void castRayBeamRandom(int Nx, int Ny, int j, int i, int amountRays) {
+        // construct ray through pixel
+        Ray ray = constructRay(Nx, Ny, j, i);
+
+        // construct n*m random rays towards the pixel
+       // var rayBeam = constructRayBeam(Nx, Ny, n, m, ray);
+        // get center point of pixel
+        Point Pij = ray.getPoint(distance);
+        List<Ray> temp = new LinkedList<>();
+
+        // create a grid of n rows * m columns in each pixel
+        // construct a ray from camera to every cell in grid
+        // each ray is constructed randomly precisely within the grid borders
+        for (int i = -amountRays / 2; i < amountRays / 2; i++)
+            for (int j = -amountRays / 2; j < amountRays / 2; j++)
+                temp.add(constructRandomRay(Nx, Ny, Pij, i, j, amountRays));
+
+        // remove from the list if a  ray was randomly constructed identical to ray to center
+        temp.removeIf((item) -> {
+            return item.equals(ray);
+        });
+        // add to list the ray to the center of the pixel
+        temp.add(ray);
+
+
+        // calculate color of the pixel using the average from all the rays in beam
+        Color color = Color.BLACK;
+        for (var r : rayBeam) {
+            color = color.add(rayTracer.traceRay(r));
+        }
+        // reduce final color by total number of rays to get mean value of pixel color
+        color = color.reduce(rayBeam.size());
+
+        //write pixel
+        imageWriter.writePixel(j, i, color);
+    }
+
+    public Ray constructRandomRay(int Nx, int Ny, Point Pij, int gridRow, int gridColumn, int amount) {
+
+        // calculate "size" of each pixel -
+        // height per pixel = total "physical" height / number of rows
+        // width per pixel = total "physical" width / number of columns
+        double Ry = (double) height / Ny;
+        double Rx = (double) width / Nx;
+
+        //calculate height and width of a cell from the sub-grid
+        double gridHeight = (double) Ry / amount;
+        double gridWidth = (double) Rx / amount;
+
+        Random r = new Random();
+        // set a random value to scale vector on Y axis
+        // value range is from -(gridHeight/2) to (gridHeight/2)
+        double yI = r.nextDouble(gridHeight) - gridHeight / 2;
+        // set a random value to scale vector on X axis
+        // value range is from -(gridWidth/2) to (gridWidth/2)
+        double xJ = r.nextDouble(gridWidth) - gridWidth / 2;
+
+        // if result of xJ is > 0
+        // move result point from middle of pixel to column index in sub-grid
+        // then add the random value to move left/right on X axis within the cell
+        if (!isZero(xJ)) {
+            Pij = Pij.add(Vright.scale(gridWidth * gridColumn + xJ));
+        }
+
+        // if result of yI is > 0
+        // move result point from middle of pixel to row index in sub-grid
+        // then add the random value to move up/down on Y axis within the cell
+        if (!isZero(yI)) {
+            Pij = Pij.add(Vup.scale(gridHeight * gridRow + yI));
+        }
+
+        // return ray cast from camera to randomly selected point within grid of pixel
+        // reached by yI and xJ scaling factors
+        return new Ray(p0, Pij.subtract(p0));
+
     }
 
 }

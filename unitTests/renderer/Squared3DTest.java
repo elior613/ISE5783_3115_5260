@@ -65,8 +65,8 @@ class  Squared3DTest {
                     .setEmission(new Color(192,192,192)).setMaterial(new Material().setKd(0.6).setShininess(10)));
             scene.geometries.add(new Polygon(new Point(-10, 39, 10), new Point(50, 39, 10),new Point(50, 39, 110), new Point(-10, 39, 70)).
                     setMaterial(new Material().setkR(0.5).setKd(0.5).setKs(0.3)));
-            scene.geometries.add(new Polygon(new Point(79.5, 20, 60), new Point(79.5,-60 , 60),new Point(79.5, -60, 140), new Point(79.5, 20, 140)).setEmission(new Color(0,0,255))
-                    .setMaterial(new Material().setkT(0.78).setKd(0.22)));
+            scene.geometries.add(new Polygon(new Point(79.5, 20, 60), new Point(79.5,-60 , 60),new Point(79.5, -60, 140), new Point(79.5, 20, 140)).setEmission(new Color(51,255,255))
+                    .setMaterial(new Material().setkT(0.3).setKd(0.3)));
 //            Plane sky = (Plane) new Plane(new Point(-5000, -500, 190), new Vector(0, 0, -1))
 //                    .setEmission(new Color(201, 226, 255)).setMaterial(new Material().setnShininess(10).setkS(0.2));
             scene.geometries.add(new Sphere(5, new Point(10, 0, 25)).setEmission(new Color(0, 0, 255)).setMaterial(new Material().setkT(0.1).setKd(0.2).setKs(0.6)));
