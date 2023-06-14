@@ -9,6 +9,8 @@ import primitives.Color;
 import primitives.Ray;
 import scene.Scene;
 
+import java.util.List;
+
 public abstract class RayTracerBase {
     /**
 
@@ -33,5 +35,15 @@ public abstract class RayTracerBase {
      * @return the color of the intersections along the ray
      */
     public abstract Color traceRay(Ray ray);
+
+
+    /**
+     * Traces rays and calculates the color of the intersections in the scene.
+     *
+     * @param rays the list of rays to trace
+     * @return the color of the intersections along the rays
+     */
+    public abstract Color traceRays(List<Ray> rays);
+
 
 }

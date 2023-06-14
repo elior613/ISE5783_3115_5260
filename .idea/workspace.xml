@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="109a4c57-e2c2-4f1f-a6fc-99d8db36e3af" name="Changes" comment="start anti aliyasing">
+    <list default="true" id="109a4c57-e2c2-4f1f-a6fc-99d8db36e3af" name="Changes" comment="project1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/shadowTrianglesSphere.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/shadowTrianglesSphere.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/squared3DtEST1.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/squared3DtEST1.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unitTests/renderer/ShadowTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unitTests/renderer/ShadowTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/RayTracerBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/RayTracerBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/RayTracerBasic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/RayTracerBasic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unitTests/renderer/Squared3DTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unitTests/renderer/Squared3DTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -225,13 +224,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1677598048773</updated>
-    </task>
-    <task id="LOCAL‎-00012" summary="finish Stage2">
-      <created>1681799377632</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL‎-00012" />
-      <option name="project" value="LOCAL‎" />
-      <updated>1681799377633</updated>
     </task>
     <task id="LOCAL‎-00013" summary="stage 2 final commit">
       <created>1681833110792</created>
@@ -569,7 +561,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1686668992688</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL‎-00061" summary="project1">
+      <created>1686681970977</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL‎-00061" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1686681970977</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -590,7 +589,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="render image (part 4)" />
     <MESSAGE value="start implement renderImage" />
     <MESSAGE value="problem with test" />
     <MESSAGE value="PR05" />
@@ -615,7 +613,8 @@
     <MESSAGE value="fix the images" />
     <MESSAGE value="continue the image" />
     <MESSAGE value="start anti aliyasing" />
-    <option name="LAST_COMMIT_MESSAGE" value="start anti aliyasing" />
+    <MESSAGE value="project1" />
+    <option name="LAST_COMMIT_MESSAGE" value="project1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -649,7 +648,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/renderer/RayTracerBasic.java</url>
-          <line>242</line>
+          <line>258</line>
           <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

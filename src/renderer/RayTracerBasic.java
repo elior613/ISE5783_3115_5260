@@ -60,6 +60,22 @@ public class RayTracerBasic extends RayTracerBase {
     }
 
     /**
+     * Traces rays and calculates the color of the intersections in the scene.
+     *
+     * @param rays the list of rays to trace
+     * @return the color of the intersections along the rays
+     */
+    public Color traceRays(List<Ray> rays){
+        //calculate the all colors of the rays
+        Color sumColor=new Color(0,0,0);
+        for (Ray ray: rays) {
+            sumColor=sumColor.add(traceRay(ray));
+        }
+        //return the average color
+        return sumColor.reduce(rays.size());
+    }
+
+    /**
      * Calculates the color at a given intersection point with the provided ray.
      * Performs recursive color calculations by considering local effects and global effects.
      *

@@ -56,11 +56,13 @@ class  Squared3DTest {
 //            scene.geometries.add(edge.setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(30)));
 //        }
 
+            //the floor
             scene.geometries.add(new Plane(new Point(0,0,0), new Point(1,0,0), new Point(0,1,0))
                     .setEmission(new Color(102,51,0)).setMaterial(new Material().setKd(0.6).setShininess(10)));
+            //The wall is opposite
             scene.geometries.add(new Plane(new Point(80,0,0), new Point(80,80,0), new Point(80,80,80))
                     .setEmission(new Color(192,192,192)).setMaterial(new Material().setKd(0.6).setShininess(10)));
-
+            //The wall on the right
             scene.geometries.add(new Plane(new Point(40,40,0), new Point(0,40,0), new Point(40,40,40))
                     .setEmission(new Color(192,192,192)).setMaterial(new Material().setKd(0.6).setShininess(10)));
             scene.geometries.add(new Polygon(new Point(-10, 39, 10), new Point(50, 39, 10),new Point(50, 39, 110), new Point(-10, 39, 70)).
@@ -69,7 +71,7 @@ class  Squared3DTest {
                     .setMaterial(new Material().setkT(0.3).setKd(0.3)));
 //            Plane sky = (Plane) new Plane(new Point(-5000, -500, 190), new Vector(0, 0, -1))
 //                    .setEmission(new Color(201, 226, 255)).setMaterial(new Material().setnShininess(10).setkS(0.2));
-            scene.geometries.add(new Sphere(5, new Point(10, 0, 25)).setEmission(new Color(0, 0, 255)).setMaterial(new Material().setkT(0.1).setKd(0.2).setKs(0.6)));
+            scene.geometries.add(new Sphere(5, new Point(10, 0, 25)).setEmission(new Color(0, 153, 0)).setMaterial(new Material().setkT(0.1).setKd(0.2).setKs(0.6)));
 
 
 
