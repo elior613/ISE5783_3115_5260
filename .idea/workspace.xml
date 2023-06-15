@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="109a4c57-e2c2-4f1f-a6fc-99d8db36e3af" name="Changes" comment="continue anti aliasyng">
+    <list default="true" id="109a4c57-e2c2-4f1f-a6fc-99d8db36e3af" name="Changes" comment="finish anti aliasyng">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/images/squared3DtEST1.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/squared3DtEST1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unitTests/renderer/Squared3DTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unitTests/renderer/Squared3DTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -223,13 +222,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1677598048773</updated>
-    </task>
-    <task id="LOCAL‎-00014" summary="stage2 final commit with cylinder">
-      <created>1681833339170</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL‎-00014" />
-      <option name="project" value="LOCAL‎" />
-      <updated>1681833339170</updated>
     </task>
     <task id="LOCAL‎-00015" summary="stage2 final commit with cylinder">
       <created>1681835960241</created>
@@ -567,7 +559,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1686723466499</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL‎-00063" summary="finish anti aliasyng">
+      <created>1686768946987</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL‎-00063" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1686768946987</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -588,7 +587,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="problem with test" />
     <MESSAGE value="PR05" />
     <MESSAGE value="finish stage5" />
     <MESSAGE value="start stage6" />
@@ -613,7 +611,8 @@
     <MESSAGE value="start anti aliyasing" />
     <MESSAGE value="project1" />
     <MESSAGE value="continue anti aliasyng" />
-    <option name="LAST_COMMIT_MESSAGE" value="continue anti aliasyng" />
+    <MESSAGE value="finish anti aliasyng" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish anti aliasyng" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

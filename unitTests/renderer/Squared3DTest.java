@@ -23,7 +23,7 @@ class  Squared3DTest {
     @Test
     public void Squared3DTest1() {
         Camera camera = new Camera(new Point(-50, -50, 50), new Vector(1, 0.3, 0), new Vector(0,0,1 )) //
-                .setVPSize(150, 150).setVPDistance(50).setAmountRays(2);
+                .setVPSize(150, 150).setVPDistance(50);//.setAmountRays(9);
         scene.setAmbientLight(new AmbientLight(new Color(300, 150, 240), new Double3(0.1)));
 //        Camera camera1= new Camera(new Point(1000, 800, 950), new Vector(0, -0.432, -0.901), new Vector(0, 0.901, -0.432)) //
 //                .setVPSize(150, 150).setVPDistance(1000);
@@ -70,7 +70,7 @@ class  Squared3DTest {
                     setMaterial(new Material().setkR(0.5).setKd(0.5).setKs(0.3)));
             //The window
             scene.geometries.add(new Polygon(new Point(79.5, 20, 60), new Point(79.5,-60 , 60),new Point(79.5, -60, 140), new Point(79.5, 20, 140)).setEmission(new Color(51,255,255))
-                    .setMaterial(new Material().setkT(0.3).setKd(0.3)));
+                    .setMaterial(new Material().setShininess(10).setKd(0.3)));
 //            Plane sky = (Plane) new Plane(new Point(-5000, -500, 190), new Vector(0, 0, -1))
 //                    .setEmission(new Color(201, 226, 255)).setMaterial(new Material().setnShininess(10).setkS(0.2));
             //The water mellon
@@ -78,9 +78,9 @@ class  Squared3DTest {
 
 
 
-            scene.lights.add(
-                    new SpotLight(new Color(950,550,0), new Point(-95,0,50), new Vector(82,-18,-25)).setKl(0.1).setKq(0.0001));
-            // new PointLight(new Color(RED), new Point(79,20,20)).setKl(0.1).setKq(0.0001);
+            scene.lights.add( new SpotLight(new Color(950,550,0), new Point(-95,0,50), new Vector(82,-18,-25)).setKl(0.1).setKq(0.0001));
+            scene.lights.add( new SpotLight(new Color(102,255,255), new Point(80,40,100), new Vector(-5,-20,-14)).setKl(0.1).setKq(0.0001));
+
 
 
 
