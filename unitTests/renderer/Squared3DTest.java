@@ -2,16 +2,10 @@ package renderer;
 
 import geometries.*;
 import lighting.AmbientLight;
-import lighting.DirectionalLight;
-import lighting.PointLight;
 import lighting.SpotLight;
 import org.junit.jupiter.api.Test;
 import primitives.*;
 import scene.Scene;
-
-import static java.awt.Color.BLUE;
-import static java.awt.Color.RED;
-import static org.junit.jupiter.api.Assertions.*;
 
 class  Squared3DTest {
 
@@ -42,6 +36,14 @@ class  Squared3DTest {
                 scene.geometries.add(edge.setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(30)));
 //        }
             }
+
+            Chair c =new Chair(new Point(10,-30,0),3,3,15, new Color(120,120,0),8,8);
+
+            for (var s: c.getsquared3DList()) {
+                for (var edge: s.getGeometryList()) {
+                    scene.geometries.add(edge.setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(30)));
+//        }
+                }
 //
 //        for (var edge: s.getGeometryList()) {
 //            scene.geometries.add(edge.setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(30)));
@@ -74,12 +76,13 @@ class  Squared3DTest {
 //            Plane sky = (Plane) new Plane(new Point(-5000, -500, 190), new Vector(0, 0, -1))
 //                    .setEmission(new Color(201, 226, 255)).setMaterial(new Material().setnShininess(10).setkS(0.2));
             //The water mellon
-            scene.geometries.add(new Sphere(5, new Point(10, 0, 25)).setEmission(new Color(0, 153, 0)).setMaterial(new Material().setkT(0.1).setKd(0.2).setKs(0.6)));
+            //scene.geometries.add(new Sphere(5, new Point(10, 0, 25)).setEmission(new Color(0, 153, 0)).setMaterial(new Material().setkT(0.1).setKd(0.2).setKs(0.6)));
+            scene.geometries.add(new Sphere(5, new Point(0, -10, 5)).setEmission(new Color(0, 153, 0)).setMaterial(new Material().setkT(0.1).setKd(0.2).setKs(0.6)));
 
 
 
             scene.lights.add( new SpotLight(new Color(950,550,0), new Point(-95,0,50), new Vector(82,-18,-25)).setKl(0.1).setKq(0.0001));
-            scene.lights.add( new SpotLight(new Color(102,255,255), new Point(80,40,100), new Vector(-5,-20,-14)).setKl(0.1).setKq(0.0001));
+            scene.lights.add( new SpotLight(new Color(102,255,255), new Point(79,-30,100), new Vector(-5,0,-14)).setKl(0.1).setKq(0.0001));
 
 
 
@@ -93,4 +96,4 @@ class  Squared3DTest {
                     .writeToImage();
         }
 
-    }}
+    }}}
