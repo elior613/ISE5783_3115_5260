@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="109a4c57-e2c2-4f1f-a6fc-99d8db36e3af" name="Changes" comment="update the lights">
-      <change afterPath="$PROJECT_DIR$/src/geometries/Chair.java" afterDir="false" />
+    <list default="true" id="109a4c57-e2c2-4f1f-a6fc-99d8db36e3af" name="Changes" comment="start a chair">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/squared3DtEST1.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/squared3DtEST1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Chair.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Chair.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Table.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unitTests/renderer/Squared3DTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unitTests/renderer/Squared3DTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -223,13 +224,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1677598048773</updated>
-    </task>
-    <task id="LOCAL‎-00016" summary="stage2">
-      <created>1681904495022</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL‎-00016" />
-      <option name="project" value="LOCAL‎" />
-      <updated>1681904495022</updated>
     </task>
     <task id="LOCAL‎-00017" summary="Stage2">
       <created>1681904953941</created>
@@ -567,7 +561,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1686812024202</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL‎-00065" summary="start a chair">
+      <created>1686826179108</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL‎-00065" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1686826179109</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -588,7 +589,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="finish stage5" />
     <MESSAGE value="start stage6" />
     <MESSAGE value="multy color" />
     <MESSAGE value="Light classes" />
@@ -613,7 +613,8 @@
     <MESSAGE value="continue anti aliasyng" />
     <MESSAGE value="finish anti aliasyng" />
     <MESSAGE value="update the lights" />
-    <option name="LAST_COMMIT_MESSAGE" value="update the lights" />
+    <MESSAGE value="start a chair" />
+    <option name="LAST_COMMIT_MESSAGE" value="start a chair" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -624,7 +625,7 @@
         </breakpoint>
         <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/renderer/Camera.java</url>
-          <line>185</line>
+          <line>222</line>
           <properties class="renderer.Camera">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -642,7 +643,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/renderer/Camera.java</url>
-          <line>226</line>
+          <line>263</line>
           <properties class="renderer.Camera" method="castRaySelector">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -651,7 +652,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/renderer/Camera.java</url>
-          <line>223</line>
+          <line>260</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint type="java-line">

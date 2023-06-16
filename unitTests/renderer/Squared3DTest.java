@@ -34,16 +34,14 @@ class  Squared3DTest {
         for (var sq: t1.getsquared3DList()) {
             for (var edge: sq.getGeometryList()) {
                 scene.geometries.add(edge.setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(30)));
-//        }
             }
 
-            Chair c =new Chair(new Point(10,-30,0),3,3,15, new Color(120,120,0),8,8);
-
-            for (var s: c.getsquared3DList()) {
-                for (var edge: s.getGeometryList()) {
-                    scene.geometries.add(edge.setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(30)));
-//        }
-                }
+//            Chair c =new Chair(new Point(10,-30,0),3,3,15, new Color(120,120,0),8,8);
+//
+//            for (var s: c.getsquared3DList()) {
+//                for (var edge: s.getGeometryList()) {
+//                    scene.geometries.add(edge.setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(30)));
+//                }
 //
 //        for (var edge: s.getGeometryList()) {
 //            scene.geometries.add(edge.setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(30)));

@@ -34,6 +34,7 @@ public class Camera {
     private ImageWriter imageWriter;
     //include the scene
     private RayTracerBase rayTracer;
+
     private int amountRays=1;
 
 
@@ -56,33 +57,69 @@ public class Camera {
         p0 = p;
     }
 
+    /**
+     * Returns the origin point of the camera.
+     *
+     * @return the origin point of the camera
+     */
     public Point getP0() {
         return p0;
     }
 
+    /**
+     * Returns the view vector of the camera.
+     *
+     * @return the view vector of the camera
+     */
     public Vector getVto() {
         return Vto;
     }
 
+    /**
+     * Returns the up vector of the camera.
+     *
+     * @return the up vector of the camera
+     */
     public Vector getVup() {
         return Vup;
     }
 
+    /**
+     * Returns the right vector of the camera.
+     *
+     * @return the right vector of the camera
+     */
     public Vector getVright() {
         return Vright;
     }
 
+    /**
+     * Returns the width of the view plane of the camera.
+     *
+     * @return the width of the view plane
+     */
     public double getWidth() {
         return width;
     }
 
+    /**
+     * Returns the height of the view plane of the camera.
+     *
+     * @return the height of the view plane
+     */
     public double getHeight() {
         return height;
     }
 
+    /**
+     * Returns the distance between the camera and the view plane.
+     *
+     * @return the distance between the camera and the view plane
+     */
     public double getDistance() {
         return distance;
     }
+
 
     /**
      * Sets the size of the view plane.

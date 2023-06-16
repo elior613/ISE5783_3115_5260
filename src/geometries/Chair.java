@@ -12,7 +12,7 @@ public class Chair extends Table {
         super(position, depth, width, height, color, spaceWidth, spaceDepth);
 
         backrest=new Squared3D(new Point(position.getX(), position.getY(), position.getZ()+height),depth,width,height,color);
-        squared3DList.add((Squared3D)backrest);
+        setToSquared3DList((backrest));
     }
 
 //    public List<Squared3D> getsquared3DList() {
