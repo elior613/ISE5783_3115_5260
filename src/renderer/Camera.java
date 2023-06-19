@@ -8,10 +8,7 @@ import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.MissingResourceException;
-import java.util.Random;
+import java.util.*;
 
 import static primitives.Util.isZero;
 
@@ -43,6 +40,11 @@ public class Camera {
 
     //amount of Rays for anti aliasing. Default is 1
     private int amountRays = 1;
+
+    private boolean isAdaptiveSuperSampling= false;
+
+    private int maximumAdaptiveDepth =4;
+
 
 
     /**
@@ -183,8 +185,43 @@ public class Camera {
         return this;
     }
 
+    /**
+     * Sets the amount of rays of the camera for anti- aliasing .
+     *
+     * @param  amountRays amont of race
+     * @return the camera instance with the updated amount of rays t
+     */
+
     public Camera setAmountRays(int amountRays) {
         this.amountRays = amountRays;
+        return this;
+    }
+
+    /**
+     * Sets the boolean of the adaptive super sampaling  .
+     *
+     * @param  adaptiveSuperSampling amont of race
+     * @return the camera instance with the updated boolean of adaptiveSuperSampeling
+     */
+    public Camera setAdaptiveSuperSampling(boolean adaptiveSuperSampling) {
+        isAdaptiveSuperSampling = adaptiveSuperSampling;
+
+        if (adaptiveSuperSampling==true) {
+            //initialize the amoutRays to 1 that will help to use just one feature
+            amountRays = 1;
+        }
+
+        return this;
+    }
+
+    /**
+     * Sets the value of the maximumAdaptive.
+     *
+     * @param  maximumAdaptiveDepth amonut of the maximum adaptive super sampling
+     * @return the camera instance with the updated boolean of adaptiveSuperSampeling
+     */
+    public Camera setMaximumAdaptiveDepth(int maximumAdaptiveDepth) {
+        this.maximumAdaptiveDepth = maximumAdaptiveDepth;
         return this;
     }
 
@@ -477,4 +514,107 @@ public class Camera {
     }
 
 
+    /**
+     * get  a point and return the color of the point
+     *
+     * @param p- point on the view plane
+     * @return color of the point
+     */
+    private Color pointCalcColor(Point p) {
+        return rayTracer.traceRay(new Ray(p0, p.subtract(p0)));
+    }
+
+    /**
+     * get  a list of colors and return if the colors are almost same
+     *
+     * @param colorList
+     * @return boolean
+     */
+//    private boolean isColorPointsSame(List<Color> colorList)
+//    {
+//        //
+//
+//    }
+    public Color adaptiveSuperSampaling (int Nx){
+        return new Color(0,0,0);
+    }
+
+
+    /**
+     * calculate average color of the pixel by using adaptive Super-sampling
+     *
+     * @param center- the center of the pixel
+     * @param nY-     number of pixels to width
+     * @param nX-     number of pixels to length
+     * @return- the average color of the pixel
+     */
+    private Color adaptiveHelper(Point center, double nY, double nX) {
+        Hashtable<Point, Color> pointColorMap= new Hashtable<Point, Color>();
+        double rY = height / nY / 2;
+        double rX = width / nX / 2;
+        Color upRight = pointCalcColor(center.add(Vup.scale(rY)).add(Vright.scale(rX)));
+        Color upLeft = pointCalcColor(center.add(Vup.scale(rY)).add(Vright.scale(-rX)));
+        Color downRight = pointCalcColor(center.add(Vup.scale(-rY)).add(Vright.scale(rX)));
+        Color downLeft = pointCalcColor(center.add(Vup.scale(-rY)).add(Vright.scale(-rX)));
+
+        return adaptive(1, center, rX, rY, pointColorMap, upLeft, upRight, downLeft, downRight);
+    }
+
+    /**
+     * recursive method that return the average color of the pixel- by checking the color of the four corners
+     *
+     * @param max-         the depth of the recursion
+     * @param center-      the center of the pixel
+     * @param rX-          the width of the pixel
+     * @param rY-          the height of the pixel
+     * @param upLeftCol-   the color of the vUp left corner
+     * @param upRightCol-  the color of the vUp vRight corner
+     * @param downLeftCol- the color of the down left corner
+     * @param downRightCol - the color of the down vRight corner
+     * @return the average color of the pixel
+     */
+    private Color adaptive(int max, Point center, double rX, double rY, Hashtable<Point, Color> pointColorTable,
+                           Color upLeftCol, Color upRightCol, Color downLeftCol, Color downRightCol) {
+        if (max == maximumAdaptiveDepth) {
+            return downRightCol.add(upLeftCol).add(upRightCol).add(downLeftCol).reduce(4);
+        }
+        if (upRightCol.equals(upLeftCol) && downRightCol.equals(downLeftCol) && downLeftCol.equals(upLeftCol))
+            return upRightCol;
+        else {
+            Color rightPCol = getPointColorFromTable(center.add(Vright.scale(rX)), pointColorTable);
+            Color leftPCol = getPointColorFromTable(center.add(Vright.scale(-rX)), pointColorTable);
+            Color upPCol = getPointColorFromTable(center.add(Vup.scale(rY)), pointColorTable);
+            Color downPCol = getPointColorFromTable(center.add(Vup.scale(-rY)), pointColorTable);
+            Color centerCol = pointCalcColor(center);
+
+            rX = rX / 2;
+            rY = rY / 2;
+            upLeftCol = adaptive(max + 1, center.add(Vup.scale(rY / 2)).add(Vright.scale(-rX / 2)), rX, rY, pointColorTable,
+                    upLeftCol, upPCol, leftPCol, centerCol);
+            upRightCol = adaptive(max + 1, center.add(Vup.scale(rY / 2)).add(Vright.scale(rX / 2)), rX, rY, pointColorTable,
+                    upPCol, upRightCol, centerCol, leftPCol);
+            downLeftCol = adaptive(max + 1, center.add(Vup.scale(-rY / 2)).add(Vright.scale(-rX / 2)), rX, rY, pointColorTable,
+                    leftPCol, centerCol, downLeftCol, downPCol);
+            downRightCol = adaptive(max + 1, center.add(Vup.scale(-rY / 2)).add(Vright.scale(rX / 2)), rX, rY, pointColorTable,
+                    centerCol, rightPCol, downPCol, downRightCol);
+            return downRightCol.add(upLeftCol).add(upRightCol).add(downLeftCol).reduce(4);
+        }
+    }
+
+    /**
+     * check if this point exist in the HashTable return his color otherwise calculate the color and save it
+     *
+     * @param point-           certain point in the pixel
+     * @param pointColorMap- dictionary that save points and their color
+     * @return the color of the point
+     */
+    private Color getPointColorFromTable(Point point, Hashtable<Point, Color> pointColorMap) {
+        if (!(pointColorMap.containsKey(point))) {
+            Color color = pointCalcColor(point);
+            pointColorMap.put(point, color);
+            return color;
+        }
+        return pointColorMap.get(point);
+    }
 }
+
