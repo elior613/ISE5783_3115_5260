@@ -1,7 +1,6 @@
 /**
-
- The RayTracerBase class is an abstract base class for ray tracing algorithms.
- It provides a framework for tracing rays and calculating the color of intersections in a scene.
+ * The RayTracerBase class is an abstract base class for ray tracing algorithms.
+ * It provides a framework for tracing rays and calculating the color of intersections in a scene.
  */
 package renderer;
 

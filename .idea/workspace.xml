@@ -5,9 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="109a4c57-e2c2-4f1f-a6fc-99d8db36e3af" name="Changes" comment="update the lights">
-      <change afterPath="$PROJECT_DIR$/src/geometries/Chair.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unitTests/renderer/AntiAliasingMP1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unitTests/renderer/ChairTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unitTests/renderer/TableTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/images/squared3DtEST1.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/squared3DtEST1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Chair.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Chair.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Squared3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Squared3D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Table.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/RayTracerBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/RayTracerBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/RayTracerBasic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/RayTracerBasic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unitTests/renderer/Squared3DTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unitTests/renderer/Squared3DTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,6 +73,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
   <component name="ProjectId" id="2MNBDyUhZyxnNRWwiKNIkf0b8v5" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -89,7 +100,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -622,15 +633,6 @@
           <properties class="java.lang.StackOverflowError" package="java.lang" />
           <option name="timeStamp" value="1" />
         </breakpoint>
-        <line-breakpoint type="java-method">
-          <url>file://$PROJECT_DIR$/src/renderer/Camera.java</url>
-          <line>185</line>
-          <properties class="renderer.Camera">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/unitTests/lighting/LightsTests.java</url>
           <line>66</line>
@@ -639,25 +641,6 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/renderer/Camera.java</url>
-          <line>226</line>
-          <properties class="renderer.Camera" method="castRaySelector">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/renderer/Camera.java</url>
-          <line>223</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/renderer/RayTracerBasic.java</url>
-          <line>258</line>
-          <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/unitTests/lighting/LightsTests.java</url>
