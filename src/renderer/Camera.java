@@ -10,6 +10,7 @@ import primitives.Vector;
 
 import java.util.*;
 
+import static primitives.Color.almostSameColor;
 import static primitives.Util.isZero;
 
 public class Camera {
@@ -319,6 +320,8 @@ public class Camera {
      */
 
     private Color castRaySelector(int nX, int nY, int i, int j) {
+        if (isAdaptiveSuperSampling)
+            return adaptiveManager(nX, nY, j, i);
         if (amountRays == 1)
             return castRay(nX, nY, i, j);
         //amountRays is bigger than 1
@@ -385,6 +388,7 @@ public class Camera {
         imageWriter.writeToImage();
         return this;
     }
+
 
 
     /**
@@ -530,11 +534,7 @@ public class Camera {
      * @param colorList
      * @return boolean
      */
-//    private boolean isColorPointsSame(List<Color> colorList)
-//    {
-//        //
-//
-//    }
+
     public Color adaptiveSuperSampaling (int Nx){
         return new Color(0,0,0);
     }
@@ -544,11 +544,12 @@ public class Camera {
      * calculate average color of the pixel by using adaptive Super-sampling
      *
      * @param center- the center of the pixel
-     * @param nY-     number of pixels to width
-     * @param nX-     number of pixels to length
+     * @param nY-     number of width pixel
+     * @param nX-     number of length pixel
      * @return- the average color of the pixel
      */
-    private Color adaptiveHelper(Point center, double nY, double nX) {
+    private Color adaptiveManager(int nX, int nY, int j, int i) {
+        Point center= getCenterPixel(nX,nY, j, i);
         Hashtable<Point, Color> pointColorMap= new Hashtable<Point, Color>();
         double rY = height / nY / 2;
         double rX = width / nX / 2;
@@ -563,7 +564,7 @@ public class Camera {
     /**
      * recursive method that return the average color of the pixel- by checking the color of the four corners
      *
-     * @param max-         the depth of the recursion
+     * @param depth-         the depth of the recursion
      * @param center-      the center of the pixel
      * @param rX-          the width of the pixel
      * @param rY-          the height of the pixel
@@ -573,30 +574,44 @@ public class Camera {
      * @param downRightCol - the color of the down vRight corner
      * @return the average color of the pixel
      */
-    private Color adaptive(int max, Point center, double rX, double rY, Hashtable<Point, Color> pointColorTable,
+    private Color adaptive(int depth, Point center, double rX, double rY, Hashtable<Point, Color> pointColorMap,
                            Color upLeftCol, Color upRightCol, Color downLeftCol, Color downRightCol) {
-        if (max == maximumAdaptiveDepth) {
+        //check if we are in the max level of the recursion
+        if (depth == maximumAdaptiveDepth) {
+            //returm the sum of the color and divide it by 4
             return downRightCol.add(upLeftCol).add(upRightCol).add(downLeftCol).reduce(4);
         }
-        if (upRightCol.equals(upLeftCol) && downRightCol.equals(downLeftCol) && downLeftCol.equals(upLeftCol))
-            return upRightCol;
-        else {
-            Color rightPCol = getPointColorFromTable(center.add(Vright.scale(rX)), pointColorTable);
-            Color leftPCol = getPointColorFromTable(center.add(Vright.scale(-rX)), pointColorTable);
-            Color upPCol = getPointColorFromTable(center.add(Vup.scale(rY)), pointColorTable);
-            Color downPCol = getPointColorFromTable(center.add(Vup.scale(-rY)), pointColorTable);
-            Color centerCol = pointCalcColor(center);
 
+        //send the colors of the 4 corners to almostSameColor method and it returns if the colors are almost the same
+        if (almostSameColor(upRightCol,upLeftCol,downLeftCol,downRightCol)) {
+            //the colors are same we return any one of the colors
+            return downRightCol;
+        }
+
+        //the colors are different we go to the adaptive sections
+        else {
+            //for efficiency we calculate the 5 points that we will check in the next level of the recursion
+            //we will send the new points to the the 4 new squares in the recursion
+            Color rightMiddlePoint = getPointColorFromTable(center.add(Vright.scale(rX)), pointColorMap);
+            Color leftMiddlePoint = getPointColorFromTable(center.add(Vright.scale(-rX)), pointColorMap);
+            Color upMiddlePoint = getPointColorFromTable(center.add(Vup.scale(rY)), pointColorMap);
+            Color downMiddlePoint = getPointColorFromTable(center.add(Vup.scale(-rY)), pointColorMap);
+            Color centerPoint = pointCalcColor(center);
+
+
+            //initialize for the next level find the 4 points that we will use in the next level
             rX = rX / 2;
             rY = rY / 2;
-            upLeftCol = adaptive(max + 1, center.add(Vup.scale(rY / 2)).add(Vright.scale(-rX / 2)), rX, rY, pointColorTable,
-                    upLeftCol, upPCol, leftPCol, centerCol);
-            upRightCol = adaptive(max + 1, center.add(Vup.scale(rY / 2)).add(Vright.scale(rX / 2)), rX, rY, pointColorTable,
-                    upPCol, upRightCol, centerCol, leftPCol);
-            downLeftCol = adaptive(max + 1, center.add(Vup.scale(-rY / 2)).add(Vright.scale(-rX / 2)), rX, rY, pointColorTable,
-                    leftPCol, centerCol, downLeftCol, downPCol);
-            downRightCol = adaptive(max + 1, center.add(Vup.scale(-rY / 2)).add(Vright.scale(rX / 2)), rX, rY, pointColorTable,
-                    centerCol, rightPCol, downPCol, downRightCol);
+            upLeftCol = adaptive(depth + 1, center.add(Vup.scale(rY / 2)).add(Vright.scale(-rX / 2)), rX, rY, pointColorMap,
+                    upLeftCol, upMiddlePoint, leftMiddlePoint, centerPoint);
+            upRightCol = adaptive(depth + 1, center.add(Vup.scale(rY / 2)).add(Vright.scale(rX / 2)), rX, rY, pointColorMap,
+                    upMiddlePoint, upRightCol, centerPoint, rightMiddlePoint);
+            downLeftCol = adaptive(depth + 1, center.add(Vup.scale(-rY / 2)).add(Vright.scale(-rX / 2)), rX, rY, pointColorMap,
+                    leftMiddlePoint, centerPoint, downLeftCol, downMiddlePoint);
+            downRightCol = adaptive(depth + 1, center.add(Vup.scale(-rY / 2)).add(Vright.scale(rX / 2)), rX, rY, pointColorMap,
+                    centerPoint, rightMiddlePoint, downMiddlePoint, downRightCol);
+
+            //sum the Points color and return the average color value
             return downRightCol.add(upLeftCol).add(upRightCol).add(downLeftCol).reduce(4);
         }
     }
@@ -609,11 +624,15 @@ public class Camera {
      * @return the color of the point
      */
     private Color getPointColorFromTable(Point point, Hashtable<Point, Color> pointColorMap) {
+        //for efficiency we search the point first at the HashTable to check if we alreay calcuated this point
+
         if (!(pointColorMap.containsKey(point))) {
+            //the point does not exist at the hashtable we calcuate the color point and add to the hashTable
             Color color = pointCalcColor(point);
             pointColorMap.put(point, color);
             return color;
         }
+        //get the point from the hashTable
         return pointColorMap.get(point);
     }
 }

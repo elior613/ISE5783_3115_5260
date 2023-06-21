@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="109a4c57-e2c2-4f1f-a6fc-99d8db36e3af" name="Changes" comment="MP1">
+      <change afterPath="$PROJECT_DIR$/unitTests/renderer/AdaptiveTest1.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/primitives/Color.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Color.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -122,7 +124,7 @@
       <recent name="geometries" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PolygonTests">
+  <component name="RunManager">
     <configuration name="All in ISE5783_3115_5260" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_3115_5260" />
       <option name="PACKAGE_NAME" value="" />
@@ -224,13 +226,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1677598048773</updated>
-    </task>
-    <task id="LOCAL‎-00018" summary="PR02 commit">
-      <created>1681913304099</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL‎-00018" />
-      <option name="project" value="LOCAL‎" />
-      <updated>1681913304099</updated>
     </task>
     <task id="LOCAL‎-00019" summary="pr02 commit">
       <created>1681913636665</created>
@@ -568,7 +563,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1687181707483</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL‎-00067" summary="MP1">
+      <created>1687197668717</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL‎-00067" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1687197668717</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

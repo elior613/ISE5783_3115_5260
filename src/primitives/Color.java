@@ -102,6 +102,47 @@ public class Color {
       return new Color(rgb.d1 / k.d1, rgb.d2 / k.d2, rgb.d3 / k.d3);
    }
 
+
    @Override
    public String toString() { return "rgb:" + rgb; }
+
+   /** Operation of adding this and one or more other colors (by component)
+    * @param  colors one or more other colors to add
+    * @return        new Color object which is a result of the operation */
+   public static boolean almostSameColor(Color... colors) {
+
+      double maxRed=colors[0].rgb.d1;
+      double maxGreen=colors[0].rgb.d2;
+      double maxBlue=colors[0].rgb.d3;
+
+      double minRed=colors[0].rgb.d1;
+      double minGreen=colors[0].rgb.d2;
+      double minBlue=colors[0].rgb.d3;
+
+      for (Color c : colors) {
+        if (c.rgb.d1>maxRed)
+           maxRed=c.rgb.d1;
+
+        if(c.rgb.d1<minRed)
+           minRed=c.rgb.d1;
+
+        if (c.rgb.d2>maxGreen)
+           maxGreen=c.rgb.d2;
+
+         if (c.rgb.d2<minGreen)
+            minGreen=c.rgb.d2;
+
+         if (c.rgb.d3>maxBlue)
+            maxBlue=c.rgb.d3;
+         if (c.rgb.d3<minBlue)
+               minBlue=c.rgb.d3;
+      }
+
+      if ( maxRed-minRed<=2 && maxGreen-minGreen<=2 &&maxBlue-minBlue<=2)//checks if the diiference between the colors is less than 2
+         return true;
+
+      return false;
+   }
+
+
 }
