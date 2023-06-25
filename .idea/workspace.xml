@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="109a4c57-e2c2-4f1f-a6fc-99d8db36e3af" name="Changes" comment="Adaptive">
+    <list default="true" id="109a4c57-e2c2-4f1f-a6fc-99d8db36e3af" name="Changes" comment="5 LIGHT+ FRAME">
+      <change afterPath="$PROJECT_DIR$/src/renderer/PixelManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unitTests/renderer/TeapotTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/images/adaptiveTes1MP2.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/adaptiveTes1MP2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unitTests/renderer/AdaptiveTest1.java" beforeDir="false" afterPath="$PROJECT_DIR$/unitTests/renderer/AdaptiveTest1.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,7 +68,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2MNBDyUhZyxnNRWwiKNIkf0b8v5" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -225,13 +228,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1677598048773</updated>
-    </task>
-    <task id="LOCAL‎-00020" summary="pr02  commit">
-      <created>1681913833986</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL‎-00020" />
-      <option name="project" value="LOCAL‎" />
-      <updated>1681913833986</updated>
     </task>
     <task id="LOCAL‎-00021" summary="PR02  commit">
       <created>1681913983054</created>
@@ -569,7 +565,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1687325978280</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL‎-00069" summary="5 LIGHT+ FRAME">
+      <created>1687430977951</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL‎-00069" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1687430977951</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -590,7 +593,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="multy color" />
     <MESSAGE value="Light classes" />
     <MESSAGE value="update comments" />
     <MESSAGE value="test the pictiars" />
@@ -615,7 +617,8 @@
     <MESSAGE value="update the lights" />
     <MESSAGE value="MP1" />
     <MESSAGE value="Adaptive" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adaptive" />
+    <MESSAGE value="5 LIGHT+ FRAME" />
+    <option name="LAST_COMMIT_MESSAGE" value="5 LIGHT+ FRAME" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

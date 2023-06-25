@@ -9,6 +9,7 @@ import primitives.Ray;
 import primitives.Vector;
 
 import java.util.*;
+import java.util.stream.IntStream;
 
 import static primitives.Color.almostSameColor;
 import static primitives.Util.isZero;
@@ -42,9 +43,27 @@ public class Camera {
     //amount of Rays for anti aliasing. Default is 1
     private int amountRays = 1;
 
+    //boolean parameter if to operate the Adaptive Super Sampling acceleration
     private boolean isAdaptiveSuperSampling= false;
 
+    //for the Adaptive Super Sampling acceleration decide the maximum depth of the recursion
     private int maximumAdaptiveDepth =4;
+
+    private double printInterval = 1;
+
+
+
+    /** Pixel manager for supporting:
+     * <ul>
+     * <li>multi-threading</li>
+     * <li>debug print of progress percentage in Console window/tab</li>
+     * <ul>
+     */
+    private PixelManager pixelManager;
+
+
+    //number of threads we are using in the operation. Initialize to 0
+    private int threadCount=0;
 
 
 
@@ -226,6 +245,28 @@ public class Camera {
         return this;
     }
 
+    /**
+     * Sets the value of the threadCount.
+     *
+     * @param  threadCount amonut for the multiThreading
+     * @return the camera instance with the updated count of the multi-threads
+     */
+    public Camera setMultithreading(int threadCount) {
+        this.threadCount = threadCount;
+        return this;
+    }
+
+    /**
+     * Sets the value print interval help to debug information.
+     *
+     * @param k The value to set the printInterval.
+     * @return The updated Camera .
+     */
+    public Camera setDebugPrint(double k)
+    {
+        this.printInterval = k;
+        return this;
+    }
 
     // ***************** Operations ******************** //
 
@@ -296,15 +337,32 @@ public class Camera {
         if (rayTracer == null)
             throw new MissingResourceException("missing resource", RayTracerBase.class.getName(), "");
 
-        // Render each pixel in the image
         int nX = imageWriter.getNx();
         int nY = imageWriter.getNy();
-        for (int i = 0; i < nY; i++) {
-            for (int j = 0; j < nX; j++) {
-                imageWriter.writePixel(j, i, this.castRaySelector(nX, nY, i, j));
+        if (threadCount == 0) {
+            // Render each pixel in the image
+
+            for (int i = 0; i < nY; i++) {
+                for (int j = 0; j < nX; j++) {
+                    imageWriter.writePixel(j, i, this.castRaySelector(nX, nY, i, j));
+                }
             }
+
+            return this;
         }
-        return this;
+        else {
+            pixelManager = new PixelManager(nY, nX, printInterval);
+
+            IntStream.range(0, nY).parallel().forEach(i -> IntStream.range(0, nX).parallel() // for each row:
+                     .forEach(j -> castRayParallel(nX, nY,i,j))); // for each column in row
+        }
+            return this;
+    }
+
+    private void castRayParallel(int nX, int nY, int i, int j)
+    {
+        imageWriter.writePixel(j, i, castRaySelector(nX, nY, i, j));
+        pixelManager.pixelDone();
     }
 
 
@@ -324,6 +382,7 @@ public class Camera {
             return adaptiveManager(nX, nY, j, i);
         if (amountRays == 1)
             return castRay(nX, nY, i, j);
+
         //amountRays is bigger than 1
         return castRays(nX, nY, i, j);
     }
@@ -382,11 +441,11 @@ public class Camera {
      * @return the camera instance with the rendered image written to the image writer
      * @throws MissingResourceException if the image writer is missing
      */
-    public Camera writeToImage() {
+    public void  writeToImage() {
         if (imageWriter == null)
             throw new MissingResourceException("missing resource", ImageWriter.class.getName(), "");
         imageWriter.writeToImage();
-        return this;
+        //return this;
     }
 
 
@@ -531,7 +590,7 @@ public class Camera {
     /**
      * get  a list of colors and return if the colors are almost same
      *
-     * @param colorList
+     * @param Nx
      * @return boolean
      */
 
@@ -543,9 +602,10 @@ public class Camera {
     /**
      * calculate average color of the pixel by using adaptive Super-sampling
      *
-     * @param center- the center of the pixel
      * @param nY-     number of width pixel
      * @param nX-     number of length pixel
+     * @param j-      index of columns
+     * @param i-      index of rows
      * @return- the average color of the pixel
      */
     private Color adaptiveManager(int nX, int nY, int j, int i) {

@@ -24,7 +24,7 @@ class AdaptiveTest1 {
     @Test
     public void adaptive1MP2() {
         Camera camera = new Camera(new Point(-50, -50, 50), new Vector(1, 0.3, 0), new Vector(0, 0, 1)) //
-                .setVPSize(150, 150).setVPDistance(50).setAdaptiveSuperSampling(true).setMaximumAdaptiveDepth(1);
+                .setVPSize(150, 150).setVPDistance(50).setAdaptiveSuperSampling(true).setMaximumAdaptiveDepth(1); //.setMultithreading(3).setDebugPrint(0.1);
         scene.setAmbientLight(new AmbientLight(new Color(300, 150, 240), new Double3(0.1)));
 
         // Create a table and add its geometries to the scene
@@ -64,11 +64,18 @@ class AdaptiveTest1 {
         scene.geometries.add(new Polygon(new Point(-10, 39, 10), new Point(50, 39, 10), new Point(50, 39, 110), new Point(-10, 39, 70)).
                 setMaterial(new Material().setkR(0.5).setKd(0.5).setKs(0.3)));
         //The window
-        scene.geometries.add(new Polygon(new Point(79.5, 20, 60), new Point(79.5, -60, 60), new Point(79.5, -60, 140), new Point(79.5, 20, 140)).setEmission(new Color(51, 255, 255))
+        scene.geometries.add(new Polygon(new Point(79.5, 20, 60), new Point(79.5, -60, 60), new Point(79.5, -60, 140), new Point(79.5, 20, 140)).setEmission(new Color(0, 128, 255))
                 .setMaterial(new Material().setkT(1).setShininess(10).setKd(0.3)));
-        scene.geometries.add( new Sphere(5, new Point(0, -55, 7)).setEmission(new Color(0, 50, 100)) //
+        //the ball
+        scene.geometries.add( new Sphere(3, new Point(47, -110, 5)).setEmission(new Color(0, 50, 100)) //
                 .setMaterial(new Material().setKd(0.25).setKs(0.25).setShininess(20)
                         .setkT(new Double3(0.5, 0, 0))));
+        //initialize cube
+        Squared3D cube= new Squared3D(new Point(40,-110,0),10,15,10,new Color(255,150,50));
+        for (var e : cube.getGeometryList()) {//move all over the polygons
+            scene.geometries.add(e.setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(30)));
+        }
+
 
 
         //the frame of the window
@@ -90,17 +97,18 @@ class AdaptiveTest1 {
         scene.geometries.add(new Sphere(5,new Point(10,0,25)).setEmission(new Color(0, 153, 0)).setMaterial(new Material().setkT(0.1).setKd(0.2).setKs(0.6)));
 
         //add the lights
-        for (int i=0;i<3;i++) {
+        for (int i=0;i<2;i++) {
             scene.lights.add(new SpotLight(new Color(950, 550, 0), new Point(-95, 0, 50), new Vector(82, -18, -25)).setKl(0.1).setKq(0.0001));
+            scene.lights.add(new SpotLight(new Color(0,0, 255), new Point(70,-120,79), new Vector(-1, 0, -2)).setKl(0.1).setKq(0.0001));
+            scene.lights.add(new SpotLight(new Color(0, 0,255), new Point(70,-120,91), new Vector(-1, 0, 2)).setKl(0.1).setKq(0.0001));
+
+
         }
         //scene.lights.add(new DirectionalLight(new Color(950, 550, 0), new Vector(100,0, -25)));
         //spot lamp
         scene.lights.add(new DirectionalLight(new Color(800,500,250),new Vector(-1, 0, -2)));
         scene.lights.add(new SpotLight(new Color(54,32,255),new Point(75,-100,79),new Vector(5, -15, -14)));
-        scene.lights.add(new PointLight(new Color(255,178,102),new Point(5,10,50000)));
-        scene.lights.add(new PointLight(new Color(51,255,51),new Point(0,-55,3)));
-        scene.lights.add(new SpotLight(new Color(102, 255, 255), new Point(70,-130,79), new Vector(-1, 0, -2)).setKl(0.1).setKq(0.0001));
-        scene.lights.add(new SpotLight(new Color(102, 255, 255), new Point(70,-130,91), new Vector(-1, 0, 2)).setKl(0.1).setKq(0.0001));
+        scene.lights.add(new PointLight(new Color(255,178,102),new Point(5,10,200)).setKl(0.1).setKq(0.0001));
 
 
 
