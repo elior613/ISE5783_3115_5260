@@ -450,6 +450,135 @@ public class Camera {
 
 
 
+    private double transferToRadialAngle(double angle)
+    {
+        if (angle>=360 || angle<=-360)
+            angle = angle % 360;
+
+        if(angle > 180)
+            angle = angle - 180; // the angle is less than 180
+
+        if(angle < -180)
+            angle = angle+ 180; // the angle is bigger than -180
+
+        return Math.toRadians(angle);
+    }
+
+    /**
+     * spin the camera up and down around vRight vector
+     * @param angle in degrees (how many we need move)
+     * @return the camera with the update vectors of Vto and Vup
+     */
+    public Camera spinAroundVRight(double angle){
+
+        //we are move only the vUp and the vTo vectors
+        double angleRad = transferToRadialAngle(angle);
+        double sinA = Math.sin(angleRad);
+        double cosA = Math.cos(angleRad);
+        if(isZero(cosA)){ //if the angle is 90 or -90 degrees, we move the camera 90 degrees upper
+            Vto = Vup.scale(sinA).normalize(); //sin (90) = 1, sin (-90) = -1, vTo = vUp or vTo = -vUp
+        }
+        else if(isZero(sinA)){ //if angle is 0 or 180 degrees
+            Vto = Vto.scale(cosA).normalize(); //cos(0) = 1, cos(180) = -1, vTo = vTo or vTo = -vTo
+        }
+        else{ //spin around the vTo vector according to the Rodrigues' rotation formula (rotation V = v*cosA + (K x v)*sinA + K*(K*V)(1-cosA), k is vRight in our situation
+            Vto = Vto.scale(cosA).add(Vright.crossProduct(Vto).scale(sinA)).normalize();
+        }
+        Vup = Vright.crossProduct(Vto).normalize(); //change the vUp vector according to the new vTo (vUp is perpendicular to vTo and vRight)
+
+        return this;
+    }
+
+    /**
+     * spin the camera left and right around vUp vector
+     * @param angle in degrees (how many we need move)
+     * @return The camera with update vectors of Vto and Vright
+     */
+    public Camera spinAroundVUp(double angle){
+
+        //we are move only the vRight and the vTo vectors
+        double angleRad = transferToRadialAngle(angle);
+        double sinA = Math.sin(angleRad);
+        double cosA = Math.cos(angleRad);
+        if(isZero(cosA)){ //if angle is 90 or -90 degrees, we move the camera 90 degrees
+            Vright = Vto.scale(sinA).normalize(); //sin (90) = 1, sin (-90) = -1, vRight = vTo or vRight = -vTo
+        }
+        else if(isZero(sinA)){ //if angle is 0 or 180 degrees
+            Vright = Vright.scale(cosA).normalize(); //cos(0) = 1, cos(180) = -1, vRight = vRight or vRight = -vRight
+        }
+        else{ //spin around the vTo vector according to the Rodrigues' rotation formula (rotation V = v*cosA + (K x v)*sinA + K*(K*V)(1-cosA), k is vUp in our situation
+            Vright = Vright.scale(cosA).add(Vup.crossProduct(Vright).scale(sinA)).normalize();
+        }
+        Vto = Vup.crossProduct(Vright).normalize(); //change the vTo vector according to the new vRight (vTo is perpendicular to vUp and vRight)
+
+        return this;
+    }
+
+    /**
+     * spin the camera around vTo vector
+     * @param angle in degrees (how many we need move)
+     * @return
+     */
+    public Camera spinAroundVTo(double angle){
+
+        //we are moving only the vUp and the vRight vectors
+        double angleRad = transferToRadialAngle(angle);
+        double sinA = Math.sin(angleRad);
+        double cosA = Math.cos(angleRad);
+        if(isZero(cosA)){ //if angle is 90 or -90 degrees, we move the camera 90 degrees
+            Vup = Vright.scale(sinA).normalize(); //sin (90) = 1, sin (-90) = -1, vUp = vRight or vUp = -vRight
+        }
+        else if(isZero(sinA)){ //if angle is 0 or 180 degrees
+            Vup = Vup.scale(cosA).normalize(); //cos(0) = 1, cos(180) = -1, vUp = vUp or vUp = -vUp
+        }
+        else{ //spin around the vTo vector according to the Rodrigues' rotation formula (rotation V = v*cosA + (K x v)*sinA + K*(K*V)(1-cosA), k is vTo in our situation
+            Vup = Vup.scale(cosA).add(Vto.crossProduct(Vup).scale(sinA)).normalize();
+        }
+        Vright = Vto.crossProduct(Vup).normalize(); //change the vTo vector according to the new vRight (vTo is perpendicular to vUp and vRight)
+
+        return this;
+    }
+
+
+    /**
+     * move the camera up or down
+     * @param distance the value of the distance to change the p0 position
+     * @return The camera with the update position of the up and down point
+     */
+    public Camera moveUpDown(double distance){
+        if(!isZero(distance)) {
+            p0 = p0.add(Vup.scale(distance));
+        }
+        return this;
+    }
+
+    /**
+     * move the camera right and left
+     * @param distance the value of the distance to change the p0 position
+     * @return The camera with the update position of the right and left point
+     */
+    public Camera moveRightLeft(double distance){
+        if(!isZero(distance)) {
+            p0 = p0.add(Vright.scale(distance));
+        }
+        return this;
+    }
+
+
+    /**
+     * move the camera back or forth
+     * @param distance the value of the distance to change the p0 position
+     * @return The camera with the update position of the back and forth point
+     */
+    public Camera moveForthAndBack(double distance){
+        if(!isZero(distance)) {
+            p0 = p0.add(Vto.scale(distance));
+        }
+        return this;
+    }
+
+
+
     /**
      * the function gets the view plane size and a specific pixel,
      * return the point of the center of the pixel
@@ -471,38 +600,6 @@ public class Camera {
         if (yI != 0) pIJCenter = pIJCenter.add(Vup.scale(yI));//add to the vertical
         return pIJCenter;//return the center of the pixel
     }
-
-//    private Color antiAliasing(int nX, int nY, int j, int i) {
-//        Color sumColors = new Color(0, 0, 0);
-//        Vector vectorToThePixel;
-//        Ray rayThroughPixel;
-//        //get the center of the pixel
-//        Point pIJCenter = getCenterPixel(nX, nY, j, i);
-//
-//        // make the top-left corner of the pixel
-//        Point pIJ;
-//        double rX = this.width / nX; //rX is the size of the horizontal rib of the pixel (without teh vertical rib)
-//        double interval = rX / amountRays;
-//
-//        for (double z = 0; z < amountRays; z++) {
-//            // move pIJ each iteration to the left of the current row
-//            // (the pixel is divided to grid of rows and columns
-//            // [interval times rows and interval times columns])
-//            if (!isZero(rX / 2 - (interval) * z))
-//                pIJ = pIJCenter.add(Vup.scale(rX / 2 - (interval) * z));
-//            else pIJ = pIJCenter;
-//            pIJ = pIJ.add(Vright.scale(-rX / 2));
-//            for (int q = 0; q < amountRays; q++) {
-//                pIJ = pIJ.add(Vright.scale(interval * rX));
-//                vectorToThePixel = pIJ.subtract(this.p0);
-//                rayThroughPixel = new Ray(this.p0, vectorToThePixel);
-//                sumColors = sumColors.add(rayTracer.traceRay(rayThroughPixel));
-//            }
-//        }
-//        // calculate the average color (there are eyeRaysAmount^2 sample rays);
-//        Color avarageColor = sumColors.scale((double) 1 / (amountRays * amountRays));
-//        return avarageColor;
-//    }
 
 
     /**

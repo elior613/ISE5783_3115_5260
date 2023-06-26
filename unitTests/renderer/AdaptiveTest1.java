@@ -18,13 +18,13 @@ class AdaptiveTest1 {
 
 
     /**
-     * Produce a picture of a sphere lighted by a spot light.
+     * Produce a picture of a sphere lighted by a spotlight.
      * The camera position, view direction, and other elements of the scene are set up to render the chair.
      */
     @Test
     public void adaptive1MP2() {
         Camera camera = new Camera(new Point(-50, -50, 50), new Vector(1, 0.3, 0), new Vector(0, 0, 1)) //
-                .setVPSize(150, 150).setVPDistance(50).setAdaptiveSuperSampling(true).setMaximumAdaptiveDepth(1); //.setMultithreading(3).setDebugPrint(0.1);
+                .setVPSize(150, 150).setVPDistance(50).setAdaptiveSuperSampling(true).setMaximumAdaptiveDepth(1).setMultithreading(3).setDebugPrint(0.1);
         scene.setAmbientLight(new AmbientLight(new Color(300, 150, 240), new Double3(0.1)));
 
         // Create a table and add its geometries to the scene
@@ -71,11 +71,14 @@ class AdaptiveTest1 {
                 .setMaterial(new Material().setKd(0.25).setKs(0.25).setShininess(20)
                         .setkT(new Double3(0.5, 0, 0))));
         //initialize cube
-        Squared3D cube= new Squared3D(new Point(40,-110,0),10,15,10,new Color(255,150,50));
+        Squared3D cube= new Squared3D(new Point(35,-110,0),20,15,10,new Color(255,150,50));
         for (var e : cube.getGeometryList()) {//move all over the polygons
-            scene.geometries.add(e.setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(30)));
+            scene.geometries.add(e.setMaterial(new Material().setKd(0.25).setKs(0.25).setkT(0.75)));
+            //setMaterial(new Material().setKd(0.25).setKs(0.25).setkT(0.75))
         }
-
+        scene.geometries.add(new Sphere(3,new Point(39,-105,5)).setEmission(new Color(0,0, 255)).setMaterial(new Material().setKd(0.25).setKs(0.25).setShininess(20)));
+        scene.geometries.add(new Sphere(3,new Point(42,-95,5)).setEmission(new Color(255,0, 0)).setMaterial(new Material().setKd(0.25).setKs(0.25).setShininess(20)));
+        scene.geometries.add(new Sphere(3,new Point(49,-100,5)).setEmission(new Color(0,255, 0)).setMaterial(new Material().setKd(0.25).setKs(0.25).setShininess(20)));
 
 
         //the frame of the window
@@ -94,7 +97,15 @@ class AdaptiveTest1 {
 
 
         //The water mellon
-        scene.geometries.add(new Sphere(5,new Point(10,0,25)).setEmission(new Color(0, 153, 0)).setMaterial(new Material().setkT(0.1).setKd(0.2).setKs(0.6)));
+        scene.geometries.add(new Sphere(5,new Point(10,0,25)).setEmission(new Color(0, 255, 0)).setMaterial(new Material().setKd(0.25).setKs(0.25).setkT(0.75)));
+        scene.geometries.add(new Sphere(4,new Point(10,0,25)).setEmission(new Color(110,80, 225)).setMaterial(new Material().setKd(0.25).setKs(0.25).setShininess(20)));
+
+//                        setkT(new Double3(0.5, 0, 0)))));
+//        new Sphere(400d, new Point(-950, -900, -1000)).setEmission(new Color(0, 50, 100)) //
+//                .setMaterial(new Material().setKd(0.25).setKs(0.25).setShininess(20)
+//                        .setkT(new Double3(0.5, 0, 0))),
+//                new Sphere(200d, new Point(-950, -900, -1000)).setEmission(new Color(100, 50, 20)) //
+//                        .setMaterial(new Material().setKd(0.25).setKs(0.25).setShininess(20))
 
         //add the lights
         for (int i=0;i<2;i++) {

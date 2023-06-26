@@ -109,6 +109,56 @@ public class ReflectionRefractionTests {
               .writeToImage();
    }
 
+   @Test
+   public void trianglesTransparentSphereAngleAndPosition1() {
+      Camera camera = new Camera(new Point(0, 0, 1000), new Vector(0, 0, -1), new Vector(0, 1, 0)) //
+              .setVPSize(200, 200).setVPDistance(1000).moveForthAndBack(50).moveUpDown(20).moveRightLeft(-30);//.spinAroundVRight(5);
+
+      scene.setAmbientLight(new AmbientLight(new Color(WHITE), 0.15));
+
+      scene.geometries.add( //
+              new Triangle(new Point(-150, -150, -115), new Point(150, -150, -135),
+                      new Point(75, 75, -150)) //
+                      .setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(60)), //
+              new Triangle(new Point(-150, -150, -115), new Point(-70, 70, -140), new Point(75, 75, -150)) //
+                      .setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(60)), //
+              new Sphere(30d, new Point(60, 50, -50)).setEmission(new Color(BLUE)) //
+                      .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(30).setkT(0.6)));
+
+      scene.lights.add(new SpotLight(new Color(700, 400, 400), new Point(60, 50, 0), new Vector(0, 0, -1)) //
+              .setKl(4E-5).setKq(2E-7));
+
+      ImageWriter imageWriter = new ImageWriter("refractionShadowPosition1", 600, 600);
+      camera.setImageWriter(imageWriter) //
+              .setRayTracer(new RayTracerBasic(scene)) //
+              .renderImage() //
+              .writeToImage();
+   }
+   @Test
+   public void trianglesTransparentSphereAngleAndPosition2() {
+      Camera camera = new Camera(new Point(0, 0, 1000), new Vector(0, 0, -1), new Vector(0, 1, 0)) //
+              .setVPSize(200, 200).setVPDistance(1000).spinAroundVRight(180);//.spinAroundVRight(5);
+
+      scene.setAmbientLight(new AmbientLight(new Color(WHITE), 0.15));
+
+      scene.geometries.add( //
+              new Triangle(new Point(-150, -150, -115), new Point(150, -150, -135),
+                      new Point(75, 75, -150)) //
+                      .setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(60)), //
+              new Triangle(new Point(-150, -150, -115), new Point(-70, 70, -140), new Point(75, 75, -150)) //
+                      .setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(60)), //
+              new Sphere(30d, new Point(60, 50, -50)).setEmission(new Color(BLUE)) //
+                      .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(30).setkT(0.6)));
+
+      scene.lights.add(new SpotLight(new Color(700, 400, 400), new Point(60, 50, 0), new Vector(0, 0, -1)) //
+              .setKl(4E-5).setKq(2E-7));
+
+      ImageWriter imageWriter = new ImageWriter("refractionShadowPosition2", 600, 600);
+      camera.setImageWriter(imageWriter) //
+              .setRayTracer(new RayTracerBasic(scene)) //
+              .renderImage() //
+              .writeToImage();
+   }
 
    /**
     * test of a small illustration
