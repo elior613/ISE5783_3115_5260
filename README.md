@@ -1,4 +1,5 @@
 Mini Project in Introduction to Software Engineering 
+
 Authors: Omer Avidar and Elior Tkach
 
 Project Overview
